@@ -2,102 +2,490 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <base target="_top"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#414936"><title>จัดการโปรโมชั่น | NICHA SPA</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#414936">
+<title>จัดการโปรโมชั่น | NICHA SPA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-:root{--g:#414936;--g2:#687054;--cream:#f7f3eb;--paper:#fffdf8;--gold:#b18a59;--ink:#39372f;--muted:#817d72}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);font-family:'Kanit',sans-serif;color:var(--ink)}
-header{background:var(--g);color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
-header b{font-size:20px;letter-spacing:1px}header a{color:white;text-decoration:none;font-size:13px}
-.wrap{max-width:1100px;margin:30px auto;padding:0 18px}.panel{background:var(--paper);border:1px solid #e8e1d4;border-radius:14px;padding:24px;margin-bottom:22px;box-shadow:0 6px 20px #2221}
-h1{font-size:25px;color:var(--g);margin:0 0 20px}h2{font-size:20px;color:var(--g);margin:0 0 17px}
-label{display:block;font-size:13px;color:#625e53;margin:0 0 6px}input,textarea{width:100%;border:1px solid #d9d2c5;border-radius:8px;padding:11px;font:14px 'Kanit';background:white;color:var(--ink)}
-textarea{min-height:90px;resize:vertical}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.full{grid-column:1/-1}
-button{border:0;border-radius:8px;padding:10px 18px;background:var(--g);color:white;font:14px 'Kanit';cursor:pointer}button.secondary{background:#8d887b}button.danger{background:#a44d43}button.gold{background:#9b7447}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}.hint{font-size:12px;color:var(--muted);margin-top:7px}
-#login{max-width:420px;margin:70px auto}.hidden{display:none!important}
-#preview{max-width:230px;max-height:150px;object-fit:cover;border-radius:8px;margin-top:10px;display:none}
-.item{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center;border-top:1px solid #eee7db;padding:16px 0}
-.item img{width:120px;height:90px;object-fit:cover;border-radius:8px;background:#eee}
-.item h3{margin:0 0 5px;font-size:17px;color:var(--g)}.meta{font-size:12px;color:var(--muted);line-height:1.7}
-.item-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.status{display:inline-block;border-radius:20px;padding:3px 9px;font-size:11px;background:#e7eddf;color:#43513b}.off{background:#f2e5e2;color:#914b43}
-#message{font-size:13px;margin:10px 0;color:var(--g);min-height:20px}
-@media(max-width:650px){.fields{grid-template-columns:1fr}.full{grid-column:auto}.item{grid-template-columns:85px 1fr}.item img{width:85px;height:80px}.item-actions{grid-column:1/-1;justify-content:flex-start}}
-</style></head>
+:root {
+  --green:#414936;
+  --green2:#687054;
+  --gold:#b18a59;
+  --cream:#f7f4ec;
+  --white:#fff;
+  --ink:#39372f;
+  --muted:#88877e;
+  --border:#e9e5db;
+  --red:#b94b43;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Prompt',sans-serif;
+}
+header{
+  background:var(--green);
+  color:white;
+  padding:22px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.brand{
+  font-family:'Kanit',sans-serif;
+  font-size:23px;
+  letter-spacing:2px;
+}
+.brand small{
+  display:block;
+  font-size:11px;
+  letter-spacing:3px;
+  color:#d8c39e;
+}
+.container{
+  max-width:1100px;
+  margin:35px auto;
+  padding:0 18px;
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:25px;
+}
+h1{
+  font-family:'Kanit',sans-serif;
+  font-weight:500;
+  margin:0;
+  color:var(--green);
+}
+.subtitle{color:var(--muted);font-size:13px}
+button{
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+  border-radius:8px;
+  padding:11px 18px;
+}
+.primary{
+  background:var(--green);
+  color:white;
+}
+.secondary{
+  background:#eee9dd;
+  color:var(--green);
+}
+.danger{
+  background:#f9e9e7;
+  color:var(--red);
+}
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:22px;
+}
+.login{
+  max-width:420px;
+  margin:65px auto;
+}
+input,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:8px;
+  font-family:inherit;
+  margin:7px 0 15px;
+  outline-color:var(--gold);
+}
+label{
+  font-size:13px;
+  color:var(--green);
+  font-weight:500;
+}
+textarea{min-height:100px;resize:vertical}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+.preview{
+  width:100%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:10px;
+  display:none;
+  margin-bottom:15px;
+}
+.list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;
+}
+.promo{
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  background:white;
+}
+.promo img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  background:#eee;
+}
+.promo-body{padding:16px}
+.promo h3{margin:0 0 8px;color:var(--green)}
+.price{color:var(--gold);font-weight:600}
+.old{text-decoration:line-through;color:#aaa;font-size:13px}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.status{
+  font-size:12px;
+  padding:4px 9px;
+  border-radius:20px;
+  background:#e7eee2;
+  color:#53634a;
+}
+.status.off{background:#f4e8e6;color:#a44b43}
+.hidden{display:none!important}
+.message{font-size:13px;margin:10px 0;color:var(--red)}
+footer{text-align:center;padding:30px;color:#999;font-size:12px}
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .container{margin:22px auto}
+  .card{padding:17px}
+}
+</style>
+</head>
+
 <body>
-<header><b>NICHA SPA · PROMOTION ADMIN</b><a href="<?= webAppUrl ?>?page=promotions" target="_blank">ดูหน้าโปรโมชั่น ↗</a></header>
-<div id="login" class="panel">
- <h1>เข้าสู่ระบบจัดการโปรโมชั่น</h1><label>รหัส Admin</label><input id="pin" type="password" inputmode="numeric" placeholder="กรอกรหัส Admin">
- <div class="actions"><button onclick="login()">เข้าสู่ระบบ</button></div><div id="loginMsg" class="hint"></div>
-</div>
-<div id="app" class="wrap hidden">
- <section class="panel">
-  <h1>จัดการโปรโมชั่น</h1>
-  <form id="promoForm" onsubmit="save(event)">
-   <input type="hidden" id="id"><input type="hidden" id="imageId">
-   <div class="fields">
-    <div class="full"><label>ชื่อโปรโมชั่น *</label><input id="title" required maxlength="150" placeholder="เช่น โปรโมชั่นนวดไทย 60 นาที"></div>
-    <div class="full"><label>รายละเอียด</label><textarea id="description" placeholder="รายละเอียด เงื่อนไข หรือบริการที่ร่วมรายการ"></textarea></div>
-    <div><label>ราคาเต็ม (บาท)</label><input id="originalPrice" type="number" min="0" step="1" placeholder="เช่น 600"></div>
-    <div><label>ราคาพิเศษ (บาท)</label><input id="promoPrice" type="number" min="0" step="1" placeholder="เช่น 450"></div>
-    <div><label>วันเริ่มโปรโมชั่น</label><input id="startDate" type="date"></div>
-    <div><label>วันสิ้นสุดโปรโมชั่น</label><input id="endDate" type="date"></div>
-    <div class="full"><label>รูปภาพโปรโมชั่น (JPG / PNG / WEBP ไม่เกิน 4 MB)</label><input id="image" type="file" accept="image/jpeg,image/png,image/webp"><img id="preview" alt="ตัวอย่างรูป"><div class="hint">หากไม่เลือกรูปใหม่ ระบบจะคงรูปเดิมไว้เมื่อแก้ไข</div></div>
-   </div>
-   <div class="actions"><button id="saveBtn" type="submit">บันทึกโปรโมชั่น</button><button type="button" class="secondary" onclick="resetForm()">ล้างฟอร์ม</button></div>
-  </form><div id="message"></div>
- </section>
- <section class="panel"><h2>รายการโปรโมชั่นทั้งหมด</h2><div id="list">กำลังโหลด...</div></section>
-</div>
+
+<header>
+  <div class="brand">
+    NICHA SPA
+    <small>PROMOTION MANAGEMENT</small>
+  </div>
+  <button class="secondary" onclick="goHome()">กลับหน้าเว็บไซต์</button>
+</header>
+
+<main class="container">
+
+<section id="loginSection" class="card login">
+  <h1>เข้าสู่ระบบ</h1>
+  <p class="subtitle">ระบบจัดการโปรโมชั่น NICHA SPA</p>
+  <label>รหัสผู้ดูแลระบบ</label>
+  <input type="password" id="pin" placeholder="กรอกรหัสผู้ดูแลระบบ">
+  <button class="primary" style="width:100%" onclick="login()">เข้าสู่ระบบ</button>
+  <div id="loginMessage" class="message"></div>
+</section>
+
+<section id="adminSection" class="hidden">
+
+  <div class="top">
+    <div>
+      <h1>จัดการโปรโมชั่น</h1>
+      <div class="subtitle">เพิ่ม แก้ไข และจัดการโปรโมชั่นของร้าน</div>
+    </div>
+    <button class="primary" onclick="newPromotion()">+ เพิ่มโปรโมชั่น</button>
+  </div>
+
+  <section id="formSection" class="card hidden">
+    <h2 id="formTitle" style="color:var(--green);font-weight:500">เพิ่มโปรโมชั่นใหม่</h2>
+
+    <input type="hidden" id="promotionId">
+    <input type="hidden" id="oldImageId">
+
+    <label>ชื่อโปรโมชั่น</label>
+    <input id="name" placeholder="เช่น โปรโมชั่นนวดไทย 60 นาที">
+
+    <label>รายละเอียด</label>
+    <textarea id="description" placeholder="รายละเอียดโปรโมชั่น"></textarea>
+
+    <div class="grid">
+      <div>
+        <label>ราคาเต็ม (บาท)</label>
+        <input id="normalPrice" type="number" min="0">
+      </div>
+      <div>
+        <label>ราคาพิเศษ (บาท)</label>
+        <input id="specialPrice" type="number" min="0">
+      </div>
+      <div>
+        <label>วันเริ่มต้น</label>
+        <input id="startDate" type="date">
+      </div>
+      <div>
+        <label>วันสิ้นสุด</label>
+        <input id="endDate" type="date">
+      </div>
+    </div>
+
+    <label>รูปภาพโปรโมชั่น</label>
+    <input id="image" type="file" accept="image/png,image/jpeg,image/webp">
+    <img id="preview" class="preview">
+
+    <div class="actions">
+      <button class="primary" onclick="savePromotion()">บันทึกโปรโมชั่น</button>
+      <button class="secondary" onclick="closeForm()">ยกเลิก</button>
+    </div>
+    <div id="formMessage" class="message"></div>
+  </section>
+
+  <section class="card">
+    <div class="top">
+      <h2 style="margin:0;font-size:19px;color:var(--green)">รายการโปรโมชั่น</h2>
+      <button class="secondary" onclick="loadPromotions()">รีเฟรช</button>
+    </div>
+    <div id="promotionList" class="list">กำลังโหลดข้อมูล...</div>
+  </section>
+
+</section>
+</main>
+
+<footer>© NICHA SPA | Promotion Management</footer>
+
 <script>
-let adminPin='', promotions=[];
-const $=id=>document.getElementById(id);
-function msg(t,el='message'){ $(el).textContent=t; }
-function login(){
- const p=$('pin').value.trim();if(!p){msg('กรุณากรอกรหัส Admin','loginMsg');return;}
- $('loginMsg').textContent='กำลังตรวจสอบ...';
- google.script.run.withSuccessHandler(rows=>{adminPin=p;$('login').classList.add('hidden');$('app').classList.remove('hidden');render(rows);})
- .withFailureHandler(e=>msg(e&&e.message||'เข้าสู่ระบบไม่สำเร็จ','loginMsg')).getNichaPromotionsAdmin(p);
+/*
+  ตั้งค่า URL ของ Google Apps Script Web App
+  ก่อนใช้งานจริงต้องมี API ฝั่ง Code.gs รองรับ
+*/
+const API_URL = 'ใส่_URL_GOOGLE_APPS_SCRIPT_WEB_APP_ตรงนี้';
+
+let adminPin = '';
+let promotions = [];
+let currentImage = '';
+
+function goHome(){
+  location.href = './index.html';
 }
-function load(){google.script.run.withSuccessHandler(render).withFailureHandler(e=>msg(e.message||'โหลดรายการไม่สำเร็จ')).getNichaPromotionsAdmin(adminPin);}
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function render(rows){
- promotions=rows||[];
- $('list').innerHTML=promotions.length?promotions.map(p=>`
- <div class="item"><img src="${p.imageUrl?esc(p.imageUrl):''}" alt="">
- <div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.description||'ไม่มีรายละเอียด')}<br>ราคา ${p.originalPrice===''?'-':Number(p.originalPrice).toLocaleString()} บาท · โปร ${p.promoPrice===''?'-':Number(p.promoPrice).toLocaleString()} บาท<br>${esc(p.startDate||'ไม่กำหนด')} ถึง ${esc(p.endDate||'ไม่กำหนด')}<br><span class="status ${p.active?'':'off'}">${p.active?'เปิดใช้งาน':'ปิดใช้งาน'}</span></div></div>
- <div class="item-actions"><button class="gold" onclick="edit('${esc(p.id)}')">แก้ไข</button><button class="secondary" onclick="toggle('${esc(p.id)}',${!p.active})">${p.active?'ปิด':'เปิด'}</button><button class="danger" onclick="removePromo('${esc(p.id)}')">ลบ</button></div></div>`).join(''):'ยังไม่มีโปรโมชั่น';
+
+async function api(action,data={}){
+  if(!API_URL.startsWith('https://script.google.com/')){
+    throw new Error('กรุณาตั้งค่า API_URL เป็น URL Google Apps Script Web App ก่อน');
+  }
+
+  const response = await fetch(API_URL,{
+    method:'POST',
+    body:JSON.stringify({action,pin:adminPin,...data})
+  });
+
+  if(!response.ok) throw new Error('ไม่สามารถเชื่อมต่อระบบหลังบ้านได้');
+
+  const result = await response.json();
+
+  if(result.success === false){
+    throw new Error(result.message || 'เกิดข้อผิดพลาด');
+  }
+  return result;
 }
+
+async function login(){
+  adminPin=document.getElementById('pin').value.trim();
+  const message=document.getElementById('loginMessage');
+
+  if(!adminPin){
+    message.textContent='กรุณากรอกรหัสผู้ดูแลระบบ';
+    return;
+  }
+
+  try{
+    await loadPromotions();
+    document.getElementById('loginSection').classList.add('hidden');
+    document.getElementById('adminSection').classList.remove('hidden');
+  }catch(error){
+    message.textContent=error.message;
+  }
+}
+
+async function loadPromotions(){
+  const list=document.getElementById('promotionList');
+  list.textContent='กำลังโหลดข้อมูล...';
+
+  const result=await api('getPromotionsAdmin');
+  promotions=result.promotions || result.data || [];
+
+  renderPromotions();
+}
+
+function renderPromotions(){
+  const list=document.getElementById('promotionList');
+
+  if(!promotions.length){
+    list.textContent='ยังไม่มีโปรโมชั่น';
+    return;
+  }
+
+  list.innerHTML=promotions.map((p,index)=>`
+    <article class="promo">
+      ${p.imageUrl ? `<img src="${safe(p.imageUrl)}" alt="">` : ''}
+      <div class="promo-body">
+        <h3>${safe(p.name)}</h3>
+        <p>${safe(p.description || '')}</p>
+        <div class="price">${Number(p.specialPrice || 0).toLocaleString()} บาท</div>
+        <div class="old">${Number(p.normalPrice || 0).toLocaleString()} บาท</div>
+        <p><span class="status ${p.active ? '' : 'off'}">${p.active ? 'เปิดใช้งาน' : 'ปิดใช้งาน'}</span></p>
+        <div class="actions">
+          <button class="secondary" onclick="editPromotion(${index})">แก้ไข</button>
+          <button class="secondary" onclick="togglePromotion(${index})">${p.active ? 'ปิดใช้งาน' : 'เปิดใช้งาน'}</button>
+          <button class="danger" onclick="deletePromotion(${index})">ลบ</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function safe(value){
+  return String(value ?? '').replace(/[&<>"']/g,c=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  })[c]);
+}
+
+function newPromotion(){
+  resetForm();
+  document.getElementById('formTitle').textContent='เพิ่มโปรโมชั่นใหม่';
+  document.getElementById('formSection').classList.remove('hidden');
+  document.getElementById('formSection').scrollIntoView({behavior:'smooth'});
+}
+
+function editPromotion(index){
+  const p=promotions[index];
+  resetForm();
+
+  document.getElementById('formTitle').textContent='แก้ไขโปรโมชั่น';
+  document.getElementById('promotionId').value=p.id;
+  document.getElementById('oldImageId').value=p.imageId || '';
+  document.getElementById('name').value=p.name || '';
+  document.getElementById('description').value=p.description || '';
+  document.getElementById('normalPrice').value=p.normalPrice || '';
+  document.getElementById('specialPrice').value=p.specialPrice || '';
+  document.getElementById('startDate').value=p.startDate || '';
+  document.getElementById('endDate').value=p.endDate || '';
+
+  if(p.imageUrl){
+    const preview=document.getElementById('preview');
+    preview.src=p.imageUrl;
+    preview.style.display='block';
+  }
+
+  document.getElementById('formSection').classList.remove('hidden');
+  document.getElementById('formSection').scrollIntoView({behavior:'smooth'});
+}
+
 function resetForm(){
- $('promoForm').reset();$('id').value='';$('imageId').value='';$('preview').style.display='none';$('preview').src='';msg('');
+  document.getElementById('promotionId').value='';
+  document.getElementById('oldImageId').value='';
+  document.getElementById('name').value='';
+  document.getElementById('description').value='';
+  document.getElementById('normalPrice').value='';
+  document.getElementById('specialPrice').value='';
+  document.getElementById('startDate').value='';
+  document.getElementById('endDate').value='';
+  document.getElementById('image').value='';
+  document.getElementById('preview').style.display='none';
+  document.getElementById('formMessage').textContent='';
+  currentImage='';
 }
-function edit(id){
- const p=promotions.find(x=>x.id===id);if(!p)return;
- $('id').value=p.id;$('imageId').value=p.imageId||'';$('title').value=p.title;$('description').value=p.description;
- $('originalPrice').value=p.originalPrice;$('promoPrice').value=p.promoPrice;$('startDate').value=p.startDate;$('endDate').value=p.endDate;
- if(p.imageUrl){$('preview').src=p.imageUrl;$('preview').style.display='block';}else{$('preview').style.display='none';}
- window.scrollTo({top:0,behavior:'smooth'});msg('กำลังแก้ไข: '+p.title);
+
+function closeForm(){
+  document.getElementById('formSection').classList.add('hidden');
 }
-$('image').addEventListener('change',()=>{
- const f=$('image').files[0];if(!f){$('preview').style.display='none';return;}
- if(f.size>4*1024*1024){alert('รูปภาพต้องมีขนาดไม่เกิน 4 MB');$('image').value='';return;}
- const reader=new FileReader();reader.onload=e=>{$('preview').src=e.target.result;$('preview').style.display='block';};reader.readAsDataURL(f);
+
+document.getElementById('image').addEventListener('change',event=>{
+  const file=event.target.files[0];
+  if(!file)return;
+
+  if(file.size>4*1024*1024){
+    alert('รูปภาพต้องมีขนาดไม่เกิน 4 MB');
+    event.target.value='';
+    return;
+  }
+
+  const reader=new FileReader();
+  reader.onload=()=>{
+    currentImage=reader.result;
+    const preview=document.getElementById('preview');
+    preview.src=currentImage;
+    preview.style.display='block';
+  };
+  reader.readAsDataURL(file);
 });
-function save(ev){
- ev.preventDefault();const file=$('image').files[0];$('saveBtn').disabled=true;msg('กำลังบันทึก...');
- const submit=data=>google.script.run.withSuccessHandler(r=>{msg(r.message||'บันทึกเรียบร้อย');resetForm();load();$('saveBtn').disabled=false;})
- .withFailureHandler(e=>{msg(e&&e.message||'บันทึกไม่สำเร็จ');$('saveBtn').disabled=false;}).saveNichaPromotion(adminPin,data);
- const data={id:$('id').value,title:$('title').value,description:$('description').value,originalPrice:$('originalPrice').value,promoPrice:$('promoPrice').value,startDate:$('startDate').value,endDate:$('endDate').value,imageId:$('imageId').value,active:true};
- if(file){const reader=new FileReader();reader.onload=e=>{data.imageDataUrl=e.target.result;submit(data);};reader.onerror=()=>{$('saveBtn').disabled=false;msg('อ่านไฟล์รูปไม่สำเร็จ');};reader.readAsDataURL(file);}else submit(data);
+
+async function savePromotion(){
+  const message=document.getElementById('formMessage');
+  const name=document.getElementById('name').value.trim();
+
+  if(!name){
+    message.textContent='กรุณากรอกชื่อโปรโมชั่น';
+    return;
+  }
+
+  if(document.getElementById('endDate').value &&
+     document.getElementById('startDate').value &&
+     document.getElementById('endDate').value<document.getElementById('startDate').value){
+    message.textContent='วันสิ้นสุดต้องไม่ก่อนวันเริ่มต้น';
+    return;
+  }
+
+  const data={
+    id:document.getElementById('promotionId').value,
+    name,
+    description:document.getElementById('description').value,
+    normalPrice:Number(document.getElementById('normalPrice').value || 0),
+    specialPrice:Number(document.getElementById('specialPrice').value || 0),
+    startDate:document.getElementById('startDate').value,
+    endDate:document.getElementById('endDate').value,
+    imageId:document.getElementById('oldImageId').value,
+    imageData:currentImage
+  };
+
+  try{
+    message.textContent='กำลังบันทึก...';
+    await api('savePromotion',{data});
+    alert('บันทึกโปรโมชั่นเรียบร้อย');
+    closeForm();
+    await loadPromotions();
+  }catch(error){
+    message.textContent=error.message;
+  }
 }
-function toggle(id,active){
- google.script.run.withSuccessHandler(load).withFailureHandler(e=>alert(e.message||'เปลี่ยนสถานะไม่สำเร็จ')).updateNichaPromotionStatus(adminPin,id,active);
+
+async function togglePromotion(index){
+  const p=promotions[index];
+  if(!confirm('ยืนยันเปลี่ยนสถานะโปรโมชั่นนี้?'))return;
+
+  try{
+    await api('updatePromotionStatus',{
+      id:p.id,
+      active:!p.active
+    });
+    await loadPromotions();
+  }catch(error){
+    alert(error.message);
+  }
 }
-function removePromo(id){
- if(!confirm('ยืนยันลบโปรโมชั่นนี้? รูปภาพที่ใช้กับโปรโมชั่นนี้จะถูกย้ายไปถังขยะด้วย'))return;
- google.script.run.withSuccessHandler(()=>{msg('ลบโปรโมชั่นแล้ว');load();}).withFailureHandler(e=>alert(e.message||'ลบไม่สำเร็จ')).deleteNichaPromotion(adminPin,id);
+
+async function deletePromotion(index){
+  const p=promotions[index];
+  if(!confirm('ยืนยันลบโปรโมชั่นนี้?'))return;
+
+  try{
+    await api('deletePromotion',{id:p.id});
+    await loadPromotions();
+  }catch(error){
+    alert(error.message);
+  }
 }
-</script></body></html>
+</script>
+
+</body>
+</html>
