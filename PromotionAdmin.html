@@ -15,7 +15,7 @@ header{background:var(--g);color:white;padding:20px 5%;display:flex;justify-cont
 header b{font-size:20px;letter-spacing:1px}header a{color:white;text-decoration:none;font-size:13px}
 .wrap{max-width:1100px;margin:30px auto;padding:0 18px}.panel{background:var(--paper);border:1px solid #e8e1d4;border-radius:14px;padding:24px;margin-bottom:22px;box-shadow:0 6px 20px #2221}
 h1{font-size:25px;color:var(--g);margin:0 0 20px}h2{font-size:20px;color:var(--g);margin:0 0 17px}
-label{display:block;font-size:13px;color:#625e53;margin:0 0 6px}input,textarea{width:100%;border:1px solid #d9d2c5;border-radius:8px;padding:11px;font:14px 'Kanit';background:white;color:var(--ink)}
+label{display:block;font-size:13px;color:#625e53;margin:0 0 6px}input,textarea,select{width:100%;border:1px solid #d9d2c5;border-radius:8px;padding:11px;font:14px 'Kanit';background:white;color:var(--ink)}
 textarea{min-height:90px;resize:vertical}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.full{grid-column:1/-1}
 button{border:0;border-radius:8px;padding:10px 18px;background:var(--g);color:white;font:14px 'Kanit';cursor:pointer}button:disabled{opacity:.55;cursor:wait}
 button.secondary{background:#8d887b}button.danger{background:#a44d43}button.gold{background:#9b7447}
@@ -53,7 +53,7 @@ button.secondary{background:#8d887b}button.danger{background:#a44d43}button.gold
   <form id="promoForm" onsubmit="save(event)">
    <input type="hidden" id="id"><input type="hidden" id="imageId">
    <div class="fields">
-    <div class="full"><label for="title">ชื่อโปรโมชั่น *</label><input id="title" required maxlength="150" placeholder="เช่น โปรโมชั่นนวดไทย 60 นาที"></div>
+    <div class="full"><label for="title">ชื่อโปรโมชั่น * (เลือกจากฐานข้อมูลรายการบริการ)</label><select id="title" required><option value="">กำลังโหลดรายการบริการ...</option></select><div class="hint">ดึงเฉพาะบริการที่เปิดใช้งานจาก Google Sheet ชื่อ “รายการบริการ”</div></div>
     <div class="full"><label for="description">รายละเอียด</label><textarea id="description" placeholder="รายละเอียด เงื่อนไข หรือบริการที่ร่วมรายการ"></textarea></div>
     <div><label for="originalPrice">ราคาเต็ม (บาท)</label><input id="originalPrice" type="number" min="0" step="1" placeholder="เช่น 600"></div>
     <div><label for="promoPrice">ราคาพิเศษ (บาท)</label><input id="promoPrice" type="number" min="0" step="1" placeholder="เช่น 450"></div>
@@ -84,6 +84,7 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2MET
 
 let adminPin = '';
 let promotions = [];
+let serviceRows = [];
 const $ = id => document.getElementById(id);
 
 function showError(message, target='errorBox') {
@@ -140,6 +141,7 @@ async function login() {
   try {
     const result = await api('getPromotionsAdmin');
     promotions = result.promotions || result.data || [];
+    await loadServices();
     $('login').classList.add('hidden');
     $('app').classList.remove('hidden');
     render(promotions);
@@ -149,6 +151,26 @@ async function login() {
     showError(err.message || 'เข้าสู่ระบบไม่สำเร็จ');
   } finally {
     $('loginBtn').disabled = false;
+  }
+}
+
+
+async function loadServices() {
+  const select = $('title');
+  select.innerHTML = '<option value="">กำลังโหลดรายการบริการ...</option>';
+  try {
+    const result = await api('getServicesForPromotion');
+    serviceRows = Array.isArray(result.services) ? result.services : [];
+    select.innerHTML = '<option value="">-- เลือกบริการ --</option>' + serviceRows.map(service =>
+      `<option value="${esc(service.name)}" data-price="${Number(service.price) || 0}">${esc(service.name)} · ${money(service.price)} บาท</option>`
+    ).join('');
+    if (!serviceRows.length) {
+      select.innerHTML = '<option value="">ไม่พบบริการที่เปิดใช้งาน</option>';
+      msg('ไม่พบรายการบริการที่เปิดใช้งาน กรุณาตรวจสอบชีต “รายการบริการ”');
+    }
+  } catch (err) {
+    select.innerHTML = '<option value="">โหลดรายการบริการไม่สำเร็จ</option>';
+    throw new Error('โหลดฐานข้อมูลรายการบริการไม่สำเร็จ: ' + (err.message || err));
   }
 }
 
@@ -197,6 +219,7 @@ function render(rows) {
 
 function resetForm() {
   $('promoForm').reset();
+  $('title').value = '';
   $('id').value = '';
   $('imageId').value = '';
   $('preview').style.display = 'none';
@@ -208,7 +231,14 @@ function editPromo(id) {
   if (!p) return;
   $('id').value = p.id || '';
   $('imageId').value = p.imageId || '';
-  $('title').value = p.title || p.name || '';
+  const existingTitle = p.title || p.name || '';
+  const found = Array.from($('title').options).some(option => option.value === existingTitle);
+  if (!found && existingTitle) {
+    const legacy = document.createElement('option');
+    legacy.value = existingTitle; legacy.textContent = existingTitle + ' (รายการเดิม ไม่พบในฐานข้อมูลบริการ)';
+    $('title').appendChild(legacy);
+  }
+  $('title').value = existingTitle;
   $('description').value = p.description || '';
   $('originalPrice').value = p.originalPrice ?? p.normalPrice ?? '';
   $('promoPrice').value = p.promoPrice ?? p.specialPrice ?? '';
