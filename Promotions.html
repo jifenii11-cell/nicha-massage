@@ -21,8 +21,9 @@
     main{max-width:1160px;margin:0 auto;padding:45px 22px 75px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:25px}
     .card{background:var(--paper);border-radius:17px;overflow:hidden;box-shadow:0 8px 28px #35352612;border:1px solid #e9e3d7}
-    .photo{height:225px;background:#e7e3d8;display:flex;align-items:center;justify-content:center;color:#969184}
-    .photo img{width:100%;height:100%;object-fit:cover}
+    .photo{height:225px;background:#e7e3d8;display:flex;align-items:center;justify-content:center;color:#969184;overflow:hidden}
+    .photo img{display:block;width:100%;height:100%;object-fit:cover}
+    .photo.no-image{font-size:14px;letter-spacing:.5px}
     .body{padding:22px}.tag{display:inline-block;background:#e9eddf;color:var(--green);border-radius:30px;padding:4px 12px;font-size:12px;margin-bottom:10px}
     h2{font-size:21px;font-weight:500;margin:0 0 9px;color:var(--green)}
     .desc{font-size:14px;line-height:1.8;color:var(--muted);white-space:pre-line;min-height:50px}
@@ -49,21 +50,81 @@
 <script>
 const WEB_APP_URL = <?= JSON.stringify(webAppUrl) ?>;
 const grid = document.getElementById('promotionGrid');
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function money(v){return v===''||v==null?'':Number(v).toLocaleString('th-TH')+' บาท';}
-function render(items){
- if(!items||!items.length){grid.innerHTML='<div class="empty">ขณะนี้ยังไม่มีโปรโมชั่น<br>กรุณาติดตามข่าวสารจาก NICHA SPA</div>';return;}
- grid.innerHTML=items.map(p=>`
- <article class="card">
-  <div class="photo">${p.imageUrl?`<img src="${esc(p.imageUrl)}" alt="${esc(p.title)}" loading="lazy">`:'ภาพโปรโมชั่น NICHA SPA'}</div>
-  <div class="body"><span class="tag">SPECIAL OFFER</span><h2>${esc(p.title)}</h2>
-  <div class="desc">${esc(p.description||'')}</div>
-  <div class="prices">${p.originalPrice!==''?`<span class="old">${money(p.originalPrice)}</span>`:''}<span class="new">${p.promoPrice!==''?money(p.promoPrice):'สอบถามราคา'}</span></div>
-  <div class="dates">${p.startDate||p.endDate?'ระยะเวลา: '+esc(p.startDate||'ไม่ระบุ')+' ถึง '+esc(p.endDate||'ไม่ระบุ'):'โปรโมชั่นพิเศษ'}</div>
-  <a class="book" href="${esc(WEB_APP_URL)}?page=booking&service=${encodeURIComponent(p.title||'')}">จองบริการนี้</a></div>
- </article>`).join('');
+
+function esc(v){
+  return String(v ?? '').replace(/[&<>"']/g,c=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
 }
-google.script.run.withSuccessHandler(render).withFailureHandler(e=>{grid.innerHTML='<div class="empty">ไม่สามารถโหลดโปรโมชั่นได้ในขณะนี้<br>'+esc(e&&e.message||'กรุณาลองใหม่')+'</div>';}).getNichaPromotions();
+
+function money(v){
+  return v === '' || v == null ? '' : Number(v).toLocaleString('th-TH') + ' บาท';
+}
+
+// สร้าง URL รูปจาก imageUrl หรือ imageId ที่ได้จาก Google Sheet
+function promotionImageUrl(p){
+  if (p.imageUrl) return String(p.imageUrl);
+  if (p.imageId) {
+    return 'https://drive.google.com/thumbnail?id=' +
+      encodeURIComponent(String(p.imageId)) + '&sz=w1200';
+  }
+  return '';
+}
+
+// หาก thumbnail โหลดไม่ได้ ให้ลอง URL แสดงรูปอีกแบบของ Google Drive
+function handlePromotionImageError(img){
+  const fileId = img.dataset.fileId || '';
+  if (fileId && !img.dataset.triedDirect) {
+    img.dataset.triedDirect = '1';
+    img.src = 'https://drive.google.com/uc?export=view&id=' +
+      encodeURIComponent(fileId);
+    return;
+  }
+
+  const holder = img.parentElement;
+  if (holder) {
+    holder.classList.add('no-image');
+    holder.textContent = 'ภาพโปรโมชั่น NICHA SPA';
+  }
+}
+
+function render(items){
+  if (!items || !items.length) {
+    grid.innerHTML = '<div class="empty">ขณะนี้ยังไม่มีโปรโมชั่น<br>กรุณาติดตามข่าวสารจาก NICHA SPA</div>';
+    return;
+  }
+
+  grid.innerHTML = items.map(p => {
+    const imageUrl = promotionImageUrl(p);
+    const imageBlock = imageUrl
+      ? `<div class="photo"><img src="${esc(imageUrl)}" data-file-id="${esc(p.imageId || '')}" alt="${esc(p.title || 'ภาพโปรโมชั่น NICHA SPA')}" loading="lazy" referrerpolicy="no-referrer" onerror="handlePromotionImageError(this)"></div>`
+      : '<div class="photo no-image">ภาพโปรโมชั่น NICHA SPA</div>';
+
+    return `
+      <article class="card">
+        ${imageBlock}
+        <div class="body">
+          <span class="tag">SPECIAL OFFER</span>
+          <h2>${esc(p.title)}</h2>
+          <div class="desc">${esc(p.description || '')}</div>
+          <div class="prices">
+            ${p.originalPrice !== '' && p.originalPrice != null ? `<span class="old">${money(p.originalPrice)}</span>` : ''}
+            <span class="new">${p.promoPrice !== '' && p.promoPrice != null ? money(p.promoPrice) : 'สอบถามราคา'}</span>
+          </div>
+          <div class="dates">${p.startDate || p.endDate ? 'ระยะเวลา: ' + esc(p.startDate || 'ไม่ระบุ') + ' ถึง ' + esc(p.endDate || 'ไม่ระบุ') : 'โปรโมชั่นพิเศษ'}</div>
+          <a class="book" href="${esc(WEB_APP_URL)}?page=booking&service=${encodeURIComponent(p.title || '')}">จองบริการนี้</a>
+        </div>
+      </article>`;
+  }).join('');
+}
+
+google.script.run
+  .withSuccessHandler(render)
+  .withFailureHandler(e => {
+    grid.innerHTML = '<div class="empty">ไม่สามารถโหลดโปรโมชั่นได้ในขณะนี้<br>' +
+      esc(e && e.message || 'กรุณาลองใหม่') + '</div>';
+  })
+  .getNichaPromotions();
 </script>
 </body>
 </html>
