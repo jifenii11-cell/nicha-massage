@@ -4,2371 +4,1958 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#414936">
-
-<title>NICHA SPA | นวดเพื่อสุขภาพ ผ่อนคลายอย่างเหนือระดับ</title>
-
-<meta name="description" content="NICHA SPA นวดเพื่อสุขภาพ ผ่อนคลาย บรรเทาอาการเมื่อยล้า พร้อมบริการนวดและสปาหลากหลายรูปแบบ">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#123d32">
+<title>NICHA CRM | สมาชิก</title>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
 <style>
-:root {
-  --green: #414936;
-  --green-dark: #303829;
-  --green-mid: #62664C;
-  --green-soft: #777B62;
-  --gold: #C6A36B;
-  --gold-light: #E8D5B0;
-  --cream: #EAE3D5;
-  --paper: #F8F6F0;
-  --ink: #393D30;
-  --muted: #85816F;
-  --line: #DDD5C5;
-  --shadow: 0 10px 30px rgba(48,56,41,.12);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Kanit', sans-serif;
-  background: #F3F0E9;
-  color: var(--ink);
-  line-height: 1.7;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
-}
-
-button {
-  font-family: inherit;
-}
-
-/* TOP BAR */
-
-.topline {
-  background: var(--green-dark);
-  color: var(--gold-light);
-  text-align: center;
-  padding: 8px 12px;
-  font-size: 10px;
-  letter-spacing: 3px;
-}
-
-/* COVER BANNER */
-
-.cover {
-  position: relative;
-  width: 100%;
-  min-height: 490px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 36% 37% 27%;
-  background: var(--green);
-  color: var(--gold-light);
-}
-
-.cover-left {
-  position: relative;
-  z-index: 2;
-  padding: 55px 15px 40px 8%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.logo-symbol {
-  position: relative;
-  font-family: Georgia,serif;
-  font-size: 145px;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--gold-light);
-  text-shadow: 2px 4px 5px #0006;
-}
-
-.logo-symbol::after {
-  content: "✿";
-  position: absolute;
-  top: 10px;
-  right: -24px;
-  font-size: 37px;
-  color: var(--gold);
-  transform: rotate(-25deg);
-}
-
-.logo-name {
-  font-family: Georgia,serif;
-  font-size: clamp(34px,4vw,58px);
-  letter-spacing: 8px;
-  line-height: 1.2;
-  color: var(--gold-light);
-}
-
-.logo-spa {
-  font-family: Georgia,serif;
-  font-size: 25px;
-  letter-spacing: 9px;
-  margin-top: 4px;
-}
-
-.logo-tagline {
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-top: 14px;
-  color: #DCC79D;
-}
-
-.logo-decoration {
-  width: 130px;
-  height: 1px;
-  background: var(--gold);
-  margin-top: 18px;
-  position: relative;
-}
-
-.logo-decoration::after {
-  content: "✦";
-  position: absolute;
-  left: 50%;
-  top: -12px;
-  transform: translateX(-50%);
-  background: var(--green);
-  padding: 0 10px;
-  color: var(--gold);
-}
-
-.cover-center {
-  position: relative;
-  z-index: 2;
-  padding: 65px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.cover-line {
-  width: 210px;
-  height: 1px;
-  background: linear-gradient(90deg,transparent,var(--gold),transparent);
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.cover-line::after {
-  content: "✿";
-  position: absolute;
-  left: 50%;
-  top: -13px;
-  transform: translateX(-50%);
-  background: var(--green);
-  padding: 0 10px;
-  color: var(--gold);
-  font-size: 18px;
-}
-
-.cover-center h1 {
-  font-family: 'Noto Serif Thai',serif;
-  font-size: clamp(20px,2.2vw,29px);
-  font-weight: 400;
-  line-height: 1.8;
-  color: #F1E8D5;
-}
-
-.cover-center h1 span {
-  display: block;
-}
-
-.cover-icons {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 13px;
-  margin-top: 25px;
-  width: 100%;
-  max-width: 390px;
-}
-
-.cover-icon {
-  text-align: center;
-}
-
-.icon-circle {
-  width: 65px;
-  height: 65px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  margin: auto;
-  font-size: 29px;
-  color: var(--gold-light);
-}
-
-.cover-icon small {
-  display: block;
-  font-family: Georgia,serif;
-  font-size: 11px;
-  color: var(--gold-light);
-  margin-top: 7px;
-  letter-spacing: 1px;
-}
-
-.cover-pill {
-  margin-top: 28px;
-  background: #ffffff19;
-  border: 1px solid #d8c79b35;
-  border-radius: 40px;
-  padding: 9px 17px;
-  font-size: 12px;
-  color: #F0E6D2;
-  white-space: nowrap;
-}
-
-.cover-right {
-  position: relative;
-  min-height: 490px;
-  overflow: hidden;
-  border-left: 3px solid var(--gold);
-  border-radius: 48% 0 0 0 / 50% 0 0 0;
-}
-
-.cover-right img {
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  object-fit: cover;
-}
-
-.cover-right::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg,#41493630,transparent 60%);
-}
-
-/* PROFILE */
-
-.profile {
-  max-width: 1280px;
-  margin: auto;
-  padding: 0 35px;
-  background: var(--paper);
-}
-
-.profile-main {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  min-height: 205px;
-  position: relative;
-}
-
-.profile-logo {
-  width: 235px;
-  height: 235px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 5px solid var(--paper);
-  outline: 2px solid var(--gold);
-  background: var(--green);
-  margin-top: -55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: var(--gold-light);
-  position: relative;
-  z-index: 3;
-  box-shadow: 0 5px 18px #0002;
-}
-
-.profile-logo .logo-symbol {
-  font-size: 93px;
-}
-
-.profile-logo .logo-name {
-  font-size: 28px;
-  letter-spacing: 4px;
-}
-
-.profile-logo .logo-spa {
-  font-size: 14px;
-  letter-spacing: 5px;
-}
-
-.profile-info {
-  flex: 1;
-  padding: 20px 0;
-}
-
-.profile-info h2 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-size: 36px;
-  font-weight: 500;
-  color: var(--green);
-  line-height: 1.3;
-}
-
-.profile-description {
-  font-size: 14px;
-  color: #555648;
-}
-
-.profile-stats {
-  font-size: 13px;
-  color: #56564B;
-  margin-top: 8px;
-}
-
-.profile-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.action-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 12px;
-  background: #F0EEE9;
-  color: #444;
-  border: 1px solid #E4DFD4;
-  transition: .2s;
-}
-
-.action-btn:hover {
-  background: var(--cream);
-}
-
-.action-btn.primary {
-  background: #3C72C5;
-  color: white;
-  border-color: #3C72C5;
-}
-
-/* NAVIGATION */
-
-.navigation {
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 30;
-}
-
-.nav-inner {
-  max-width: 1280px;
-  margin: auto;
-  padding: 0 35px;
-  display: flex;
-  align-items: center;
-  gap: 35px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.nav-inner::-webkit-scrollbar {
-  display: none;
-}
-
-.nav-inner a {
-  padding: 15px 5px;
-  white-space: nowrap;
-  font-size: 13px;
-  color: #646457;
-  position: relative;
-}
-
-.nav-inner a:hover,
-.nav-inner a.active {
-  color: var(--green);
-}
-
-.nav-inner a.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--gold);
-}
-
-/* PROMOTION CARDS */
-
-.promo-section {
-  max-width: 1380px;
-  margin: auto;
-  padding: 25px 10px 12px;
-}
-
-.promo-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 12px;
-}
-
-.promo-card {
-  position: relative;
-  min-height: 210px;
-  border-radius: 13px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background: var(--green);
-  color: var(--gold-light);
-  transition: .3s;
-}
-
-.promo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-
-.promo-card img {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.promo-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg,rgba(48,56,41,.12),rgba(48,56,41,.96));
-}
-
-.promo-card.light::after {
-  background: linear-gradient(90deg,rgba(248,246,240,.80),rgba(248,246,240,.96));
-}
-
-.promo-card.left-image img {
-  width: 55%;
-  right: auto;
-}
-
-.promo-card.left-image::after {
-  background: linear-gradient(90deg,transparent 30%,var(--green) 56%);
-}
-
-.promo-card-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 18px;
-  text-align: center;
-}
-
-.promo-card.left-image .promo-card-content {
-  margin-left: 48%;
-  width: 52%;
-}
-
-.promo-card h3 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-
-.promo-card.light h3 {
-  color: var(--green);
-}
-
-.promo-card p {
-  font-size: 11px;
-  margin-top: 10px;
-  line-height: 1.9;
-  color: #F0E6D5;
-}
-
-.promo-card.light p {
-  color: #555548;
-}
-
-.promo-link {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--green-dark);
-  border-radius: 30px;
-  padding: 7px 16px;
-  margin-top: 12px;
-  font-size: 11px;
-}
-
-.promo-card.light .promo-link {
-  background: var(--green);
-  color: white;
-}
-
-/* SECTION HEADING */
-
-.section-heading {
-  text-align: center;
-  padding: 60px 15px 30px;
-}
-
-.section-heading .eyebrow {
-  font-family: Georgia,serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--gold);
-}
-
-.section-heading h2 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-size: clamp(30px,4vw,43px);
-  font-weight: 400;
-  color: var(--green);
-  margin-top: 5px;
-}
-
-.section-heading h2 span {
-  color: var(--gold);
-}
-
-.heading-decoration {
-  color: var(--gold);
-  margin: 9px auto;
-  font-size: 19px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-/* SERVICES */
-
-.services-section {
-  background: #E9E6DC;
-  padding: 15px 0 70px;
-}
-
-.service-grid {
-  max-width: 1250px;
-  margin: auto;
-  padding: 0 22px;
-  display: grid;
-  grid-template-columns: repeat(5,minmax(0,1fr));
-  gap: 17px;
-}
-
-.service-card {
-  background: var(--paper);
-  border: 1px solid #E1D9C9;
-  border-radius: 13px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  transition: .3s;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
-  border-color: var(--gold);
-}
-
-.service-photo {
-  height: 155px;
-  overflow: hidden;
-  position: relative;
-  background: #D6D2C3;
-}
-
-.service-photo img {
-  height: 100%;
-  transition: transform .5s;
-}
-
-.service-card:hover img {
-  transform: scale(1.06);
-}
-
-.service-number {
-  position: absolute;
-  bottom: 8px;
-  left: 10px;
-  color: white;
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 5px #000;
-}
-
-.service-info {
-  padding: 14px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-info h3 {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--green);
-  margin-bottom: 5px;
-}
-
-.service-info p {
-  color: #828174;
-  font-size: 10px;
-  line-height: 1.8;
-  flex: 1;
-  margin-bottom: 12px;
-}
-
-.service-more {
-  color: #A88955;
-  font-size: 11px;
-  font-weight: 500;
-}
-
-/* SIGNATURE SECTION */
-
-.signature {
-  max-width: 1200px;
-  margin: 60px auto;
-  border-radius: 18px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--green);
-  color: white;
-  box-shadow: var(--shadow);
-}
-
-.signature-image {
-  min-height: 320px;
-}
-
-.signature-image img {
-  height: 100%;
-}
-
-.signature-content {
-  padding: 45px 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.signature-content .eyebrow {
-  color: var(--gold-light);
-  letter-spacing: 3px;
-  font-size: 11px;
-}
-
-.signature-content h2 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-weight: 400;
-  font-size: 32px;
-  color: var(--gold-light);
-  margin: 12px 0;
-}
-
-.signature-content p {
-  color: #E7E3D7;
-  font-size: 13px;
-  line-height: 2;
-}
-
-.signature-content .gold-btn {
-  align-self: flex-start;
-}
-
-/* SIGNATURE BUTTONS */
-
-.signature-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 12px;
-}
-
-.signature-buttons .gold-btn {
-  margin-top: 10px;
-}
-
-.signature-detail-btn {
-  display: inline-block;
-  padding: 11px 24px;
-  margin-top: 10px;
-  border: 1px solid var(--gold);
-  border-radius: 40px;
-  color: var(--gold-light);
-  background: transparent;
-  font-size: 13px;
-  transition: .2s;
-}
-
-.signature-detail-btn:hover {
-  background: var(--gold);
-  color: var(--green-dark);
-  transform: translateY(-3px);
-}
-
-/* BOOKING */
-
-.booking {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 55px 20px;
-  border-radius: 18px;
-  background:
-    linear-gradient(110deg,rgba(48,56,41,.95),rgba(65,73,54,.90)),
-    url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1400')
-    center/cover;
-  text-align: center;
-  color: white;
-}
-
-.booking .eyebrow {
-  color: var(--gold-light);
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-.booking h2 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-size: clamp(26px,4vw,38px);
-  font-weight: 400;
-  color: #F8F4E9;
-  margin: 12px 0;
-}
-
-.booking p {
-  color: #E5E2D8;
-  font-size: 13px;
-}
-
-.gold-btn {
-  display: inline-block;
-  background: linear-gradient(135deg,#E8D5B0,#C6A36B);
-  color: #303829;
-  border-radius: 40px;
-  padding: 12px 28px;
-  margin-top: 22px;
-  font-size: 13px;
-  font-weight: 500;
-  transition: .2s;
-}
-
-.gold-btn:hover {
-  transform: translateY(-3px);
-  filter: brightness(1.05);
-}
-
-/* CONTACT */
-
-.contact {
-  text-align: center;
-  padding: 10px 20px 55px;
-}
-
-.contact .eyebrow {
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-.contact h2 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-size: 29px;
-  font-weight: 400;
-  color: var(--green);
-  margin: 8px 0;
-}
-
-.contact p {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.contact-links {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.contact-links a {
-  border: 1px solid var(--gold);
-  background: var(--paper);
-  color: var(--green);
-  padding: 10px 23px;
-  border-radius: 30px;
-  font-size: 12px;
-  transition: .2s;
-}
-
-.contact-links a:hover {
-  background: var(--green);
-  color: var(--gold-light);
-}
-
-/* FOOTER */
-
-.footer {
-  background: var(--green-dark);
-  color: #E9E5D9;
-  padding: 30px 30px;
-}
-
-.footer-inner {
-  max-width: 1250px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-}
-
-.footer-brand {
-  font-family: Georgia,serif;
-  font-size: 25px;
-  letter-spacing: 3px;
-  color: var(--gold-light);
-}
-
-.footer-tagline {
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: var(--gold);
-}
-
-.footer-contact {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 12px;
-}
-
-.footer-contact span {
-  color: #E6DDC9;
-}
-
-.footer-bottom {
-  border-top: 1px solid #ffffff20;
-  text-align: center;
-  margin-top: 22px;
-  padding-top: 16px;
-  color: #C7C4B7;
-  font-size: 10px;
-}
-
-/* ADMIN */
-
-.admin-area {
-  text-align: center;
-  padding: 12px;
-  background: #252D21;
-}
-
-.admin-area a {
-  display: inline-block;
-  border: 1px solid var(--gold);
-  color: var(--gold-light);
-  border-radius: 30px;
-  padding: 7px 18px;
-  font-size: 10px;
-}
-
-.admin-area a:hover {
-  background: var(--gold);
-  color: var(--green-dark);
-}
-
-/* RESPONSIVE TABLET */
-
-@media(max-width:1050px) {
-  .cover {
-    grid-template-columns: 34% 39% 27%;
-    min-height: 400px;
-  }
-
-  .cover-right {
-    min-height: 400px;
-  }
-
-  .logo-symbol {
-    font-size: 110px;
-  }
-
-  .logo-name {
-    font-size: 38px;
-  }
-
-  .profile-logo {
-    width: 190px;
-    height: 190px;
-  }
-
-  .profile-logo .logo-symbol {
-    font-size: 75px;
-  }
-
-  .service-grid {
-    grid-template-columns: repeat(4,minmax(0,1fr));
-  }
-
-  .promo-card {
-    min-height: 180px;
-  }
-
-  .promo-card h3 {
-    font-size: 16px;
-  }
-
-  .signature,
-  .booking {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-
-/* RESPONSIVE MOBILE */
-
-@media(max-width:760px) {
-
-  .topline {
-    font-size: 8px;
-    letter-spacing: 1px;
-  }
-
-  .cover {
-    grid-template-columns: 1fr 1fr;
-    min-height: 350px;
-  }
-
-  .cover-left {
-    padding: 35px 5px 30px 15px;
-  }
-
-  .cover-center {
-    padding: 35px 5px;
-  }
-
-  .cover-right {
-    display: none;
-  }
-
-  .logo-symbol {
-    font-size: 95px;
-  }
-
-  .logo-name {
-    font-size: 31px;
-    letter-spacing: 4px;
-  }
-
-  .logo-spa {
-    font-size: 18px;
-    letter-spacing: 6px;
-  }
-
-  .logo-tagline {
-    font-size: 7px;
-    letter-spacing: 1px;
-  }
-
-  .cover-center h1 {
-    font-size: 19px;
-  }
-
-  .cover-icons {
-    gap: 5px;
-  }
-
-  .icon-circle {
-    width: 48px;
-    height: 48px;
-    font-size: 22px;
-  }
-
-  .cover-icon small {
-    font-size: 8px;
-  }
-
-  .cover-pill {
-    font-size: 9px;
-    padding: 7px 9px;
-    white-space: normal;
-  }
-
-  .profile {
-    padding: 0 15px;
-  }
-
-  .profile-main {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-bottom: 15px;
-  }
-
-  .profile-logo {
-    width: 120px;
-    height: 120px;
-    margin-top: -35px;
-  }
-
-  .profile-logo .logo-symbol {
-    font-size: 51px;
-  }
-
-  .profile-logo .logo-name {
-    font-size: 18px;
-    letter-spacing: 2px;
-  }
-
-  .profile-logo .logo-spa {
-    font-size: 9px;
-    letter-spacing: 3px;
-  }
-
-  .profile-info {
-    min-width: 0;
-    padding: 12px 0 5px;
-  }
-
-  .profile-info h2 {
-    font-size: 24px;
-  }
-
-  .profile-description {
-    font-size: 10px;
-  }
-
-  .profile-stats {
-    font-size: 10px;
-  }
-
-  .profile-actions {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .action-btn {
-    font-size: 10px;
-    padding: 8px 12px;
-  }
-
-  .nav-inner {
-    padding: 0 15px;
-    gap: 22px;
-  }
-
-  .nav-inner a {
-    font-size: 11px;
-    padding: 12px 3px;
-  }
-
-  .promo-section {
-    padding: 15px 9px;
-  }
-
-  .promo-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 9px;
-  }
-
-  .promo-card {
-    min-height: 155px;
-  }
-
-  .promo-card-content {
-    padding: 9px;
-  }
-
-  .promo-card h3 {
-    font-size: 14px;
-  }
-
-  .promo-card p {
-    font-size: 9px;
-    margin-top: 5px;
-  }
-
-  .promo-link {
-    font-size: 9px;
-    padding: 5px 12px;
-    margin-top: 7px;
-  }
-
-  .section-heading {
-    padding: 42px 12px 22px;
-  }
-
-  .section-heading h2 {
-    font-size: 31px;
-  }
-
-  .service-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 10px;
-    padding: 0 12px;
-  }
-
-  .service-photo {
-    height: 125px;
-  }
-
-  .service-info {
-    padding: 10px;
-  }
-
-  .service-info h3 {
-    font-size: 12px;
-  }
-
-  .service-info p {
-    font-size: 9px;
-  }
-
-  .service-more {
-    font-size: 10px;
-  }
-
-  .signature {
-    grid-template-columns: 1fr;
-    margin: 35px 13px;
-  }
-
-  .signature-image {
-    height: 200px;
-    min-height: 200px;
-  }
-
-  .signature-content {
-    padding: 28px 23px;
-  }
-
-  .signature-content h2 {
-    font-size: 26px;
-  }
-
-  .signature-buttons {
-    gap: 8px;
-  }
-
-  .signature-detail-btn,
-  .signature-buttons .gold-btn {
-    text-align: center;
-    padding: 10px 18px;
-    font-size: 12px;
-  }
-
-  .booking {
-    margin: 35px 13px;
-    padding: 38px 15px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-contact {
-    justify-content: center;
-    gap: 12px 20px;
-  }
-
-}
-
-/* SMALL MOBILE */
-
-@media(max-width:380px) {
-
-  .cover {
-    min-height: 300px;
-  }
-
-  .logo-symbol {
-    font-size: 75px;
-  }
-
-  .logo-name {
-    font-size: 25px;
-  }
-
-  .cover-center h1 {
-    font-size: 16px;
-  }
-
-  .icon-circle {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  .cover-icon small {
-    font-size: 7px;
-  }
-
-  .promo-card {
-    min-height: 140px;
-  }
-
-  .promo-card h3 {
-    font-size: 12px;
-  }
-
-  .profile-logo {
-    width: 105px;
-    height: 105px;
-  }
-
-  .profile-info h2 {
-    font-size: 20px;
-  }
-}
-
-/* DYNAMIC NICHA SIGNATURE CARD */
-
-.signature {
-  min-height: 320px;
-}
-
-.signature-image {
-  min-height: 320px;
-  position: relative;
-  overflow: hidden;
-  background: var(--green-dark);
-}
-
-.signature-image img {
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  object-fit: cover;
-}
-
-.signature-content {
-  min-width: 0;
-}
-
-.signature-content .signature-meta {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 15px;
-}
-
-.signature-content .signature-chip {
-  display: inline-block;
-  border: 1px solid #c6a36b88;
-  border-radius: 30px;
-  padding: 5px 12px;
-  color: var(--gold-light);
-  font-size: 12px;
-}
-
-.signature-content .signature-price {
-  color: #f3d59f;
-  font-size: 22px;
-  font-weight: 600;
-  margin-top: 13px;
-}
-
-.signature-content .signature-empty {
-  color: #e7e3d7;
-  font-size: 13px;
-}
-
-.signature-content .gold-btn[aria-disabled="true"] {
-  opacity: .55;
-  pointer-events: none;
-}
-
-/* SIGNATURE DETAIL BUTTON */
-
-.signature-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 12px;
-}
-
-.signature-buttons .gold-btn {
-  margin-top: 10px;
-}
-
-.signature-detail-btn {
-  display: inline-block;
-  padding: 11px 24px;
-  margin-top: 10px;
-  border: 1px solid var(--gold);
-  border-radius: 40px;
-  color: var(--gold-light);
-  background: transparent;
-  font-size: 13px;
-  transition: .2s;
-}
-
-.signature-detail-btn:hover {
-  background: var(--gold);
-  color: var(--green-dark);
-  transform: translateY(-3px);
-}
-
-@media(max-width:760px) {
-  .signature {
-    grid-template-columns: 1fr;
-  }
-
-  .signature-image,
-  .signature-image img {
-    min-height: 230px;
-    max-height: 280px;
-  }
-
-  .signature-content {
-    padding: 28px 22px;
-  }
-
-  .signature-buttons {
-    gap: 8px;
-  }
-
-  .signature-detail-btn,
-  .signature-buttons .gold-btn {
-    text-align: center;
-    padding: 10px 18px;
-    font-size: 12px;
-  }
-}
+:root{
+  --green:#123d32;
+  --green2:#1d5143;
+  --gold:#c9a96e;
+  --cream:#f7f3e9;
+  --ink:#26352f;
+  --muted:#78827b;
+  --line:#e8e1d3;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:Arial,"Noto Sans Thai",sans-serif
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.app{
+  max-width:520px;margin:auto;min-height:100vh;
+  padding-bottom:85px;background:#fbfaf6
+}
+.top{
+  background:linear-gradient(135deg,#0d3028,#1d5143);
+  color:white;padding:22px 20px 25px;
+  border-radius:0 0 26px 26px
+}
+.brand{display:flex;justify-content:space-between}
+.brand-name{font-size:13px;letter-spacing:2px;color:#ead7ad}
+.brand-sub{font-size:11px;color:#d9dfd9;margin-top:4px}
+.status{font-size:11px;color:#ead7ad}
+.content{padding:18px 16px}
+.page{display:none}
+.page.active{display:block}
+.section-title{
+  font-size:18px;color:var(--green);
+  font-weight:bold;margin:6px 0 4px
+}
+.section-sub{font-size:12px;color:var(--muted);margin:0 0 16px}
+.member-card{
+  background:linear-gradient(135deg,#174638,#0b2d25);
+  color:white;border:1px solid #b99a61;border-radius:20px;
+  padding:20px;margin-top:-2px;box-shadow:0 10px 24px #153c3022
+}
+.card-head{display:flex;justify-content:space-between}
+.card-label{font-size:10px;letter-spacing:2px;color:#e4d0a5}
+.tier{
+  border:1px solid var(--gold);border-radius:20px;
+  padding:5px 11px;font-size:10px;color:#f3dfb4
+}
+.member-name{font-size:23px;font-weight:bold;margin:22px 0 3px}
+.member-phone{font-size:12px;color:#d3ddd6}
+.points-row{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;margin-top:20px
+}
+.points-number{font-size:38px;color:#f0d7a3;font-weight:bold}
+.points-caption{font-size:11px;color:#e0e6df;margin-top:5px}
+.card-foot{border-top:1px solid #ffffff2b;margin-top:18px;padding-top:13px}
+.progress-line{
+  height:6px;background:#ffffff35;border-radius:8px;
+  overflow:hidden;margin:9px 0 6px
+}
+.progress-fill{height:100%;width:0;background:#ead7ad}
+.progress-text{
+  display:flex;justify-content:space-between;
+  font-size:10px;color:#e0e6df
+}
+.quick-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin:18px 0
+}
+.quick{
+  border:1px solid var(--line);border-radius:15px;
+  background:white;padding:15px 7px;text-align:center;
+  color:var(--green);min-height:84px
+}
+.quick .ico{font-size:22px;display:block;margin-bottom:7px}
+.quick span:last-child{font-size:11px}
+.panel{
+  background:white;border:1px solid var(--line);
+  border-radius:16px;padding:16px;margin:12px 0
+}
+.panel-title{font-weight:bold;color:var(--green);font-size:14px;margin-bottom:10px}
+.row-between{display:flex;justify-content:space-between;align-items:center}
+.btn{
+  border:0;border-radius:12px;background:var(--green);
+  color:white;padding:12px 16px;font-weight:bold
+}
+.btn.gold{background:var(--gold);color:#2d2a20}
+.btn.full{width:100%}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.back{
+  border:0;background:transparent;color:var(--green);
+  padding:5px 0 13px;font-size:13px
+}
+.item{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:13px 0;border-bottom:1px solid #eee9df
+}
+.item:last-child{border-bottom:0}
+.item-title{font-size:13px;font-weight:bold;color:#34453c}
+.item-meta{font-size:11px;color:var(--muted);margin-top:5px}
+.item-points{font-weight:bold;font-size:13px;white-space:nowrap}
+.plus{color:#34835c}
+.minus{color:#a84e45}
+.empty{text-align:center;color:var(--muted);font-size:13px;padding:24px 10px}
+.field{margin:12px 0}
+.field label{display:block;font-size:12px;color:#5c6a62;margin-bottom:6px}
+.field input{
+  width:100%;padding:13px;border:1px solid var(--line);
+  border-radius:11px;background:white
+}
+.notice{font-size:11px;color:var(--muted);line-height:1.6}
+.reward{
+  border:1px solid var(--line);border-radius:14px;
+  padding:14px;margin:10px 0;background:white
+}
+.reward h3{font-size:14px;margin:0 0 6px;color:var(--green)}
+.reward .cost{font-size:12px;color:#9a7842;margin-bottom:12px}
+.coupon-box{
+  border:1px dashed var(--gold);background:#fffdf7;
+  border-radius:14px;padding:16px;margin:10px 0
+}
+.coupon-tag{font-size:10px;letter-spacing:1px;color:#9a7842}
+.coupon-box h3{margin:7px 0;color:var(--green);font-size:16px}
+.coupon-discount{
+  font-size:22px;font-weight:bold;color:#9a7842;margin:10px 0
+}
+.coupon-status{font-size:12px;font-weight:bold;margin-top:12px}
+.coupon-nav-btn{
+  border:1px solid var(--gold);
+  background:#fffdf7;
+  color:#8b6c38;
+  border-radius:12px;
+  padding:11px 14px;
+  font-size:12px;
+  font-weight:bold;
+}
+.privilege{
+  display:flex;gap:12px;padding:14px 0;
+  border-bottom:1px solid #eee9df
+}
+.privilege:last-child{border:0}
+.privilege-icon{font-size:23px}
+.privilege-name{font-size:14px;font-weight:bold;color:var(--green)}
+.privilege-detail{font-size:12px;color:var(--muted);line-height:1.6;margin-top:5px}
+.privilege-condition{
+  font-size:11px;color:#9a7842;line-height:1.6;margin-top:6px
+}
+
+/* ระบบสะสมครั้ง */
+.visit-card{
+  background:linear-gradient(135deg,#174638,#0b2d25);
+  color:white;border:1px solid var(--gold);
+  border-radius:20px;padding:20px;margin:12px 0;
+  box-shadow:0 10px 24px #153c3022
+}
+.visit-label{font-size:11px;letter-spacing:1.5px;color:#ead7ad}
+.visit-number{
+  font-size:54px;font-weight:bold;color:#f0d7a3;
+  text-align:center;margin:12px 0 0
+}
+.visit-caption{text-align:center;font-size:12px;color:#e0e6df}
+.visit-progress{
+  height:9px;background:#ffffff35;border-radius:10px;
+  overflow:hidden;margin:14px 0 8px
+}
+.visit-progress-fill{
+  height:100%;width:0;background:#ead7ad;
+  border-radius:10px;transition:width .3s
+}
+.visit-reward{
+  background:white;border:1px solid var(--line);
+  border-radius:15px;padding:15px;margin:10px 0
+}
+.visit-reward h3{
+  margin:0 0 6px;font-size:15px;color:var(--green)
+}
+.visit-reward .visit-cost{
+  font-size:12px;color:#9a7842;margin:6px 0 12px
+}
+.visit-status{
+  display:inline-block;border-radius:20px;
+  padding:5px 10px;font-size:11px;
+  background:#f2eee4;color:#78643d;margin:5px 0 10px
+}
+.visit-status.ready{background:#e8f3eb;color:#286044}
+.visit-history-row{
+  padding:12px 0;border-bottom:1px solid #eee9df
+}
+.visit-history-row:last-child{border-bottom:0}
+.visit-history-title{font-size:13px;font-weight:bold;color:#34453c}
+.visit-history-meta{font-size:11px;color:var(--muted);margin-top:5px}
+.visit-history-count{font-size:12px;font-weight:bold;margin-top:5px}
+.bottom-nav{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);
+  background:white;border-top:1px solid var(--line);
+  padding:8px 5px calc(8px + env(safe-area-inset-bottom));z-index:10
+}
+.nav-btn{
+  border:0;background:transparent;color:#89928c;
+  font-size:10px;padding:5px 2px
+}
+.nav-btn b{display:block;font-size:19px;margin-bottom:3px}
+.nav-btn.active{color:var(--green);font-weight:bold}
+.loader{text-align:center;padding:34px 15px;color:var(--muted);font-size:13px}
+.toast{
+  position:fixed;left:50%;bottom:92px;transform:translateX(-50%);
+  background:#243c32;color:white;padding:11px 16px;
+  border-radius:12px;font-size:12px;display:none;z-index:30;
+  max-width:90%;text-align:center
+}
+.hidden{display:none!important}
 </style>
 </head>
 
 <body>
+<div class="app">
 
-<!-- TOP BAR -->
+<header class="top">
+  <div class="brand">
+    <div>
+      <div class="brand-name">NICHA MEMBER</div>
+      <div class="brand-sub">ณิชานวดเพื่อสุขภาพ · Loyalty Club</div>
+    </div>
+    <div class="status" id="connectionStatus">กำลังเชื่อมต่อ…</div>
+  </div>
+</header>
 
-<div class="topline">
-  NICHA WELLNESS & SPA
-  &nbsp; • &nbsp;
-  YOUR MOMENT OF RELAXATION
-</div>
+<main class="content">
 
-<!-- COVER BANNER -->
+<!-- หน้าแรก -->
+<section class="page active" id="homePage">
+  <div id="loading" class="loader">กำลังเริ่มต้นระบบสมาชิก…</div>
 
-<section class="cover" id="home">
+  <div id="homeContent" class="hidden">
+    <div class="member-card">
+      <div class="card-head">
+        <div class="card-label">NICHA MEMBER CARD</div>
+        <div class="tier" id="tierLabel">BRONZE</div>
+      </div>
 
-  <div class="cover-left">
+      <div class="member-name" id="memberName">สมาชิก NICHA</div>
+      <div class="member-phone" id="memberPhone">—</div>
 
-    <div class="logo-symbol">N</div>
+      <div class="points-row">
+        <div>
+          <div class="points-number" id="pointsValue">0</div>
+          <div class="points-caption">คะแนนสะสมของคุณ</div>
+        </div>
+        <div style="text-align:right">
+          <div class="card-label">YOUR POINTS</div>
+          <div class="points-caption">สะสมทุกการใช้บริการ</div>
+        </div>
+      </div>
 
-    <div class="logo-name">NICHA</div>
-
-    <div class="logo-spa">· SPA ·</div>
-
-    <div class="logo-tagline">
-      YOUR MOMENT OF RELAXATION
+      <div class="card-foot">
+        <div class="progress-text">
+          <span id="tierProgressText">ระดับสมาชิก</span>
+          <span id="nextTierText">—</span>
+        </div>
+        <div class="progress-line">
+          <div class="progress-fill" id="tierProgress"></div>
+        </div>
+        <div class="progress-text">
+          <span id="spendText">ยอดใช้จ่ายสะสม —</span>
+          <span id="needText"></span>
+        </div>
+      </div>
     </div>
 
-    <div class="logo-decoration"></div>
-
-  </div>
-
-  <div class="cover-center">
-
-    <div class="cover-line"></div>
-
-    <h1>
-      ผ่อนคลายอย่างเหนือระดับ
-      <span>ในช่วงเวลาที่เป็นของคุณ</span>
-    </h1>
-
-    <div class="cover-icons">
-
-      <div class="cover-icon">
-        <div class="icon-circle">♧</div>
-        <small>RELAX</small>
-      </div>
-
-      <div class="cover-icon">
-        <div class="icon-circle">♨</div>
-        <small>AROMA</small>
-      </div>
-
-      <div class="cover-icon">
-        <div class="icon-circle">✿</div>
-        <small>MASSAGE</small>
-      </div>
-
-      <div class="cover-icon">
-        <div class="icon-circle">❋</div>
-        <small>BALANCE</small>
-      </div>
-
+    <div class="quick-grid">
+      <button class="quick" onclick="showPage('rewardsPage')">
+        <span class="ico">🎁</span><span>แลกของรางวัล</span>
+      </button>
+      <button class="quick" onclick="showPage('visitPage')">
+        <span class="ico">🎫</span><span>สะสมครบ 10 ฟรี 1</span>
+      </button>
+      <button class="quick" onclick="showPage('historyPage')">
+        <span class="ico">🧾</span><span>ประวัติแต้ม</span>
+      </button>
+      <button class="quick" onclick="showPage('couponsPage')">
+        <span class="ico">🎟️</span><span>คูปองของฉัน</span>
+      </button>
+      <button class="quick" onclick="showPage('privilegesPage')">
+        <span class="ico">✨</span><span>สิทธิพิเศษ</span>
+      </button>
+      <button class="quick" onclick="showPage('memberPage')">
+        <span class="ico">👤</span><span>ข้อมูลสมาชิก</span>
+      </button>
     </div>
 
-    <div class="cover-pill">
-      นวดเพื่อสุขภาพ &nbsp; | &nbsp;
-      ผ่อนคลาย &nbsp; | &nbsp;
-      บรรเทาอาการเมื่อยล้า
+    <div class="panel">
+      <div class="row-between">
+        <div class="panel-title" style="margin:0">รายการล่าสุด</div>
+        <button class="back" style="padding:0"
+          onclick="showPage('historyPage')">ดูทั้งหมด ›</button>
+      </div>
+      <div id="recentList" class="empty">ยังไม่มีรายการ</div>
     </div>
-
   </div>
 
-  <div class="cover-right">
-
-    <img
-      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1000"
-      alt="NICHA SPA luxury spa atmosphere"
-    >
-
+  <div id="registerBox" class="panel hidden">
+    <div class="panel-title">สมัครสมาชิก NICHA</div>
+    <p class="notice">กรอกข้อมูลเพื่อเริ่มสะสมคะแนนกับณิชานวดเพื่อสุขภาพ</p>
+    <div class="field">
+      <label>ชื่อ-นามสกุล</label>
+      <input id="registerName" maxlength="80" placeholder="กรอกชื่อของคุณ">
+    </div>
+    <div class="field">
+      <label>เบอร์โทรศัพท์</label>
+      <input id="registerPhone" inputmode="tel" maxlength="20"
+        placeholder="กรอกเบอร์โทรศัพท์">
+    </div>
+    <button class="btn full" onclick="registerMember()">ยืนยันสมัครสมาชิก</button>
   </div>
-
 </section>
 
-<!-- PROFILE -->
-
-<section class="profile">
-
-  <div class="profile-main">
-
-    <div class="profile-logo">
-
-      <div class="logo-symbol">N</div>
-      <div class="logo-name">NICHA</div>
-      <div class="logo-spa">· SPA ·</div>
-
-    </div>
-
-    <div class="profile-info">
-
-      <h2>NICHA SPA</h2>
-
-      <div class="profile-description">
-        นวดเพื่อสุขภาพ ผ่อนคลาย บรรเทาอาการเมื่อยล้า
-      </div>
-
-      <div class="profile-stats">
-        NICHA WELLNESS & SPA
-        &nbsp; • &nbsp;
-        YOUR MOMENT OF RELAXATION
-      </div>
-
-    </div>
-
-    <div class="profile-actions">
-
-      <a class="action-btn primary"
-         href="https://lin.ee/Uw81g6U"
-         target="_blank">
-        ● ส่งข้อความ
-      </a>
-
-      <a class="action-btn"
-         href="#services">
-        ♡ บริการ
-      </a>
-
-      <a class="action-btn"
-         href="#contact">
-        ⌕ ติดต่อ
-      </a>
-
-    </div>
-
+<!-- หน้าแลกรางวัลแต้ม -->
+<section class="page" id="rewardsPage">
+  <button class="back" onclick="showPage('homePage')">‹ กลับหน้าสมาชิก</button>
+  <div class="section-title">แลกของรางวัล</div>
+  <p class="section-sub">ใช้คะแนนสะสมแลกรับสิทธิพิเศษจาก NICHA</p>
+  <div id="rewardsList">
+    <div class="loader">กำลังโหลดของรางวัล…</div>
   </div>
-
 </section>
 
-<!-- NAVIGATION -->
+<!-- หน้าสะสมครั้ง -->
+<section class="page" id="visitPage">
+  <button class="back" onclick="showPage('homePage')">‹ กลับหน้าสมาชิก</button>
+  <div class="section-title">สะสมครั้ง รับรางวัล</div>
+  <p class="section-sub">ใช้บริการครบ 10 ครั้ง รับฟรี 1 ครั้ง จากณิชานวดเพื่อสุขภาพ</p>
 
-<nav class="navigation">
+  <div class="visit-card">
+    <div class="visit-label">NICHA VISIT REWARDS</div>
+    <div class="visit-number" id="currentVisits">0</div>
+    <div class="visit-caption">ครั้งสะสมของคุณ</div>
 
-  <div class="nav-inner">
-
-    <a class="active" href="#home">หน้าแรก</a>
-
-    <!-- เมนูเกี่ยวกับเรา -->
-    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
-       target="_top">
-      เกี่ยวกับเรา
-    </a>
-
-    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=services"
-       target="_top">
-      บริการของเรา
-    </a>
-
-    <a href="#signature">Signature</a>
-
-    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">
-      โปรโมชั่น
-    </a>
-
-    <a href="#contact">ติดต่อเรา</a>
-
-    <a href="#booking">จองคิว</a>
-
-  </div>
-
-</nav>
-
-<!-- FOUR PROMOTION BANNERS -->
-
-<section class="promo-section" id="promotions">
-
-  <div class="promo-grid">
-
-    <!-- MASSAGE -->
-
-    <a class="promo-card left-image"
-       href="#services">
-
-      <img
-        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
-        alt="Massage for health"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          MASSAGE
-          <br>
-          FOR HEALTH
-        </h3>
-
-        <p>
-          นวดเพื่อสุขภาพ
-          <br>
-          ด้วยเทคนิคเฉพาะของณิชา
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- SIGNATURE -->
-
-    <a class="promo-card light"
-       href="#signature">
-
-      <img
-        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-        alt="Signature collection"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          SIGNATURE
-          <br>
-          COLLECTION
-        </h3>
-
-        <p>
-          คัดสรรโปรแกรมยอดนิยม
-          <br>
-          เพื่อการผ่อนคลายที่แท้จริง
-        </p>
-
-        <span class="promo-link">
-          ดูรายละเอียด
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- RELAX -->
-
-    <a class="promo-card left-image"
-       href="#booking">
-
-      <img
-        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
-        alt="Relax refresh rebalance"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          RELAX
-          <br>
-          REFRESH
-          <br>
-          REBALANCE
-        </h3>
-
-        <p>
-          ผ่อนคลาย
-          <br>
-          ฟื้นฟูร่างกายและจิตใจ
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- MEMBERSHIP -->
-
-    <a class="promo-card light"
-       href="#contact">
-
-      <img
-        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
-        alt="NICHA SPA membership"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          NICHA SPA
-          <br>
-          MEMBERSHIP
-        </h3>
-
-        <p>
-          สะสมแต้ม แลกรับสิทธิพิเศษ
-          <br>
-          มากมายเฉพาะสมาชิก
-        </p>
-
-        <span class="promo-link">
-          สมัครสมาชิกเลย
-        </span>
-
-      </div>
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- SERVICES -->
-
-<main class="services-section" id="services">
-
-  <div class="section-heading">
-
-    <div class="eyebrow">
-      NICHA WELLNESS & SPA
+    <div class="visit-progress">
+      <div class="visit-progress-fill" id="visitProgressFill"></div>
     </div>
 
-    <h2>
-      OUR <span>SERVICES</span>
-    </h2>
+    <div class="progress-text">
+      <span id="visitProgressText">เริ่มสะสมครั้งแรก</span>
+      <span id="visitNextText">อีก 10 ครั้ง</span>
+    </div>
+  </div>
 
-    <div class="heading-decoration">✦</div>
-
-    <p>
-      เลือกบริการที่เหมาะกับคุณ
-      ผ่อนคลายและดูแลตัวเองในแบบที่คุณต้องการ
+  <div class="panel">
+    <div class="panel-title">สิทธิพิเศษสะสมครั้ง</div>
+    <p class="notice">
+      ทุกครั้งที่ใช้บริการนวดที่ร้าน นับเป็น 1 ครั้ง
+      เมื่อสะสมครบตามจำนวนที่กำหนด สามารถแลกรางวัลได้
     </p>
-
+    <p class="notice">
+      หมายเหตุ: เมื่อแลกรางวัลแล้ว จำนวนครั้งสะสมจะเริ่มนับใหม่จาก 0
+      โดยไม่มีการยกยอดครั้งที่เหลือ
+    </p>
   </div>
 
-  <div class="service-grid">
-
-    <!-- 01 THAI MASSAGE -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thai"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
-          alt="นวดไทย"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          01 / THAI MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดไทย</h3>
-
-        <p>
-          ยืดเหยียดและกดคลึง
-          เพื่อผ่อนคลายความเมื่อยล้า
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 02 DEEP THAI -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thailine"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=700"
-          alt="นวดไทยรีดเส้น"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          02 / DEEP THAI
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดไทยรีดเส้น</h3>
-
-        <p>
-          เน้นกดคลึงและดูแลบริเวณ
-          ที่รู้สึกตึงล้า
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 03 OIL MASSAGE -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=oil"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
-          alt="นวดน้ำมัน"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          03 / OIL MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดน้ำมัน</h3>
-
-        <p>
-          สัมผัสนุ่มนวล
-          ช่วยให้ร่างกายผ่อนคลาย
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 04 AROMA -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=aroma"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-          alt="นวดอโรม่า"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          04 / AROMA
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดอโรม่า</h3>
-
-        <p>
-          ผ่อนคลายด้วยน้ำมันหอม
-          และบรรยากาศสงบ
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 05 OFFICE SYNDROME -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=office"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700"
-          alt="Office Syndrome"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          05 / OFFICE SYNDROME
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวด Office Syndrome</h3>
-
-        <p>
-          ดูแลคอ บ่า ไหล่ และหลัง
-          จากการทำงาน
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 06 FOOT -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=foot"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700"
-          alt="นวดเท้า"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          06 / FOOT MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดเท้า</h3>
-
-        <p>
-          ผ่อนคลายเท้าที่ผ่าน
-          การใช้งานมาตลอดวัน
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 07 HEAD SPA -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=headspa"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=700"
-          alt="นวดศีรษะ"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          07 / HEAD SPA
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดศีรษะ</h3>
-
-        <p>
-          สัมผัสเบาสบาย
-          บริเวณศีรษะและขมับ
-        </p>
-
-        <span class="service-more">
-          เลือกชมคอร์ส Head Spa →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 08 FACIAL -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=facelift"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-          alt="นวดหน้ายกกระชับ"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          08 / FACIAL MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดหน้ายกกระชับ</h3>
-
-        <p>
-          ผ่อนคลายกล้ามเนื้อใบหน้า
-          อย่างอ่อนโยน
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 09 GUA SHA -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-          alt="กัวซา"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          09 / GUA SHA
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>กัวซา</h3>
-
-        <p>
-          การใช้เครื่องมือกัวซา
-          นวดคลึงตามแนวร่างกาย
-        </p>
-
-        <span class="service-more">
-          จองบริการนี้ →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 10 BODY SCRUB -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
-          alt="สครับขัดผิว"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          10 / BODY SCRUB
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>สครับขัดผิว</h3>
-
-        <p>
-          ขัดผิวอย่างอ่อนโยน
-          เพื่อสัมผัสผิวที่เรียบเนียน
-        </p>
-
-        <span class="service-more">
-          จองบริการนี้ →
-        </span>
-
-      </div>
-
-    </a>
-
+  <div class="section-title">รางวัลที่สามารถแลกได้</div>
+  <div id="visitRewardsList">
+    <div class="loader">กำลังโหลดรางวัลสะสมครั้ง...</div>
   </div>
+
+  <div class="section-title" style="margin-top:22px">ประวัติสะสมครั้ง</div>
+  <p class="section-sub">รายการเพิ่มครั้งและแลกรางวัลของคุณ</p>
+  <div class="panel">
+    <div id="visitHistoryList">
+      <div class="loader">กำลังโหลดประวัติ...</div>
+    </div>
+  </div>
+
+  <button class="btn full" onclick="loadVisitPage(true)">
+    รีเฟรชข้อมูลสะสมครั้ง ↻
+  </button>
+</section>
+
+<!-- หน้าประวัติแต้ม -->
+<section class="page" id="historyPage">
+  <button class="back" onclick="showPage('homePage')">‹ กลับหน้าสมาชิก</button>
+  <div class="section-title">ประวัติแต้มสะสม</div>
+  <p class="section-sub">ตรวจสอบรายการได้รับและใช้คะแนนของคุณ</p>
+  <div class="panel">
+    <div class="panel-title">ประวัติการสะสมคะแนน</div>
+    <div id="transactionsList">
+      <div class="loader">กำลังโหลดประวัติ…</div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">ประวัติการแลกรางวัล</div>
+    <div id="redemptionsList">
+      <div class="loader">กำลังโหลดประวัติ…</div>
+    </div>
+  </div>
+</section>
+
+<!-- หน้าข้อมูลสมาชิก -->
+<section class="page" id="memberPage">
+  <button class="back" onclick="showPage('homePage')">‹ กลับหน้าสมาชิก</button>
+  <div class="section-title">ข้อมูลสมาชิก</div>
+  <p class="section-sub">ข้อมูลบัญชีสมาชิก NICHA ของคุณ</p>
+  <div class="panel">
+    <div class="field">
+      <label>ชื่อสมาชิก</label>
+      <input id="infoName" readonly>
+    </div>
+    <div class="field">
+      <label>เบอร์โทรศัพท์</label>
+      <input id="infoPhone" readonly>
+    </div>
+    <div class="field">
+      <label>ระดับสมาชิก</label>
+      <input id="infoTier" readonly>
+    </div>
+    <div class="field">
+      <label>คะแนนคงเหลือ</label>
+      <input id="infoPoints" readonly>
+    </div>
+    <p class="notice">หากต้องการแก้ไขชื่อหรือเบอร์โทร กรุณาติดต่อพนักงานที่ร้าน</p>
+  </div>
+</section>
+
+<!-- หน้าคูปองของฉัน -->
+<section class="page" id="couponsPage">
+  <button class="back" onclick="showPage('homePage')">‹ กลับหน้าสมาชิก</button>
+  <div class="section-title">คูปองของฉัน</div>
+  <p class="section-sub">สิทธิ์ส่วนลดและคูปองพิเศษสำหรับสมาชิก NICHA</p>
+
+  <div class="row-between" style="margin-bottom:12px">
+    <span class="notice">คูปองส่วนตัวของคุณ</span>
+    <button class="back" style="padding:0" onclick="loadCoupons(true)">
+      รีเฟรชรายการ ↻
+    </button>
+  </div>
+
+  <button class="coupon-nav-btn"
+    style="width:100%;margin-bottom:14px"
+    onclick="showPage('usedCouponsPage')">
+    ✓ ดูคูปองที่ใช้แล้ว
+  </button>
+
+  <div id="couponsList">
+    <div class="loader">กำลังโหลดคูปอง...</div>
+  </div>
+</section>
+
+<!-- หน้าคูปองที่ใช้แล้ว -->
+<section class="page" id="usedCouponsPage">
+  <button class="back" onclick="showPage('couponsPage')">
+    ‹ กลับหน้าคูปองของฉัน
+  </button>
+
+  <div class="section-title">คูปองที่ใช้แล้ว</div>
+  <p class="section-sub">
+    รายการคูปองที่พนักงานยืนยันการใช้เรียบร้อยแล้ว
+  </p>
+
+  <div class="row-between" style="margin-bottom:12px">
+    <span class="notice">ประวัติคูปองของคุณ</span>
+    <button class="back" style="padding:0"
+      onclick="loadUsedCoupons(true)">
+      รีเฟรชรายการ ↻
+    </button>
+  </div>
+
+  <div id="usedCouponsList">
+    <div class="loader">กำลังโหลดคูปองที่ใช้แล้ว...</div>
+  </div>
+
+  <button class="coupon-nav-btn"
+    style="width:100%;margin-top:14px"
+    onclick="showPage('memberCouponHistoryPage')">
+    🧾 ประวัติการใช้คูปอง
+  </button>
+</section>
+
+<!-- หน้าประวัติการใช้คูปอง -->
+<section class="page" id="memberCouponHistoryPage">
+  <button class="back" onclick="showPage('usedCouponsPage')">
+    ‹ กลับหน้าคูปองที่ใช้แล้ว
+  </button>
+
+  <div class="section-title">ประวัติการใช้คูปอง</div>
+  <p class="section-sub">
+    รายการคูปองที่พนักงานยืนยันการใช้เรียบร้อยแล้ว
+  </p>
+
+  <div class="row-between" style="margin-bottom:12px">
+    <span class="notice">ประวัติการใช้สิทธิ์ของคุณ</span>
+    <button class="back" style="padding:0"
+      onclick="loadMemberCouponHistory()">
+      รีเฟรชรายการ ↻
+    </button>
+  </div>
+
+  <div id="memberCouponHistoryList">
+    <div class="loader">กำลังโหลดประวัติ...</div>
+  </div>
+</section>
+
+<!-- หน้าสิทธิพิเศษสมาชิก -->
+<section class="page" id="privilegesPage">
+  <button class="back" onclick="showPage('homePage')">
+    ‹ กลับหน้าสมาชิก
+  </button>
+
+  <div class="section-title">สิทธิพิเศษสมาชิก</div>
+  <p class="section-sub">
+    ความพิเศษที่ NICHA ตั้งใจมอบให้สมาชิก
+  </p>
+
+  <div class="panel">
+    <div class="row-between">
+      <div class="panel-title" style="margin:0">
+        สิทธิพิเศษของคุณ
+      </div>
+      <div class="tier" id="privilegeTier">BRONZE</div>
+    </div>
+
+    <div id="memberPrivilegesList">
+      <div class="loader">กำลังโหลดสิทธิพิเศษ...</div>
+    </div>
+  </div>
+
+  <p class="notice">
+    สิทธิพิเศษและเงื่อนไขเป็นไปตามประกาศของณิชานวดเพื่อสุขภาพ
+  </p>
+</section>
 
 </main>
 
-<!-- SIGNATURE: แสดงคอร์สที่เลือกจาก PromotionAdmin บนหน้า Index -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-page="homePage" onclick="showPage('homePage')">
+    <b>⌂</b>หน้าหลัก
+  </button>
+  <button class="nav-btn" data-page="rewardsPage" onclick="showPage('rewardsPage')">
+    <b>♧</b>แลกรางวัล
+  </button>
+  <button class="nav-btn" data-page="historyPage" onclick="showPage('historyPage')">
+    <b>▤</b>ประวัติแต้ม
+  </button>
+  <button class="nav-btn" data-page="memberPage" onclick="showPage('memberPage')">
+    <b>♙</b>ข้อมูลสมาชิก
+  </button>
+</nav>
 
-<section class="signature" id="signature">
-
-  <div class="signature-image">
-
-    <img id="nichaSignatureImage"
-      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900"
-      alt="NICHA Signature Spa"
-      loading="lazy">
-
-  </div>
-
-  <div class="signature-content">
-
-    <div class="eyebrow">EXCLUSIVE EXPERIENCE</div>
-
-    <h2>NICHA SIGNATURE</h2>
-
-    <div id="nichaSignatureDetails"
-         class="signature-empty"
-         aria-live="polite">
-      สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
-    </div>
-
-    <div id="nichaSignaturePrice" class="signature-price"></div>
-
-    <div id="nichaSignatureMeta" class="signature-meta"></div>
-
-    <!-- ปุ่มดูรายละเอียดและปุ่มจองคอร์ส -->
-
-    <div class="signature-buttons">
-
-      <a href="https://jifenii11-cell.github.io/nicha-massage/Signature.html"
-         class="signature-detail-btn"
-         target="_top">
-        ดูรายละเอียดคอร์ส
-      </a>
-
-      <a id="nichaSignatureBook"
-         class="gold-btn"
-         href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-         target="_top"
-         aria-disabled="true">
-        จองคอร์สนี้ ✦
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- BOOKING -->
-
-<section class="booking" id="booking">
-
-  <div class="eyebrow">
-    YOUR TIME · YOUR WELLNESS
-  </div>
-
-  <h2>
-    พร้อมให้รางวัลตัวเองหรือยัง?
-  </h2>
-
-  <p>
-    เลือกช่วงเวลาที่คุณสะดวก
-    แล้วจองคิวกับเราได้เลย
-  </p>
-
-  <a class="gold-btn"
-     href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-     target="_top">
-    จองคิวออนไลน์ ✦
-  </a>
-
-</section>
-
-<!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-  <div class="eyebrow">
-    WE ARE HERE FOR YOU
-  </div>
-
-  <h2>
-    ติดต่อ NICHA SPA
-  </h2>
-
-  <p>
-    สอบถามบริการและจองคิวล่วงหน้า
-    เรายินดีดูแลคุณ
-  </p>
-
-  <div class="contact-links">
-
-    <a href="https://lin.ee/Uw81g6U"
-       target="_blank">
-      ติดต่อผ่าน LINE ↗
-    </a>
-
-    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-      จองคิวออนไลน์ ↗
-    </a>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-  <div class="footer-inner">
-
-    <div>
-
-      <div class="footer-brand">
-        NICHA SPA
-      </div>
-
-      <div class="footer-tagline">
-        YOUR MOMENT OF RELAXATION
-      </div>
-
-    </div>
-
-    <div class="footer-contact">
-
-      <span>📍 NICHA SPA</span>
-
-      <span>☎ 085-xxx-xxxx</span>
-
-      <span>LINE @nicha.spa</span>
-
-      <span>✦ WELLNESS & SPA</span>
-
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © NICHA WELLNESS & SPA
-    · YOUR MOMENT OF RELAXATION
-  </div>
-
-</footer>
-
-<!-- ADMIN -->
-
-<div class="admin-area">
-
-  <a href="https://jifenii11-cell.github.io/nicha-massage/StaffCenter.html"
-     target="_top">
-    ⚙ เข้าสู่ระบบ Staff Center
-  </a>
-
+<div class="toast" id="toast"></div>
 </div>
 
-<!-- LOAD SIGNATURE DATA -->
-
 <script>
-(function(){
-  'use strict';
+/* =========================================
+   CONFIG
+========================================= */
 
-  const API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbyTicniXNgmKtRavQPXdaJa8FWU05-_alup6V4A6Ikm5B1rxMDs8Bv4cj5G6ywPt0Pu0Q/exec';
+const LIFF_ID='2012451889-JlA6fHip';
 
-  const BOOKING = API + '?page=booking';
+let lineUserId='';
+let member=null;
+let rewardsLoaded=false;
+let historyLoaded=false;
+let couponsLoaded=false;
+let couponsData=[];
+let privilegesLoaded=false;
 
-  function jsonp(url, callbackName){
+/* สถานะระบบสะสมครั้ง */
+let visitData=null;
+let visitRewardsData=[];
+let visitPageLoaded=false;
+let visitHistoryData=[];
 
-    return new Promise(function(resolve, reject){
+const tierRules=[
+  {name:'BRONZE',min:0,next:5000},
+  {name:'SILVER',min:5000,next:10000},
+  {name:'GOLD',min:10000,next:15000},
+  {name:'PLATINUM',min:15000,next:null}
+];
 
-      const name = callbackName + '_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+/* =========================================
+   COMMON FUNCTIONS
+========================================= */
 
-      const script = document.createElement('script');
+function money(n){
+  return Number(n||0).toLocaleString('th-TH');
+}
 
-      let finished = false;
+function showToast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.style.display='block';
+  setTimeout(()=>el.style.display='none',2800);
+}
 
-      const timer = setTimeout(function(){
-        finish(new Error('หมดเวลาการโหลดข้อมูล Signature'));
-      }, 12000);
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.toggle('active',p.id===id);
+  });
 
-      function finish(error, data){
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.page===id);
+  });
 
-        if(finished) return;
+  if(id==='rewardsPage'&&!rewardsLoaded)loadRewards();
+  if(id==='historyPage'&&!historyLoaded)loadHistory();
+  if(id==='memberPage')renderMemberInfo();
 
-        finished = true;
+  if(id==='visitPage')loadVisitPage();
 
-        clearTimeout(timer);
+  if(id==='couponsPage')loadCoupons(true);
+  if(id==='usedCouponsPage')loadUsedCoupons(true);
+  if(id==='memberCouponHistoryPage')loadMemberCouponHistory();
+  if(id==='privilegesPage')loadMemberPrivileges();
 
-        try {
-          delete window[name];
-        } catch(e) {
-          window[name] = undefined;
-        }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
-        if(script.parentNode){
-          script.parentNode.removeChild(script);
-        }
+/* =========================================
+   JSONP CONNECTION
+========================================= */
 
-        if(error){
-          reject(error);
-        } else {
-          resolve(data);
-        }
+function jsonp(action,params={}){
+  return new Promise((resolve,reject)=>{
+    const cb='nicha_cb_'+Date.now()+'_'+Math.floor(Math.random()*100000);
+    const script=document.createElement('script');
+
+    const timer=setTimeout(()=>{
+      cleanup();
+      reject(new Error('เชื่อมต่อระบบไม่สำเร็จ กรุณาลองใหม่'));
+    },15000);
+
+    function cleanup(){
+      clearTimeout(timer);
+      delete window[cb];
+      if(script.parentNode)script.parentNode.removeChild(script);
+    }
+
+    window[cb]=(data)=>{
+      cleanup();
+      resolve(data);
+    };
+
+    const query=new URLSearchParams({
+      ...params,
+      action,
+      callback:cb
+    });
+
+    script.src=API_URL+'?'+query.toString();
+
+    script.onerror=()=>{
+      cleanup();
+      reject(new Error('ไม่สามารถเชื่อมต่อฐานข้อมูลได้'));
+    };
+
+    document.body.appendChild(script);
+  });
+}
+
+/* =========================================
+   START LINE LIFF
+========================================= */
+
+async function startApp(){
+  try{
+    if(!window.liff)throw new Error('โหลด LINE LIFF ไม่สำเร็จ');
+
+    await liff.init({liffId:LIFF_ID});
+
+    if(!liff.isLoggedIn()){
+      liff.login();
+      return;
+    }
+
+    const profile=await liff.getProfile();
+    lineUserId=profile.userId;
+
+    document.getElementById('connectionStatus').textContent='เชื่อมต่อแล้ว';
+
+    await loadMember();
+
+  }catch(e){
+    document.getElementById('connectionStatus').textContent='เชื่อมต่อไม่สำเร็จ';
+    document.getElementById('loading').textContent=
+      e.message||'เกิดข้อผิดพลาดในการเริ่มต้นระบบ';
+  }
+}
+
+/* =========================================
+   MEMBER
+========================================= */
+
+async function loadMember(){
+  const data=await jsonp('getMember',{lineUserId});
+
+  document.getElementById('loading').classList.add('hidden');
+
+  if(data&&data.success&&data.member){
+    member=data.member;
+    renderMember();
+    document.getElementById('homeContent').classList.remove('hidden');
+  }else{
+    document.getElementById('registerBox').classList.remove('hidden');
+  }
+}
+
+function tierInfo(){
+  const spend=Number(
+    member?.lifetimeSpend ??
+    member?.totalSpend ??
+    member?.totalSpent ??
+    NaN
+  );
+
+  if(Number.isFinite(spend)){
+    let idx=0;
+
+    for(let i=0;i<tierRules.length;i++){
+      if(spend>=tierRules[i].min)idx=i;
+    }
+
+    return {tier:tierRules[idx],spend,verified:true};
+  }
+
+  const returned=String(member?.level||'BRONZE').toUpperCase();
+  const matched=tierRules.find(t=>t.name===returned)||tierRules[0];
+
+  return {tier:matched,spend:null,verified:false};
+}
+
+function renderMember(){
+  const name=member.name||member.memberName||'สมาชิก NICHA';
+  const phone=member.phone||'';
+  const points=Number(member.points||0);
+  const info=tierInfo();
+
+  document.getElementById('memberName').textContent=name;
+  document.getElementById('memberPhone').textContent=phone;
+  document.getElementById('pointsValue').textContent=money(points);
+  document.getElementById('tierLabel').textContent=info.tier.name;
+
+  if(info.verified){
+    const next=info.tier.next;
+
+    const progress=next
+      ?Math.max(0,Math.min(100,
+        (info.spend-info.tier.min)/(next-info.tier.min)*100))
+      :100;
+
+    document.getElementById('tierProgress').style.width=progress+'%';
+
+    document.getElementById('tierProgressText').textContent=
+      'ความคืบหน้าระดับ '+info.tier.name;
+
+    document.getElementById('nextTierText').textContent=
+      next
+      ?'ระดับถัดไป '+tierRules[tierRules.indexOf(info.tier)+1].name
+      :'ระดับสูงสุด';
+
+    document.getElementById('spendText').textContent=
+      'ยอดใช้จ่ายสะสม ฿'+money(info.spend);
+
+    document.getElementById('needText').textContent=
+      next
+      ?'อีก ฿'+money(Math.max(0,next-info.spend))
+      :'คุณอยู่ระดับสูงสุดแล้ว';
+
+  }else{
+    document.getElementById('tierProgress').style.width='0%';
+
+    document.getElementById('tierProgressText').textContent=
+      'ระดับสมาชิกจากข้อมูลระบบ';
+
+    document.getElementById('nextTierText').textContent=
+      'รอตรวจสอบยอดใช้จ่ายสะสม';
+
+    document.getElementById('spendText').textContent=
+      'ยอดใช้จ่ายสะสมยังไม่พร้อมแสดง';
+
+    document.getElementById('needText').textContent='';
+  }
+
+  renderMemberInfo();
+}
+
+function renderMemberInfo(){
+  if(!member)return;
+
+  document.getElementById('infoName').value=
+    member.name||member.memberName||'';
+
+  document.getElementById('infoPhone').value=member.phone||'';
+
+  document.getElementById('infoTier').value=tierInfo().tier.name;
+
+  document.getElementById('infoPoints').value=
+    money(member.points||0)+' คะแนน';
+}
+
+async function registerMember(){
+  const name=document.getElementById('registerName').value.trim();
+  const phone=document.getElementById('registerPhone').value.trim();
+
+  if(!name||!phone){
+    showToast('กรุณากรอกชื่อและเบอร์โทรศัพท์');
+    return;
+  }
+
+  try{
+    const data=await jsonp('register',{lineUserId,name,phone});
+
+    if(!data.success){
+      throw new Error(data.message||'สมัครสมาชิกไม่สำเร็จ');
+    }
+
+    member=data.member||{name,phone,points:0,level:'BRONZE'};
+
+    document.getElementById('registerBox').classList.add('hidden');
+
+    renderMember();
+
+    document.getElementById('homeContent').classList.remove('hidden');
+
+    showToast('สมัครสมาชิกเรียบร้อยแล้ว');
+
+  }catch(e){
+    showToast(e.message);
+  }
+}
+
+/* =========================================
+   REWARDS - POINTS
+========================================= */
+
+async function loadRewards(){
+  rewardsLoaded=true;
+
+  const box=document.getElementById('rewardsList');
+  box.innerHTML='<div class="loader">กำลังโหลดของรางวัล…</div>';
+
+  try{
+    const data=await jsonp('getRewards');
+
+    if(!data.success){
+      throw new Error(data.message||'โหลดของรางวัลไม่ได้');
+    }
+
+    const list=data.rewards||[];
+    box.innerHTML='';
+
+    if(!list.length){
+      box.innerHTML='<div class="empty">ยังไม่มีของรางวัลในขณะนี้</div>';
+      return;
+    }
+
+    list.forEach(r=>{
+      const id=r.rewardId??r.id;
+      const cost=Number(r.points||0);
+
+      const el=document.createElement('div');
+      el.className='reward';
+
+      const title=document.createElement('h3');
+      title.textContent=r.name||r.rewardName||'ของรางวัล';
+
+      const price=document.createElement('div');
+      price.className='cost';
+      price.textContent=money(cost)+' คะแนน';
+
+      const btn=document.createElement('button');
+      btn.className='btn full';
+      btn.textContent='ยืนยันแลก';
+      btn.disabled=Number(member?.points||0)<cost;
+
+      btn.addEventListener('click',()=>{
+        redeemReward(id,r.name||r.rewardName||'ของรางวัล',cost,btn);
+      });
+
+      el.append(title,price,btn);
+      box.appendChild(el);
+    });
+
+  }catch(e){
+    rewardsLoaded=false;
+    box.innerHTML='<div class="empty">'+e.message+'</div>';
+  }
+}
+
+async function redeemReward(rewardId,name,cost,btn){
+  if(!confirm('ยืนยันแลก "'+name+'" ใช้ '+cost+' คะแนนใช่หรือไม่?')){
+    return;
+  }
+
+  btn.disabled=true;
+
+  try{
+    const data=await jsonp('redeem',{lineUserId,rewardId});
+
+    if(!data.success){
+      throw new Error(data.message||'แลกรางวัลไม่สำเร็จ');
+    }
+
+    showToast('แลกรางวัลเรียบร้อยแล้ว');
+
+    await loadMember();
+
+    rewardsLoaded=false;
+    historyLoaded=false;
+
+    await loadRewards();
+
+  }catch(e){
+    showToast(e.message);
+    btn.disabled=false;
+  }
+}
+
+/* =========================================
+   VISIT REWARD SYSTEM
+========================================= */
+
+async function loadVisitPage(forceRefresh=false){
+
+  const rewardBox=document.getElementById('visitRewardsList');
+  const historyBox=document.getElementById('visitHistoryList');
+
+  if(!lineUserId){
+    rewardBox.innerHTML='<div class="empty">กรุณาเข้าสู่ระบบสมาชิกก่อน</div>';
+    return;
+  }
+
+  if(visitPageLoaded&&!forceRefresh&&visitData){
+    renderVisitPage();
+    return;
+  }
+
+  rewardBox.innerHTML='<div class="loader">กำลังโหลดข้อมูลสะสมครั้ง...</div>';
+  historyBox.innerHTML='<div class="loader">กำลังโหลดประวัติ...</div>';
+
+  try{
+
+    const results=await Promise.all([
+      jsonp('getMemberVisits',{lineUserId}),
+      jsonp('getVisitRewards'),
+      jsonp('getVisitHistory',{lineUserId})
+    ]);
+
+    const statusData=results[0];
+    const rewardsResult=results[1];
+    const historyResult=results[2];
+
+    if(!statusData||!statusData.success){
+      throw new Error(statusData?.message||'ไม่สามารถโหลดจำนวนครั้งสะสมได้');
+    }
+
+    if(!rewardsResult||!rewardsResult.success){
+      throw new Error(rewardsResult?.message||'ไม่สามารถโหลดรายการรางวัลได้');
+    }
+
+    if(!historyResult||!historyResult.success){
+      throw new Error(historyResult?.message||'ไม่สามารถโหลดประวัติสะสมครั้งได้');
+    }
+
+    visitData=statusData;
+    visitRewardsData=Array.isArray(rewardsResult.rewards)
+      ?rewardsResult.rewards
+      :(Array.isArray(statusData.rewards)?statusData.rewards:[]);
+
+    visitHistoryData=Array.isArray(historyResult.history)
+      ?historyResult.history
+      :(Array.isArray(historyResult.records)?historyResult.records:[]);
+
+    visitPageLoaded=true;
+
+    renderVisitPage();
+
+  }catch(e){
+
+    visitPageLoaded=false;
+
+    rewardBox.innerHTML='';
+    const error=document.createElement('div');
+    error.className='empty';
+    error.textContent=e.message;
+
+    const retry=document.createElement('button');
+    retry.className='btn full';
+    retry.textContent='ลองโหลดอีกครั้ง';
+    retry.style.marginTop='12px';
+    retry.onclick=()=>loadVisitPage(true);
+
+    rewardBox.append(error,retry);
+    historyBox.innerHTML='<div class="empty">ไม่สามารถโหลดประวัติได้</div>';
+  }
+}
+
+function renderVisitPage(){
+
+  const current=Number(visitData?.currentVisits||0);
+  const next=visitData?.nextReward||null;
+  const eligible=Array.isArray(visitData?.eligibleRewards)
+    ?visitData.eligibleRewards
+    :[];
+
+  document.getElementById('currentVisits').textContent=money(current);
+
+  let target=next?Number(next.visitsRequired||0):10;
+
+  if(!target&&visitRewardsData.length){
+    const upcoming=visitRewardsData
+      .filter(r=>String(r.status||'ใช้งาน').trim()==='ใช้งาน')
+      .map(r=>Number(r.visitsRequired||0))
+      .filter(n=>n>current)
+      .sort((a,b)=>a-b);
+
+    target=upcoming[0]||10;
+  }
+
+  const progress=target>0
+    ?Math.max(0,Math.min(100,current/target*100))
+    :0;
+
+  document.getElementById('visitProgressFill').style.width=progress+'%';
+
+  document.getElementById('visitProgressText').textContent=
+    current>0?'สะสมแล้ว '+money(current)+' ครั้ง':'เริ่มสะสมครั้งแรก';
+
+  document.getElementById('visitNextText').textContent=
+    'อีก '+money(Math.max(0,target-current))+' ครั้ง';
+
+  renderVisitRewards(eligible,current);
+  renderVisitHistory(visitHistoryData);
+}
+
+function renderVisitRewards(eligible,current){
+
+  const box=document.getElementById('visitRewardsList');
+  box.innerHTML='';
+
+  const activeRewards=visitRewardsData.filter(r=>
+    String(r.status||'ใช้งาน').trim()==='ใช้งาน'
+  );
+
+  if(!activeRewards.length){
+    box.innerHTML='<div class="empty">ขณะนี้ยังไม่มีการกำหนดรางวัลสะสมครั้ง</div>';
+    return;
+  }
+
+  activeRewards
+    .sort((a,b)=>Number(a.visitsRequired||0)-Number(b.visitsRequired||0))
+    .forEach(r=>{
+
+      const required=Number(r.visitsRequired||0);
+      const rewardId=r.rewardId||r.id;
+      const isEligible=
+        current>=required ||
+        eligible.some(x=>(x.rewardId||x.id)===rewardId);
+
+      const card=document.createElement('div');
+      card.className='visit-reward';
+
+      const title=document.createElement('h3');
+      title.textContent=r.name||'รางวัลสะสมครั้ง';
+
+      const description=document.createElement('div');
+      description.className='notice';
+      description.textContent=r.description||'รางวัลพิเศษสำหรับสมาชิก NICHA';
+
+      const cost=document.createElement('div');
+      cost.className='visit-cost';
+      cost.textContent='ใช้จำนวน '+money(required)+' ครั้ง เพื่อแลกรางวัล';
+
+      const status=document.createElement('div');
+      status.className='visit-status'+(isEligible?' ready':'');
+      status.textContent=isEligible
+        ?'✓ คุณสามารถแลกรางวัลนี้ได้'
+        :'สะสมอีก '+money(Math.max(0,required-current))+' ครั้ง';
+
+      const button=document.createElement('button');
+      button.className='btn full';
+      button.textContent=isEligible?'ยืนยันแลกรางวัล':'ยังแลกไม่ได้';
+      button.disabled=!isEligible||!rewardId;
+
+      button.addEventListener('click',()=>{
+        redeemVisitRewardForMember(rewardId,r.name||'รางวัลสะสมครั้ง',required,button);
+      });
+
+      card.append(title,description,cost,status,button);
+      box.appendChild(card);
+    });
+}
+
+async function redeemVisitRewardForMember(rewardId,name,required,button){
+
+  if(!rewardId){
+    showToast('ไม่พบรหัสรางวัล กรุณาติดต่อพนักงาน');
+    return;
+  }
+
+  const pin=prompt('กรุณาให้พนักงานกรอกรหัส PIN เพื่อยืนยันการแลกรางวัล');
+
+  if(pin===null)return;
+
+  if(!String(pin).trim()){
+    showToast('กรุณากรอกรหัส PIN พนักงาน');
+    return;
+  }
+
+  if(!confirm(
+    'ยืนยันแลก "'+name+'" ใช้จำนวน '+required+
+    ' ครั้งใช่หรือไม่?\n\nเมื่อแลกแล้วจำนวนครั้งสะสมจะเริ่มนับใหม่เป็น 0'
+  )){
+    return;
+  }
+
+  button.disabled=true;
+  button.textContent='กำลังดำเนินการ...';
+
+  try{
+
+    const data=await jsonp('redeemVisitReward',{
+      lineUserId,
+      rewardId,
+      pin:String(pin).trim()
+    });
+
+    if(!data||!data.success){
+      throw new Error(data?.message||'แลกรางวัลไม่สำเร็จ');
+    }
+
+    showToast('แลกรางวัลเรียบร้อยแล้ว จำนวนครั้งสะสมเริ่มใหม่เป็น 0');
+
+    visitPageLoaded=false;
+    visitData=null;
+    visitHistoryData=[];
+
+    await loadVisitPage(true);
+
+  }catch(e){
+
+    showToast(e.message);
+    button.disabled=false;
+    button.textContent='ยืนยันแลกรางวัล';
+
+  }
+}
+
+/* แสดงประวัติสะสมครั้ง โดยรายการใหม่อยู่ด้านบน */
+function renderVisitHistory(list){
+
+  const box=document.getElementById('visitHistoryList');
+  box.innerHTML='';
+
+  if(!Array.isArray(list)||!list.length){
+    box.innerHTML='<div class="empty">ยังไม่มีประวัติสะสมครั้ง</div>';
+    return;
+  }
+
+  // Backend เรียงรายการใหม่ไปเก่าไว้แล้ว
+  // จึงไม่ต้อง reverse ซ้ำ
+  list.forEach(item=>{
+
+    const row=document.createElement('div');
+    row.className='visit-history-row';
+
+    const title=document.createElement('div');
+    title.className='visit-history-title';
+    title.textContent=item.action||'รายการสะสมครั้ง';
+
+    const meta=document.createElement('div');
+    meta.className='visit-history-meta';
+    meta.textContent=formatDateTime(item.date);
+
+    const count=document.createElement('div');
+    count.className='visit-history-count';
+
+    const added=Number(item.visitsAdded||0);
+    const used=Number(item.visitsUsed||0);
+
+    if(added>0){
+      count.style.color='#34835c';
+      count.textContent='+'+money(added)+' ครั้ง';
+    }else if(used>0){
+      count.style.color='#a84e45';
+      count.textContent='ใช้แลก '+money(used)+' ครั้ง';
+    }else{
+      count.textContent='รายการสะสมครั้ง';
+    }
+
+    row.append(title,meta,count);
+
+    if(item.rewardName){
+      const reward=document.createElement('div');
+      reward.className='visit-history-meta';
+      reward.textContent='รางวัล: '+item.rewardName;
+      row.appendChild(reward);
+    }
+
+    box.appendChild(row);
+  });
+}
+
+/* =========================================
+   POINT HISTORY
+========================================= */
+
+async function loadHistory(){
+  historyLoaded=true;
+
+  document.getElementById('transactionsList').innerHTML=
+    '<div class="loader">กำลังโหลดประวัติ…</div>';
+
+  document.getElementById('redemptionsList').innerHTML=
+    '<div class="loader">กำลังโหลดประวัติ…</div>';
+
+  try{
+    const data=await jsonp('getHistory',{lineUserId});
+
+    if(!data.success){
+      throw new Error(data.message||'โหลดประวัติไม่ได้');
+    }
+
+    renderTransactions(data.transactions||[]);
+    renderRedemptions(data.redemptions||[]);
+    renderRecent(data.transactions||[],data.redemptions||[]);
+
+  }catch(e){
+    historyLoaded=false;
+
+    document.getElementById('transactionsList').textContent=e.message;
+
+    document.getElementById('redemptionsList').textContent=
+      'ไม่สามารถโหลดข้อมูลได้';
+  }
+}
+
+function renderTransactions(list){
+  const box=document.getElementById('transactionsList');
+  box.innerHTML='';
+
+  if(!list.length){
+    box.innerHTML='<div class="empty">ยังไม่มีประวัติสะสมคะแนน</div>';
+    return;
+  }
+
+  [...list].reverse().forEach(t=>{
+    const earned=Number(t.earned||0);
+    const deducted=Number(t.deducted||0);
+
+    const row=document.createElement('div');
+    row.className='item';
+
+    const left=document.createElement('div');
+
+    const title=document.createElement('div');
+    title.className='item-title';
+    title.textContent=t.description||t.item||'รายการคะแนน';
+
+    const meta=document.createElement('div');
+    meta.className='item-meta';
+    meta.textContent=formatDate(t.date);
+
+    left.append(title,meta);
+
+    const right=document.createElement('div');
+    right.className='item-points '+(earned>0?'plus':'minus');
+
+    right.textContent=earned>0
+      ?'+'+earned
+      :deducted>0?'-'+deducted:'0';
+
+    row.append(left,right);
+    box.appendChild(row);
+  });
+}
+
+function renderRedemptions(list){
+  const box=document.getElementById('redemptionsList');
+  box.innerHTML='';
+
+  if(!list.length){
+    box.innerHTML='<div class="empty">ยังไม่มีประวัติแลกรางวัล</div>';
+    return;
+  }
+
+  [...list].reverse().forEach(r=>{
+    const row=document.createElement('div');
+    row.className='item';
+
+    const left=document.createElement('div');
+
+    const title=document.createElement('div');
+    title.className='item-title';
+    title.textContent=r.rewardName||'แลกรางวัล';
+
+    const meta=document.createElement('div');
+    meta.className='item-meta';
+    meta.textContent=formatDate(r.date)+' · '+(r.status||'รอดำเนินการ');
+
+    left.append(title,meta);
+
+    const right=document.createElement('div');
+    right.className='item-points minus';
+    right.textContent='-'+money(r.points||0);
+
+    row.append(left,right);
+    box.appendChild(row);
+  });
+}
+
+function renderRecent(transactions,redemptions){
+  const all=[
+    ...transactions.map(t=>({
+      date:t.date,
+      title:t.description||t.item||'รายการคะแนน',
+      value:Number(t.earned||0)>0
+        ?'+'+t.earned
+        :Number(t.deducted||0)>0?'-'+t.deducted:'0',
+      positive:Number(t.earned||0)>0
+    })),
+    ...redemptions.map(r=>({
+      date:r.date,
+      title:'แลก '+(r.rewardName||'ของรางวัล'),
+      value:'-'+money(r.points||0),
+      positive:false
+    }))
+  ].slice(-4).reverse();
+
+  const box=document.getElementById('recentList');
+  box.innerHTML='';
+
+  if(!all.length){
+    box.className='empty';
+    box.textContent='ยังไม่มีรายการ';
+    return;
+  }
+
+  box.className='';
+
+  all.forEach(a=>{
+    const row=document.createElement('div');
+    row.className='item';
+
+    const left=document.createElement('div');
+
+    const title=document.createElement('div');
+    title.className='item-title';
+    title.textContent=a.title;
+
+    const meta=document.createElement('div');
+    meta.className='item-meta';
+    meta.textContent=formatDate(a.date);
+
+    left.append(title,meta);
+
+    const right=document.createElement('div');
+    right.className='item-points '+(a.positive?'plus':'minus');
+    right.textContent=a.value;
+
+    row.append(left,right);
+    box.appendChild(row);
+  });
+}
+
+/* =========================================
+   MEMBER COUPONS
+========================================= */
+
+async function getCouponsData(forceRefresh=false){
+
+  if(!lineUserId){
+    throw new Error('กรุณาเข้าสู่ระบบสมาชิกก่อน');
+  }
+
+  if(couponsLoaded&&!forceRefresh){
+    return couponsData;
+  }
+
+  const data=await jsonp('getMemberCoupons',{lineUserId});
+
+  if(!data||!data.success){
+    throw new Error(data?.message||'ไม่สามารถโหลดคูปองได้');
+  }
+
+  couponsData=Array.isArray(data.coupons)
+    ?data.coupons
+    :[];
+
+  couponsLoaded=true;
+
+  return couponsData;
+}
+
+function renderCouponCards(list,box,emptyTitle){
+
+  box.innerHTML='';
+
+  if(!list.length){
+    box.innerHTML=`
+      <div class="coupon-box">
+        <div class="coupon-tag">NICHA MEMBER</div>
+        <h3>${emptyTitle}</h3>
+        <div class="notice">
+          รายการคูปองจะแสดงที่หน้านี้ตามสถานะการใช้งาน
+        </div>
+      </div>`;
+    return;
+  }
+
+  list.forEach(c=>{
+
+    const name=c.name||'คูปองพิเศษ';
+    const type=c.discountType||'บาท';
+    const value=Number(c.discountValue||0);
+    const minimum=Number(c.minimumSpend||0);
+    const start=c.startDate||'';
+    const expiry=c.expiryDate||'';
+    const condition=c.condition||'ไม่มีเงื่อนไขเพิ่มเติม';
+    const status=String(c.status||'ใช้งาน').trim();
+
+    const couponId=
+      c.couponId||
+      c.id||
+      c['Coupon ID']||
+      '';
+
+    const discount=type==='%'?
+      'ส่วนลด '+value+'%':
+      'ส่วนลด '+money(value)+' บาท';
+
+    let statusColor='#286044';
+
+    if(status==='หมดอายุ'||status==='ยกเลิก'){
+      statusColor='#a84e45';
+    }else if(status==='ยังไม่เริ่ม'){
+      statusColor='#9a7842';
+    }else if(status==='รอยืนยัน'){
+      statusColor='#b17b25';
+    }else if(status==='ใช้แล้ว'){
+      statusColor='#78827b';
+    }
+
+    const card=document.createElement('div');
+    card.className='coupon-box';
+
+    const tag=document.createElement('div');
+    tag.className='coupon-tag';
+    tag.textContent='NICHA MEMBER COUPON';
+
+    const title=document.createElement('h3');
+    title.textContent=name;
+
+    const discountText=document.createElement('div');
+    discountText.className='coupon-discount';
+    discountText.textContent=discount;
+
+    const minimumText=document.createElement('div');
+    minimumText.className='notice';
+    minimumText.textContent=
+      'ยอดซื้อขั้นต่ำ '+money(minimum)+' บาท';
+
+    const startText=document.createElement('div');
+    startText.className='notice';
+    startText.textContent='เริ่มใช้: '+formatDate(start);
+
+    const expiryText=document.createElement('div');
+    expiryText.className='notice';
+    expiryText.textContent='หมดอายุ: '+formatDate(expiry);
+
+    const conditionText=document.createElement('div');
+    conditionText.className='notice';
+    conditionText.style.marginTop='8px';
+    conditionText.textContent='เงื่อนไข: '+condition;
+
+    const statusTextEl=document.createElement('div');
+    statusTextEl.className='coupon-status';
+    statusTextEl.style.color=statusColor;
+    statusTextEl.textContent='สถานะ: '+status;
+
+    card.append(
+      tag,
+      title,
+      discountText,
+      minimumText,
+      startText,
+      expiryText,
+      conditionText,
+      statusTextEl
+    );
+
+    if(status==='ใช้งาน'){
+
+      const requestBtn=document.createElement('button');
+      requestBtn.className='btn full';
+      requestBtn.style.marginTop='14px';
+      requestBtn.textContent='ขอใช้คูปอง';
+      requestBtn.disabled=!couponId;
+
+      requestBtn.addEventListener('click',()=>{
+        requestCoupon(couponId,requestBtn);
+      });
+
+      card.appendChild(requestBtn);
+
+    }else if(status==='รอยืนยัน'){
+
+      const waiting=document.createElement('div');
+      waiting.className='notice';
+      waiting.style.marginTop='12px';
+      waiting.style.padding='11px';
+      waiting.style.borderRadius='10px';
+      waiting.style.background='#fff5df';
+      waiting.style.color='#9a6b1d';
+      waiting.style.textAlign='center';
+      waiting.textContent='⏳ รอพนักงานยืนยันการใช้คูปอง';
+
+      card.appendChild(waiting);
+
+    }else if(status==='ใช้แล้ว'){
+
+      const used=document.createElement('div');
+      used.className='notice';
+      used.style.marginTop='12px';
+      used.style.padding='11px';
+      used.style.borderRadius='10px';
+      used.style.background='#edf1ed';
+      used.style.color='#52635a';
+      used.style.textAlign='center';
+      used.textContent='✓ พนักงานยืนยันการใช้คูปองแล้ว';
+
+      card.appendChild(used);
+
+    }
+
+    box.appendChild(card);
+
+  });
+}
+
+async function loadCoupons(forceRefresh=false){
+
+  const box=document.getElementById('couponsList');
+
+  if(!lineUserId){
+    box.innerHTML='<div class="empty">กรุณาเข้าสู่ระบบสมาชิกก่อน</div>';
+    return;
+  }
+
+  box.innerHTML=
+    '<div class="loader">กำลังโหลดคูปองของคุณ...</div>';
+
+  try{
+
+    const list=await getCouponsData(forceRefresh);
+
+    const available=list.filter(c=>
+      String(c.status||'ใช้งาน').trim()!=='ใช้แล้ว'
+    );
+
+    renderCouponCards(
+      available,
+      box,
+      'ยังไม่มีคูปองสำหรับคุณ'
+    );
+
+  }catch(e){
+
+    couponsLoaded=false;
+
+    box.innerHTML='';
+
+    const message=document.createElement('div');
+    message.className='empty';
+    message.textContent=e.message;
+
+    const retry=document.createElement('button');
+    retry.className='btn full';
+    retry.textContent='ลองโหลดอีกครั้ง';
+    retry.style.marginTop='12px';
+    retry.onclick=()=>loadCoupons(true);
+
+    box.append(message,retry);
+
+  }
+}
+
+async function loadUsedCoupons(forceRefresh=false){
+
+  const box=document.getElementById('usedCouponsList');
+
+  if(!lineUserId){
+    box.innerHTML='<div class="empty">กรุณาเข้าสู่ระบบสมาชิกก่อน</div>';
+    return;
+  }
+
+  box.innerHTML=
+    '<div class="loader">กำลังโหลดคูปองที่ใช้แล้ว...</div>';
+
+  try{
+
+    const list=await getCouponsData(forceRefresh);
+
+    const used=list.filter(c=>
+      String(c.status||'').trim()==='ใช้แล้ว'
+    );
+
+    renderCouponCards(
+      used,
+      box,
+      'ยังไม่มีคูปองที่ใช้แล้ว'
+    );
+
+  }catch(e){
+
+    couponsLoaded=false;
+
+    box.innerHTML='';
+
+    const message=document.createElement('div');
+    message.className='empty';
+    message.textContent=e.message;
+
+    const retry=document.createElement('button');
+    retry.className='btn full';
+    retry.textContent='ลองโหลดอีกครั้ง';
+    retry.style.marginTop='12px';
+    retry.onclick=()=>loadUsedCoupons(true);
+
+    box.append(message,retry);
+
+  }
+}
+
+/* =========================================
+   REQUEST COUPON USE
+========================================= */
+
+async function requestCoupon(couponId,btn){
+
+  if(!couponId){
+    showToast('ไม่พบรหัสคูปอง กรุณาติดต่อพนักงาน');
+    return;
+  }
+
+  if(!confirm('ยืนยันขอใช้คูปองนี้ใช่หรือไม่?')){
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='กำลังส่งคำขอ...';
+
+  try{
+
+    const data=await jsonp('requestCouponUse',{
+      lineUserId,
+      couponId
+    });
+
+    if(!data||!data.success){
+      throw new Error(data?.message||'ส่งคำขอใช้คูปองไม่สำเร็จ');
+    }
+
+    showToast('ส่งคำขอแล้ว กรุณารอพนักงานยืนยัน');
+
+    couponsLoaded=false;
+    couponsData=[];
+
+    await loadCoupons(true);
+
+  }catch(e){
+
+    showToast(e.message);
+    btn.disabled=false;
+    btn.textContent='ขอใช้คูปอง';
+
+  }
+}
+
+/* =========================================
+   MEMBER COUPON HISTORY
+========================================= */
+
+async function loadMemberCouponHistory(){
+
+  const box=document.getElementById('memberCouponHistoryList');
+
+  if(!lineUserId){
+    box.innerHTML='<div class="empty">กรุณาเข้าสู่ระบบสมาชิกก่อน</div>';
+    return;
+  }
+
+  box.innerHTML='<div class="loader">กำลังโหลดประวัติการใช้คูปอง...</div>';
+
+  try{
+
+    const data=await jsonp('getMemberCouponHistory',{
+      lineUserId
+    });
+
+    if(!data||!data.success){
+      throw new Error(data?.message||'ไม่สามารถโหลดประวัติได้');
+    }
+
+    const list=data.history||[];
+
+    box.innerHTML='';
+
+    if(!list.length){
+      box.innerHTML=`
+        <div class="coupon-box">
+          <div class="coupon-tag">NICHA MEMBER</div>
+          <h3>ยังไม่มีประวัติการใช้คูปอง</h3>
+          <div class="notice">
+            เมื่อพนักงานยืนยันการใช้คูปองแล้ว
+            ประวัติจะแสดงที่หน้านี้
+          </div>
+        </div>`;
+      return;
+    }
+
+    list.forEach(item=>{
+
+      const card=document.createElement('div');
+      card.className='coupon-box';
+
+      const tag=document.createElement('div');
+      tag.className='coupon-tag';
+      tag.textContent='NICHA COUPON HISTORY';
+
+      const title=document.createElement('h3');
+      title.textContent=item.couponName||'คูปองส่วนลด';
+
+      const discount=document.createElement('div');
+      discount.className='coupon-discount';
+
+      const type=String(item.discountType||'บาท').trim();
+      const value=Number(item.discountValue||0);
+
+      discount.textContent=type==='%'?
+        'ส่วนลด '+money(value)+'%':
+        'ส่วนลด '+money(value)+' บาท';
+
+      const minimum=document.createElement('div');
+      minimum.className='notice';
+      minimum.textContent=
+        'ยอดซื้อขั้นต่ำ '+money(item.minimumSpend||0)+' บาท';
+
+      const date=document.createElement('div');
+      date.className='notice';
+      date.style.marginTop='10px';
+      date.textContent='วันที่ใช้: '+formatDateTime(item.date);
+
+      const status=document.createElement('div');
+      status.className='coupon-status';
+      status.style.color='#286044';
+      status.textContent='✓ '+(item.status||'ใช้แล้ว');
+
+      card.append(tag,title,discount,minimum,date,status);
+      box.appendChild(card);
+
+    });
+
+  }catch(e){
+
+    box.innerHTML='';
+
+    const message=document.createElement('div');
+    message.className='empty';
+    message.textContent=e.message;
+
+    const retry=document.createElement('button');
+    retry.className='btn full';
+    retry.style.marginTop='12px';
+    retry.textContent='ลองโหลดอีกครั้ง';
+    retry.onclick=loadMemberCouponHistory;
+
+    box.append(message,retry);
+  }
+}
+
+function formatDateTime(value){
+
+  if(!value)return 'ไม่ระบุวันที่';
+
+  const d=new Date(value);
+
+  if(isNaN(d.getTime()))return String(value);
+
+  return d.toLocaleString('th-TH',{
+    timeZone:'Asia/Bangkok',
+    day:'numeric',
+    month:'long',
+    year:'numeric',
+    hour:'2-digit',
+    minute:'2-digit'
+  })+' น.';
+}
+
+/* =========================================
+   MEMBER PRIVILEGES
+========================================= */
+
+async function loadMemberPrivileges(){
+
+  const box=document.getElementById('memberPrivilegesList');
+  const tierElement=document.getElementById('privilegeTier');
+
+  if(!lineUserId){
+    box.innerHTML='<div class="empty">กรุณาเข้าสู่ระบบสมาชิกก่อน</div>';
+    return;
+  }
+
+  if(!member){
+    box.innerHTML='<div class="empty">ไม่พบข้อมูลสมาชิก</div>';
+    return;
+  }
+
+  box.innerHTML='<div class="loader">กำลังโหลดสิทธิพิเศษ...</div>';
+
+  tierElement.textContent=tierInfo().tier.name;
+
+  try{
+
+    const data=await jsonp('getMemberPrivileges',{lineUserId});
+
+    if(!data||!data.success){
+      throw new Error(data?.message||'ไม่สามารถโหลดสิทธิพิเศษได้');
+    }
+
+    const list=Array.isArray(data.privileges)
+      ?data.privileges
+      :[];
+
+    box.innerHTML='';
+
+    if(!list.length){
+      box.innerHTML=`
+        <div class="empty">
+          ยังไม่มีสิทธิพิเศษสำหรับระดับสมาชิกของคุณในขณะนี้
+        </div>`;
+      privilegesLoaded=true;
+      return;
+    }
+
+    list.forEach(p=>{
+
+      const name=
+        p.name||
+        p.privilegeName||
+        p['ชื่อสิทธิพิเศษ']||
+        'สิทธิพิเศษสมาชิก';
+
+      const description=
+        p.description||
+        p['รายละเอียด']||
+        'สิทธิพิเศษจาก NICHA';
+
+      const type=
+        p.type||
+        p.privilegeType||
+        p['ประเภทสิทธิ์']||
+        '';
+
+      const value=
+        p.value||
+        p.conditionValue||
+        p['มูลค่า/เงื่อนไข']||
+        '';
+
+      const card=document.createElement('div');
+      card.className='privilege';
+
+      const icon=document.createElement('div');
+      icon.className='privilege-icon';
+      icon.textContent='✨';
+
+      const content=document.createElement('div');
+      content.style.flex='1';
+
+      const title=document.createElement('div');
+      title.className='privilege-name';
+      title.textContent=name;
+
+      const detail=document.createElement('div');
+      detail.className='privilege-detail';
+      detail.textContent=description;
+
+      content.append(title,detail);
+
+      if(type||value){
+        const condition=document.createElement('div');
+        condition.className='privilege-condition';
+        condition.textContent=
+          [type,value].filter(Boolean).join(' · ');
+        content.appendChild(condition);
       }
 
-      window[name] = function(data){
-        finish(null, data);
-      };
-
-      script.onerror = function(){
-        finish(new Error('ไม่สามารถเชื่อมต่อข้อมูล Signature ได้'));
-      };
-
-      script.src = url
-        + (url.indexOf('?') >= 0 ? '&' : '?')
-        + 'callback=' + encodeURIComponent(name)
-        + '&_=' + Date.now();
-
-      document.head.appendChild(script);
+      card.append(icon,content);
+      box.appendChild(card);
 
     });
 
-  }
+    privilegesLoaded=true;
 
-  function money(value){
+  }catch(e){
 
-    const n = Number(value || 0);
+    privilegesLoaded=false;
+    box.innerHTML='';
 
-    return n.toLocaleString('th-TH');
+    const message=document.createElement('div');
+    message.className='empty';
+    message.textContent=e.message;
 
-  }
+    const retry=document.createElement('button');
+    retry.className='btn full';
+    retry.style.marginTop='12px';
+    retry.textContent='ลองโหลดอีกครั้ง';
+    retry.onclick=loadMemberPrivileges;
 
-  function showSignature(data){
-
-    if(!data || !data.success || !data.service){
-      return;
-    }
-
-    const service = data.service;
-
-    const image = document.getElementById('nichaSignatureImage');
-
-    const details = document.getElementById('nichaSignatureDetails');
-
-    const price = document.getElementById('nichaSignaturePrice');
-
-    const meta = document.getElementById('nichaSignatureMeta');
-
-    const book = document.getElementById('nichaSignatureBook');
-
-    if(!image || !details || !price || !meta || !book){
-      return;
-    }
-
-    if(service.imageUrl){
-      image.src = service.imageUrl;
-    }
-
-    image.alt = service.name + ' | NICHA SIGNATURE';
-
-    details.textContent = service.name;
-
-    price.textContent = money(service.price) + ' บาท';
-
-    meta.innerHTML = '';
-
-    const chip = document.createElement('span');
-
-    chip.className = 'signature-chip';
-
-    chip.textContent = (Number(service.duration) || 0) + ' นาที';
-
-    meta.appendChild(chip);
-
-    book.href = BOOKING + '&service=' + encodeURIComponent(service.name);
-
-    book.setAttribute('aria-disabled', 'false');
+    box.append(message,retry);
 
   }
+}
 
-  jsonp(API + '?api=signatureData', 'nichaSignatureCallback')
-    .then(showSignature)
-    .catch(function(error){
-      console.warn('NICHA Signature:', error.message);
+/* =========================================
+   DATE FORMAT
+========================================= */
+
+function formatDate(value){
+  if(!value)return 'ไม่ระบุวันที่';
+
+  const d=new Date(value);
+
+  return isNaN(d)?String(value):
+    d.toLocaleDateString('th-TH',{
+      day:'numeric',
+      month:'short',
+      year:'numeric'
     });
+}
 
-})();
+/* =========================================
+   START
+========================================= */
+
+startApp();
 </script>
-
 </body>
 </html>
