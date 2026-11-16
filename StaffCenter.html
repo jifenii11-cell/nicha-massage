@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -6,723 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#414936">
 <title>NICHA STAFF CENTER</title>
-
 <style>
-:root {
-  --green:#414936;
-  --green2:#59634b;
-  --gold:#c7a66a;
-  --cream:#f7f2e8;
-  --paper:#fffdf8;
-  --ink:#292d25;
-  --muted:#7d806f;
-  --line:#e8e0d1;
-  --red:#a84d43;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--cream);color:var(--ink);
-  font-family:Arial,"Noto Sans Thai",sans-serif
-}
-header{
-  background:var(--green);color:#fff;
-  padding:22px max(18px,calc((100% - 1180px)/2));
-  display:flex;justify-content:space-between;
-  align-items:center;gap:16px
-}
-.brand{font-size:21px;font-weight:800;letter-spacing:1.5px}
-.brand small{
-  display:block;color:#e2d2ae;font-size:11px;
-  letter-spacing:2px;margin-top:5px
-}
-main{max-width:1180px;margin:28px auto;padding:0 18px}
-.panel,.stat{
-  background:var(--paper);border:1px solid var(--line);
-  border-radius:16px;box-shadow:0 6px 24px #342b1710
-}
-.login{max-width:420px;margin:8vh auto;padding:30px}
-.login h1{margin:0 0 8px;color:var(--green)}
-.muted{color:var(--muted);font-size:13px}
-input,select,button{font:inherit}
-input,select{
-  width:100%;padding:12px 13px;border:1px solid var(--line);
-  border-radius:10px;background:#fff;margin:7px 0 14px
-}
-button{
-  border:0;border-radius:10px;padding:11px 16px;
-  background:var(--green);color:#fff;cursor:pointer;font-weight:700
-}
-button.gold{background:var(--gold);color:#28291f}
-button.light{background:#eee8dc;color:var(--green)}
-button:disabled{opacity:.5;cursor:not-allowed}
-label{font-size:13px;font-weight:700;color:var(--green)}
-.hidden{display:none!important}
-.topline{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;margin-bottom:20px;flex-wrap:wrap
-}
-.topline h1{margin:0;color:var(--green);font-size:25px}
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:13px;margin:18px 0
-}
-.stat{padding:18px}
-.stat span{display:block;color:var(--muted);font-size:13px}
-.stat strong{
-  display:block;font-size:27px;color:var(--green);margin-top:7px
-}
-.grid{
-  display:grid;grid-template-columns:1.4fr 1fr;
-  gap:16px;margin-top:16px
-}
-.panel{padding:20px;margin-bottom:16px}
-.panel h2{font-size:17px;color:var(--green);margin:0 0 15px}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-.tablewrap{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:700px}
-th,td{
-  text-align:left;padding:11px 9px;
-  border-bottom:1px solid var(--line);font-size:13px
-}
-th{color:var(--green);background:#f7f3ea;white-space:nowrap}
-.tag{
-  display:inline-block;padding:4px 8px;border-radius:20px;
-  background:#eee8dc;font-size:11px
-}
-.tag.ok{background:#e4eee1;color:#3f6940}
-.tag.wait{background:#f6ead2;color:#8a682b}
-.empty{padding:25px;text-align:center;color:var(--muted)}
-.formrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.notice{
-  padding:11px 13px;border-radius:10px;background:#f3eddf;
-  color:#64583e;font-size:13px;margin:12px 0
-}
-#message{margin:12px 0;font-size:13px;color:var(--green);min-height:18px}
-.nav-actions{
-  display:flex;gap:9px;flex-wrap:wrap;
-  padding:15px;background:#f5f0e5;border:1px solid var(--line);
-  border-radius:12px;margin:15px 0 20px
-}
-.nav-actions button{flex:1;min-width:170px}
-@media(max-width:760px){
-  header{padding:18px}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .grid{grid-template-columns:1fr}
-  .topline{align-items:flex-start}
-  .formrow{grid-template-columns:1fr}
-  .panel{padding:15px}
-  .nav-actions button{min-width:100%}
-}
+:root{--green:#414936;--green2:#59634b;--gold:#c7a66a;--cream:#f7f2e8;--paper:#fffdf8;--ink:#292d25;--muted:#7d806f;--line:#e8e0d1;--red:#a84d43}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,"Noto Sans Thai",sans-serif}
+header{background:var(--green);color:#fff;padding:22px max(18px,calc((100% - 1180px)/2));display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-size:21px;font-weight:800;letter-spacing:1.5px}.brand small{display:block;color:#e2d2ae;font-size:11px;letter-spacing:2px;margin-top:5px}
+main{max-width:1180px;margin:28px auto;padding:0 18px}.panel,.stat{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #342b1710}
+.login{max-width:420px;margin:8vh auto;padding:30px}.login h1{margin:0 0 8px;color:var(--green)}.muted{color:var(--muted);font-size:13px}
+input,select,button{font:inherit}input,select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;margin:7px 0 14px}
+button{border:0;border-radius:10px;padding:11px 16px;background:var(--green);color:#fff;cursor:pointer;font-weight:700}button.gold{background:var(--gold);color:#28291f}button.light{background:#eee8dc;color:var(--green)}button:disabled{opacity:.5;cursor:not-allowed}
+label{font-size:13px;font-weight:700;color:var(--green)}.hidden{display:none!important}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}.topline h1{margin:0;color:var(--green);font-size:25px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:18px 0}.stat{padding:18px}.stat span{display:block;color:var(--muted);font-size:13px}.stat strong{display:block;font-size:27px;color:var(--green);margin-top:7px}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:16px}.panel{padding:20px;margin-bottom:16px}.panel h2{font-size:17px;color:var(--green);margin:0 0 15px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--green);background:#f7f3ea;white-space:nowrap}
+.tag{display:inline-block;padding:4px 8px;border-radius:20px;background:#eee8dc;font-size:11px}.tag.ok{background:#e4eee1;color:#3f6940}.tag.wait{background:#f6ead2;color:#8a682b}.empty{padding:25px;text-align:center;color:var(--muted)}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.notice{padding:11px 13px;border-radius:10px;background:#f3eddf;color:#64583e;font-size:13px;margin:12px 0}#message{margin:12px 0;font-size:13px;color:var(--green);min-height:18px}
+.nav-actions{display:flex;gap:9px;flex-wrap:wrap;padding:15px;background:#f5f0e5;border:1px solid var(--line);border-radius:12px;margin:15px 0 20px}.nav-actions button{flex:1;min-width:170px}
+@media(max-width:760px){header{padding:18px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.topline{align-items:flex-start}.formrow{grid-template-columns:1fr}.panel{padding:15px}.nav-actions button{min-width:100%}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="brand">
-    NICHA SPA
-    <small>STAFF CENTER · OWNER PORTAL</small>
-  </div>
-
-  <button id="logoutBtn" class="light hidden" onclick="logout()">
-    ออกจากระบบ
-  </button>
-</header>
-
+<header><div class="brand">NICHA SPA<small>STAFF CENTER · OWNER PORTAL</small></div><button id="logoutBtn" class="light hidden" onclick="logout()">ออกจากระบบ</button></header>
 <main>
-
-<!-- LOGIN -->
 <section id="loginPanel" class="panel login">
-  <h1>ยินดีต้อนรับ</h1>
-  <p class="muted">
-    เข้าสู่ศูนย์จัดการงาน NICHA SPA สำหรับเจ้าของร้าน
-  </p>
-
-  <label for="pin">รหัสเจ้าของร้าน / Admin PIN</label>
-  <input
-    id="pin"
-    type="password"
-    inputmode="numeric"
-    maxlength="6"
-    placeholder="กรอกรหัส 6 หลัก">
-
-  <button style="width:100%" onclick="login()">
-    เข้าสู่ระบบ
-  </button>
-
-  <div id="loginMessage" class="muted" style="margin-top:12px"></div>
-
-  <p class="muted">ใช้รหัสเดียวกับระบบ Admin เดิม</p>
+ <h1>ยินดีต้อนรับ</h1><p class="muted">เข้าสู่ศูนย์จัดการงาน NICHA SPA สำหรับเจ้าของร้าน</p>
+ <label for="pin">รหัสเจ้าของร้าน / Admin PIN</label><input id="pin" type="password" inputmode="numeric" maxlength="6" placeholder="กรอกรหัส 6 หลัก">
+ <button id="loginBtn" style="width:100%" onclick="login()">เข้าสู่ระบบ</button>
+ <div id="loginMessage" class="muted" style="margin-top:12px" aria-live="polite"></div><p class="muted">ใช้รหัสเดียวกับระบบ Admin เดิม</p>
 </section>
-
-<!-- DASHBOARD -->
 <section id="dashboard" class="hidden">
-
-  <div class="topline">
-    <div>
-      <h1>Staff Center</h1>
-      <div class="muted">ภาพรวมการดำเนินงานและการจัดการร้าน</div>
-    </div>
-
-    <button class="light" onclick="loadData()">รีเฟรชข้อมูล</button>
+ <div class="topline"><div><h1>Staff Center</h1><div class="muted">ภาพรวมการดำเนินงานและการจัดการร้าน</div></div><button class="light" onclick="loadData()">รีเฟรชข้อมูล</button></div>
+ <div class="panel"><h2>เมนูจัดการร้าน</h2><div class="nav-actions"><button class="gold" onclick="openAdmin()">เปิดหน้า Admin</button><button onclick="openPromotionAdmin()">เปิดหน้า PromotionAdmin</button></div><div class="muted">เข้าสู่ระบบที่ Staff Center แล้ว ไม่ต้องกรอกรหัสซ้ำในสองหน้านี้</div></div>
+ <div class="stats"><div class="stat"><span>คิววันนี้</span><strong id="todayCount">0</strong></div><div class="stat"><span>รอยืนยัน</span><strong id="waitingCount">0</strong></div><div class="stat"><span>ยืนยันแล้ว</span><strong id="confirmedCount">0</strong></div><div class="stat"><span>รายการจองทั้งหมด</span><strong id="allCount">0</strong></div></div>
+ <div class="grid">
+  <div class="panel"><h2>รายการจอง</h2><div class="tablewrap"><table><thead><tr><th>ลูกค้า</th><th>บริการ</th><th>วันที่</th><th>เวลา</th><th>หมอนวด</th><th>สถานะ</th></tr></thead><tbody id="bookingRows"></tbody></table></div><div id="bookingEmpty" class="empty hidden">ยังไม่มีรายการจอง</div></div>
+  <div>
+   <div class="panel"><h2>บันทึกเวลาเจ้าของร้าน</h2><div id="attendanceStatus" class="notice">กำลังตรวจสอบสถานะวันนี้...</div><div class="actions"><button class="gold" id="checkinBtn" onclick="attendance('checkin')">เช็กอินเข้างาน</button><button class="light" id="checkoutBtn" onclick="attendance('checkout')">เช็กเอาต์ออกงาน</button></div></div>
+   <div class="panel"><h2>พนักงานและหมอนวด</h2><p class="muted">ขณะนี้ร้านบริหารงานโดยเจ้าของร้าน ยังไม่มีบัญชีพนักงาน ระบบจะแสดงรายชื่อหมอนวดจากฐานข้อมูลเดิม</p><div id="therapistList" class="muted">ยังไม่มีข้อมูลรายชื่อ</div></div>
   </div>
-
-  <!-- ปุ่มเปิดหน้าอื่น -->
-  <div class="panel">
-    <h2>เมนูจัดการร้าน</h2>
-    <div class="nav-actions">
-      <button class="gold" onclick="openAdmin()">
-        เปิดหน้า Admin
-      </button>
-
-      <button onclick="openPromotionAdmin()">
-        เปิดหน้า PromotionAdmin
-      </button>
-    </div>
-    <div class="muted">
-      เข้าสู่ระบบที่ Staff Center แล้ว ไม่ต้องกรอกรหัสซ้ำในสองหน้านี้
-    </div>
-  </div>
-
-  <!-- SUMMARY -->
-  <div class="stats">
-    <div class="stat">
-      <span>คิววันนี้</span>
-      <strong id="todayCount">0</strong>
-    </div>
-    <div class="stat">
-      <span>รอยืนยัน</span>
-      <strong id="waitingCount">0</strong>
-    </div>
-    <div class="stat">
-      <span>ยืนยันแล้ว</span>
-      <strong id="confirmedCount">0</strong>
-    </div>
-    <div class="stat">
-      <span>รายการจองทั้งหมด</span>
-      <strong id="allCount">0</strong>
-    </div>
-  </div>
-
-  <div class="grid">
-
-    <!-- BOOKINGS -->
-    <div class="panel">
-      <h2>รายการจอง</h2>
-      <div class="tablewrap">
-        <table>
-          <thead>
-            <tr>
-              <th>ลูกค้า</th>
-              <th>บริการ</th>
-              <th>วันที่</th>
-              <th>เวลา</th>
-              <th>หมอนวด</th>
-              <th>สถานะ</th>
-            </tr>
-          </thead>
-          <tbody id="bookingRows"></tbody>
-        </table>
-      </div>
-      <div id="bookingEmpty" class="empty hidden">
-        ยังไม่มีรายการจอง
-      </div>
-    </div>
-
-    <div>
-
-      <!-- ATTENDANCE -->
-      <div class="panel">
-        <h2>บันทึกเวลาเจ้าของร้าน</h2>
-        <div id="attendanceStatus" class="notice">
-          กำลังตรวจสอบสถานะวันนี้...
-        </div>
-
-        <div class="actions">
-          <button class="gold" id="checkinBtn"
-            onclick="attendance('checkin')">
-            เช็กอินเข้างาน
-          </button>
-
-          <button class="light" id="checkoutBtn"
-            onclick="attendance('checkout')">
-            เช็กเอาต์ออกงาน
-          </button>
-        </div>
-      </div>
-
-      <!-- THERAPISTS -->
-      <div class="panel">
-        <h2>พนักงานและหมอนวด</h2>
-        <p class="muted">
-          ขณะนี้ร้านบริหารงานโดยเจ้าของร้าน
-          ยังไม่มีบัญชีพนักงาน ระบบจะแสดงรายชื่อหมอนวดจากฐานข้อมูลเดิม
-        </p>
-        <div id="therapistList" class="muted">
-          ยังไม่มีข้อมูลรายชื่อ
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- COMMISSION -->
-  <div class="panel">
-    <h2>ตั้งค่าค่ามือ</h2>
-    <p class="muted">
-      กำหนดค่ามือได้ทั้งแบบเปอร์เซ็นต์หรือจำนวนเงินแยกตามบริการ
-      และรองรับการกำหนดรายพนักงานในอนาคต
-    </p>
-
-    <div class="formrow">
-      <div>
-        <label>บริการ</label>
-        <select id="commissionService"></select>
-      </div>
-
-      <div>
-        <label>รูปแบบค่ามือ</label>
-        <select id="commissionMode">
-          <option value="percent">เปอร์เซ็นต์ (%)</option>
-          <option value="fixed">จำนวนเงิน (บาท)</option>
-        </select>
-      </div>
-
-      <div>
-        <label>ค่ามือ</label>
-        <input id="commissionValue" type="number"
-          min="0" step="0.01" placeholder="เช่น 40 หรือ 150">
-      </div>
-
-      <div>
-        <label>ชื่อพนักงาน (ถ้ามี)</label>
-        <input id="commissionStaff"
-          placeholder="เว้นว่างได้ในตอนนี้">
-      </div>
-    </div>
-
-    <button onclick="saveCommission()">บันทึกค่ามือ</button>
-
-    <div class="tablewrap" style="margin-top:18px">
-      <table>
-        <thead>
-          <tr>
-            <th>บริการ</th>
-            <th>รูปแบบ</th>
-            <th>ค่ามือ</th>
-            <th>พนักงาน</th>
-          </tr>
-        </thead>
-        <tbody id="commissionRows"></tbody>
-      </table>
-    </div>
-
-    <div id="commissionEmpty" class="empty hidden">
-      ยังไม่ได้กำหนดค่ามือ
-    </div>
-  </div>
-
-  <div id="message"></div>
+ </div>
+ <div class="panel"><h2>ตั้งค่าค่ามือ</h2><p class="muted">กำหนดค่ามือได้ทั้งแบบเปอร์เซ็นต์หรือจำนวนเงินแยกตามบริการ และรองรับการกำหนดรายพนักงานในอนาคต</p>
+  <div class="formrow"><div><label>บริการ</label><select id="commissionService"></select></div><div><label>รูปแบบค่ามือ</label><select id="commissionMode"><option value="percent">เปอร์เซ็นต์ (%)</option><option value="fixed">จำนวนเงิน (บาท)</option></select></div><div><label>ค่ามือ</label><input id="commissionValue" type="number" min="0" step="0.01" placeholder="เช่น 40 หรือ 150"></div><div><label>ชื่อพนักงาน (ถ้ามี)</label><input id="commissionStaff" placeholder="เว้นว่างได้ในตอนนี้"></div></div>
+  <button onclick="saveCommission()">บันทึกค่ามือ</button><div class="tablewrap" style="margin-top:18px"><table><thead><tr><th>บริการ</th><th>รูปแบบ</th><th>ค่ามือ</th><th>พนักงาน</th></tr></thead><tbody id="commissionRows"></tbody></table></div><div id="commissionEmpty" class="empty hidden">ยังไม่ได้กำหนดค่ามือ</div>
+ </div><div id="message" aria-live="polite"></div>
 </section>
-
 </main>
-
 <script>
-
-// ==========================================
-// CONFIG
-// ==========================================
-
-const API_URL =
-'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
-
-const PROMOTION_ADMIN_URL =
-'https://jifenii11-cell.github.io/nicha-massage/PromotionAdmin.html';
-
-let ownerToken = '';
-let currentData = null;
-
-
-// ==========================================
-// API
-// ==========================================
-
-async function api(payload) {
-  const response = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain;charset=utf-8'
-    },
-    body: JSON.stringify(payload)
-  });
-
-  const data = await response.json();
-
-  if (!data.success) {
-    throw new Error(data.message || 'เกิดข้อผิดพลาด');
-  }
-
-  return data;
-}
-
-
-// ==========================================
-// LOGIN
-// ==========================================
-
-async function login() {
-  const pin = document.getElementById('pin').value.trim();
-  const msg = document.getElementById('loginMessage');
-
-  if (!/^\d{6}$/.test(pin)) {
-    msg.textContent = 'กรุณากรอกรหัสผ่าน 6 หลัก';
-    return;
-  }
-
-  msg.textContent = 'กำลังตรวจสอบรหัสเจ้าของร้าน...';
-
-  try {
-    const auth = await api({
-      action: 'ownerLogin',
-      pin: pin
-    });
-
-    ownerToken = auth.token;
-
-    sessionStorage.setItem(
-      'nichaOwnerToken',
-      ownerToken
-    );
-
-    await loadData();
-
-    document.getElementById('loginPanel')
-      .classList.add('hidden');
-
-    document.getElementById('dashboard')
-      .classList.remove('hidden');
-
-    document.getElementById('logoutBtn')
-      .classList.remove('hidden');
-
-  } catch (e) {
-    ownerToken = '';
-    sessionStorage.removeItem('nichaOwnerToken');
-    msg.textContent = e.message || 'เข้าสู่ระบบไม่สำเร็จ';
-  }
-}
-
-
-// ==========================================
-// OPEN ADMIN
-// ==========================================
-
-function openAdmin() {
-  if (!ownerToken) {
-    alert('กรุณาเข้าสู่ระบบก่อน');
-    return;
-  }
-
-  const url = API_URL +
-    '?page=admin#token=' +
-    encodeURIComponent(ownerToken);
-
-  window.open(url, '_blank');
-}
-
-
-// ==========================================
-// OPEN PROMOTION ADMIN
-// ==========================================
-
-function openPromotionAdmin() {
-  if (!ownerToken) {
-    alert('กรุณาเข้าสู่ระบบก่อน');
-    return;
-  }
-
-  const url = PROMOTION_ADMIN_URL +
-    '#token=' +
-    encodeURIComponent(ownerToken);
-
-  window.open(url, '_blank');
-}
-
-
-// ==========================================
-// LOGOUT
-// ==========================================
-
-async function logout() {
-  try {
-    if (ownerToken) {
-      await api({
-        action: 'ownerLogout',
-        pin: ownerToken
-      });
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
-  ownerToken = '';
-  currentData = null;
-
-  sessionStorage.removeItem('nichaOwnerToken');
-
-  document.getElementById('dashboard')
-    .classList.add('hidden');
-
-  document.getElementById('loginPanel')
-    .classList.remove('hidden');
-
-  document.getElementById('logoutBtn')
-    .classList.add('hidden');
-
-  document.getElementById('pin').value = '';
-  document.getElementById('loginMessage').textContent = '';
-}
-
-
-// ==========================================
-// LOAD DATA
-// ==========================================
-
-async function loadData() {
-  const result = await api({
-    action: 'getOwnerCenter',
-    pin: ownerToken
-  });
-
-  currentData = result.data;
-  render();
-}
-
-
-// ==========================================
-// HTML ESCAPE
-// ==========================================
-
-function esc(value) {
-  return String(value == null ? '' : value)
-    .replace(/[&<>"']/g, function(c) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[c];
-    });
-}
-
-
-// ==========================================
-// RENDER DASHBOARD
-// ==========================================
-
-function render() {
-  const d = currentData || {};
-  const s = d.summary || {};
-
-  document.getElementById('todayCount').textContent =
-    s.todayBookings || 0;
-
-  document.getElementById('waitingCount').textContent =
-    s.waitingBookings || 0;
-
-  document.getElementById('confirmedCount').textContent =
-    s.confirmedBookings || 0;
-
-  document.getElementById('allCount').textContent =
-    s.totalBookings || 0;
-
-
-  // BOOKINGS
-
-  const rows = (d.bookings || []).slice().reverse();
-
-  document.getElementById('bookingRows').innerHTML =
-    rows.map(function(b) {
-      return `
-        <tr>
-          <td>${esc(b.name)}</td>
-          <td>${esc(b.service)}</td>
-          <td>${esc(b.date)}</td>
-          <td>${esc(b.time)}</td>
-          <td>${esc(b.therapist || '-')}</td>
-          <td>
-            <span class="tag ${
-              b.status === 'ยืนยันแล้ว'
-                ? 'ok'
-                : b.status === 'รอยืนยัน'
-                ? 'wait'
-                : ''
-            }">${esc(b.status)}</span>
-          </td>
-        </tr>
-      `;
-    }).join('');
-
-  document.getElementById('bookingEmpty')
-    .classList.toggle('hidden', rows.length > 0);
-
-
-  // ATTENDANCE
-
-  const a = d.attendance;
-
-  document.getElementById('attendanceStatus').textContent =
-    a
-      ? `วันที่ ${a.date} · เข้า ${a.checkIn || 'ยังไม่ลงเวลา'} · ออก ${a.checkOut || 'ยังไม่ลงเวลา'}`
-      : 'วันนี้ยังไม่มีการลงเวลา';
-
-  document.getElementById('checkinBtn').disabled =
-    !!(a && a.checkIn);
-
-  document.getElementById('checkoutBtn').disabled =
-    !(a && a.checkIn) || !!(a && a.checkOut);
-
-
-  // SERVICES
-
-  const services = d.services || [];
-  const select = document.getElementById('commissionService');
-  const old = select.value;
-
-  select.innerHTML = services.map(function(x) {
-    return `
-      <option value="${esc(x.id)}">
-        ${esc(x.name)}
-      </option>
-    `;
-  }).join('');
-
-  if (old) select.value = old;
-
-
-  // THERAPISTS
-
-  const therapists = d.therapists || [];
-
-  document.getElementById('therapistList').textContent =
-    therapists.length
-      ? therapists.map(t => t.name).join(' · ')
-      : 'ยังไม่มีข้อมูลรายชื่อหมอนวด';
-
-
-  // COMMISSIONS
-
-  const commissions = d.commissions || [];
-
-  document.getElementById('commissionRows').innerHTML =
-    commissions.map(function(c) {
-      return `
-        <tr>
-          <td>${esc(c.serviceName)}</td>
-          <td>${c.mode === 'percent' ? 'เปอร์เซ็นต์' : 'จำนวนเงิน'}</td>
-          <td>${esc(c.value)}${c.mode === 'percent' ? '%' : ' บาท'}</td>
-          <td>${esc(c.staffName || '-')}</td>
-        </tr>
-      `;
-    }).join('');
-
-  document.getElementById('commissionEmpty')
-    .classList.toggle('hidden', commissions.length > 0);
-}
-
-
-// ==========================================
-// ATTENDANCE
-// ==========================================
-
-async function attendance(type) {
-  try {
-    const result = await api({
-      action: 'ownerAttendance',
-      pin: ownerToken,
-      type: type
-    });
-
-    showMessage(
-      result.result.message
-    );
-
-    await loadData();
-
-  } catch (e) {
-    showMessage(e.message, true);
-  }
-}
-
-
-// ==========================================
-// SAVE COMMISSION
-// ==========================================
-
-async function saveCommission() {
-  const serviceId =
-    document.getElementById('commissionService').value;
-
-  const service = (currentData.services || [])
-    .find(function(s) {
-      return String(s.id) === String(serviceId);
-    });
-
-  if (!service) {
-    showMessage(
-      'ไม่พบรายการบริการ กรุณาตรวจสอบชีตรายการบริการ',
-      true
-    );
-    return;
-  }
-
-  const data = {
-    serviceId: service.id,
-    serviceName: service.name,
-    mode: document.getElementById('commissionMode').value,
-    value: document.getElementById('commissionValue').value,
-    staffName: document.getElementById('commissionStaff').value
-  };
-
-  try {
-    const result = await api({
-      action: 'saveOwnerCommission',
-      pin: ownerToken,
-      data: data
-    });
-
-    showMessage(result.result.message);
-    await loadData();
-
-  } catch (e) {
-    showMessage(e.message, true);
-  }
-}
-
-
-// ==========================================
-// MESSAGE
-// ==========================================
-
-function showMessage(text, error) {
-  const el = document.getElementById('message');
-  el.textContent = text;
-  el.style.color = error ? '#a84d43' : '#414936';
-}
-
-
-// ==========================================
-// ENTER TO LOGIN
-// ==========================================
-
-document.getElementById('pin')
-  .addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      login();
-    }
-  });
-
+'use strict';
+const API_URL='https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+const PROMOTION_ADMIN_URL='https://jifenii11-cell.github.io/nicha-massage/PromotionAdmin.html';
+let ownerToken='';let currentData=null;
+async function api(payload){let response;try{response=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});}catch(e){throw new Error('เชื่อมต่อ Google Apps Script ไม่สำเร็จ กรุณาตรวจสอบอินเทอร์เน็ต');}let data;try{data=await response.json();}catch(e){throw new Error('ระบบไม่ได้ส่งข้อมูล JSON กลับมา กรุณาตรวจสอบการ Deploy');}if(!data.success)throw new Error(data.message||'เกิดข้อผิดพลาด');return data;}
+function showDashboard(){document.getElementById('loginPanel').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');document.getElementById('logoutBtn').classList.remove('hidden');}
+function showLogin(message){ownerToken='';currentData=null;sessionStorage.removeItem('nichaOwnerToken');document.getElementById('dashboard').classList.add('hidden');document.getElementById('loginPanel').classList.remove('hidden');document.getElementById('logoutBtn').classList.add('hidden');if(message)document.getElementById('loginMessage').textContent=message;}
+async function login(){const pin=document.getElementById('pin').value.trim();const msg=document.getElementById('loginMessage');const btn=document.getElementById('loginBtn');if(!/^\d{6}$/.test(pin)){msg.textContent='กรุณากรอกรหัสผ่าน 6 หลัก';return;}btn.disabled=true;msg.textContent='กำลังตรวจสอบรหัสเจ้าของร้าน...';try{const auth=await api({action:'ownerLogin',pin});if(!auth.token)throw new Error('ระบบไม่ส่ง Session Token กลับมา');ownerToken=auth.token;sessionStorage.setItem('nichaOwnerToken',ownerToken);await loadData();showDashboard();msg.textContent='';}catch(e){ownerToken='';sessionStorage.removeItem('nichaOwnerToken');msg.textContent=e.message||'เข้าสู่ระบบไม่สำเร็จ';}finally{btn.disabled=false;}}
+async function resumeSession(){const token=sessionStorage.getItem('nichaOwnerToken')||'';if(!token)return;ownerToken=token;const msg=document.getElementById('loginMessage');msg.textContent='กำลังตรวจสอบ Session เดิม...';try{await loadData();showDashboard();msg.textContent='';}catch(e){showLogin('Session หมดอายุหรือไม่ถูกต้อง กรุณาเข้าสู่ระบบใหม่');}}
+function openAdmin(){if(!ownerToken){alert('กรุณาเข้าสู่ระบบก่อน');return;}window.open(API_URL+'?page=admin#token='+encodeURIComponent(ownerToken),'_blank');}
+function openPromotionAdmin(){if(!ownerToken){alert('กรุณาเข้าสู่ระบบก่อน');return;}window.open(PROMOTION_ADMIN_URL+'#token='+encodeURIComponent(ownerToken),'_blank');}
+async function logout(){const token=ownerToken;try{if(token)await api({action:'ownerLogout',pin:token});}catch(e){console.error(e);}document.getElementById('pin').value='';document.getElementById('loginMessage').textContent='ออกจากระบบแล้ว';showLogin('ออกจากระบบแล้ว');}
+async function loadData(){if(!ownerToken)throw new Error('ไม่พบ Session กรุณาเข้าสู่ระบบใหม่');const result=await api({action:'getOwnerCenter',pin:ownerToken});currentData=result.data;render();}
+function esc(value){return String(value==null?'':value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function render(){const d=currentData||{};const s=d.summary||{};document.getElementById('todayCount').textContent=s.todayBookings||0;document.getElementById('waitingCount').textContent=s.waitingBookings||0;document.getElementById('confirmedCount').textContent=s.confirmedBookings||0;document.getElementById('allCount').textContent=s.totalBookings||0;
+ const rows=(d.bookings||[]).slice().reverse();document.getElementById('bookingRows').innerHTML=rows.map(b=>`<tr><td>${esc(b.name)}</td><td>${esc(b.service)}</td><td>${esc(b.date)}</td><td>${esc(b.time)}</td><td>${esc(b.therapist||'-')}</td><td><span class="tag ${b.status==='ยืนยันแล้ว'?'ok':b.status==='รอยืนยัน'?'wait':''}">${esc(b.status)}</span></td></tr>`).join('');document.getElementById('bookingEmpty').classList.toggle('hidden',rows.length>0);
+ const a=d.attendance;document.getElementById('attendanceStatus').textContent=a?`วันที่ ${a.date} · เข้า ${a.checkIn||'ยังไม่ลงเวลา'} · ออก ${a.checkOut||'ยังไม่ลงเวลา'}`:'วันนี้ยังไม่มีการลงเวลา';document.getElementById('checkinBtn').disabled=!!(a&&a.checkIn);document.getElementById('checkoutBtn').disabled=!(a&&a.checkIn)||!!(a&&a.checkOut);
+ const services=d.services||[];const select=document.getElementById('commissionService');const old=select.value;select.innerHTML=services.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('');if(old)select.value=old;
+ const therapists=d.therapists||[];document.getElementById('therapistList').textContent=therapists.length?therapists.map(t=>t.name).join(' · '):'ยังไม่มีข้อมูลรายชื่อหมอนวด';
+ const commissions=d.commissions||[];document.getElementById('commissionRows').innerHTML=commissions.map(c=>`<tr><td>${esc(c.serviceName)}</td><td>${c.mode==='percent'?'เปอร์เซ็นต์':'จำนวนเงิน'}</td><td>${esc(c.value)}${c.mode==='percent'?'%':' บาท'}</td><td>${esc(c.staffName||'-')}</td></tr>`).join('');document.getElementById('commissionEmpty').classList.toggle('hidden',commissions.length>0);}
+async function attendance(type){try{const result=await api({action:'ownerAttendance',pin:ownerToken,type});showMessage(result.result.message);await loadData();}catch(e){showMessage(e.message,true);}}
+async function saveCommission(){const serviceId=document.getElementById('commissionService').value;const service=(currentData.services||[]).find(s=>String(s.id)===String(serviceId));if(!service){showMessage('ไม่พบรายการบริการ กรุณาตรวจสอบชีตรายการบริการ',true);return;}const data={serviceId:service.id,serviceName:service.name,mode:document.getElementById('commissionMode').value,value:document.getElementById('commissionValue').value,staffName:document.getElementById('commissionStaff').value};try{const result=await api({action:'saveOwnerCommission',pin:ownerToken,data});showMessage(result.result.message);await loadData();}catch(e){showMessage(e.message,true);}}
+function showMessage(text,error){const el=document.getElementById('message');el.textContent=text;el.style.color=error?'#a84d43':'#414936';}
+document.getElementById('pin').addEventListener('keydown',e=>{if(e.key==='Enter')login();});window.addEventListener('DOMContentLoaded',resumeSession);
 </script>
 </body>
 </html>
