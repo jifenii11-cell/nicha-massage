@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#687054">
+  <title>บรรยากาศร้าน | NICHA SPA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #687054;
+      --green-dark: #505a43;
+      --green-deep: #414936;
+      --green-soft: #899078;
+      --cream: #f5ebdd;
+      --paper: #fffdf8;
+      --gold: #c6ad7a;
+      --gold-light: #d8c6a0;
+      --ink: #343a30;
+      --muted: #858778;
+      --line: #e9e1d4;
+      --shadow: 0 14px 38px rgba(65, 73, 54, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: "Kanit", sans-serif;
+      font-weight: 300;
+    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; }
+
+    .topline {
+      padding: 8px 14px;
+      color: #f5ebdd;
+      background: var(--green-deep);
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 2.2px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,253,248,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 76px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font: 27px "Playfair Display", serif;
+      background: #fff;
+    }
+    .brand-name {
+      color: var(--green-dark);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .brand-name small {
+      display: block;
+      margin-top: 3px;
+      color: #a38d62;
+      font: 9px "Playfair Display", serif;
+      letter-spacing: 2px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 12px; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 17px;
+      color: var(--green-dark);
+      background: transparent;
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+      font-size: 12px;
+      transition: .2s ease;
+    }
+    .back-btn:hover { color: white; background: var(--green); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 68px 20px 64px;
+      text-align: center;
+      color: #fffdf8;
+      background:
+        linear-gradient(120deg, rgba(48,58,43,.91), rgba(104,112,84,.86)),
+        radial-gradient(circle at 20% 20%, #a8a88d, transparent 40%);
+    }
+    .hero::before, .hero::after {
+      position: absolute;
+      content: "✧";
+      color: rgba(216,198,160,.45);
+      font-size: 72px;
+      font-family: serif;
+    }
+    .hero::before { left: 9%; top: 12px; }
+    .hero::after { right: 10%; bottom: 5px; }
+    .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: auto; }
+    .eyebrow {
+      color: var(--gold-light);
+      font: 11px "Playfair Display", serif;
+      letter-spacing: 4px;
+    }
+    .hero h1 {
+      margin: 13px 0 12px;
+      font-size: clamp(29px, 5vw, 46px);
+      font-weight: 400;
+      letter-spacing: .5px;
+    }
+    .hero p {
+      margin: 0;
+      color: #f0eee5;
+      font-size: 14px;
+      line-height: 2;
+    }
+    .hero-rule {
+      width: 70px;
+      height: 1px;
+      margin: 24px auto 0;
+      background: var(--gold-light);
+    }
+
+    main {
+      width: min(1120px, calc(100% - 36px));
+      margin: auto;
+      padding: 52px 0 70px;
+    }
+    .intro { max-width: 680px; margin: 0 auto 34px; text-align: center; }
+    .intro .eyebrow { color: #a18a5e; }
+    .intro h2 {
+      margin: 9px 0 8px;
+      color: var(--green-dark);
+      font-size: 25px;
+      font-weight: 400;
+    }
+    .intro p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
+
+    .gallery-status {
+      min-height: 26px;
+      margin: 0 0 20px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .gallery-card {
+      overflow: hidden;
+      min-width: 0;
+      background: var(--paper);
+      border: 1px solid rgba(198,173,122,.42);
+      border-radius: 15px;
+      box-shadow: 0 7px 22px rgba(65,73,54,.07);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .gallery-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .photo-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e9e7dc;
+    }
+    .photo-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .35s ease, transform .5s ease;
+      cursor: zoom-in;
+    }
+    .photo-wrap img.ready { opacity: 1; }
+    .gallery-card:hover .photo-wrap img.ready { transform: scale(1.035); }
+    .photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      color: #858778;
+      text-align: center;
+      font-size: 12px;
+      background: linear-gradient(135deg, #eeede4, #e4e4d8);
+    }
+    .photo-placeholder.error { color: #8b6e55; }
+    .card-caption {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      color: var(--green-dark);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .empty-state {
+      display: none;
+      padding: 42px 18px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255,253,248,.7);
+      border: 1px dashed var(--gold);
+      border-radius: 14px;
+    }
+    .retry-btn {
+      margin-top: 14px;
+      padding: 9px 20px;
+      color: white;
+      background: var(--green);
+      border: 0;
+      border-radius: 24px;
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 26px 18px;
+      color: #e9e2d2;
+      background: var(--green-deep);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .5px;
+    }
+    footer strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--gold-light);
+      font: 14px "Playfair Display", serif;
+      letter-spacing: 2px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(22,27,21,.92);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-content { max-width: min(100%, 1050px); max-height: 100%; text-align: center; }
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: 78vh;
+      margin: auto;
+      object-fit: contain;
+      border: 1px solid rgba(216,198,160,.5);
+      border-radius: 8px;
+    }
+    .lightbox-caption { margin-top: 12px; color: #f5ebdd; font-size: 13px; }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
+      color: white;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 50%;
+      font-size: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; }
+      .hero { padding: 58px 18px 54px; }
+    }
+    @media (max-width: 520px) {
+      .topline { font-size: 8px; letter-spacing: 1.4px; }
+      .header-inner { width: calc(100% - 26px); min-height: 67px; }
+      .brand-mark { width: 38px; height: 38px; flex-basis: 38px; font-size: 23px; }
+      .brand-name { font-size: 13px; }
+      .brand-name small { font-size: 8px; letter-spacing: 1.5px; }
+      .back-btn { padding: 8px 12px; font-size: 11px; }
+      .hero { padding: 48px 18px 45px; }
+      .hero p { font-size: 12px; }
+      main { width: calc(100% - 26px); padding: 38px 0 50px; }
+      .intro h2 { font-size: 21px; }
+      .intro p { font-size: 12px; }
+      .gallery-grid { gap: 10px; }
+      .card-caption { min-height: 45px; padding: 9px 10px; font-size: 11px; }
+      .lightbox { padding: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topline">NICHA WELLNESS &amp; SPA &nbsp; • &nbsp; RELAX · RESTORE · RECHARGE</div>
+
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="https://jifenii11-cell.github.io/nicha-massage/" target="_top">
+        <span class="brand-mark">N</span>
+        <span class="brand-name">
+          ณิชานวดเพื่อสุขภาพ
+          <small>NICHA WELLNESS &amp; SPA</small>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="back-btn" href="https://jifenii11-cell.github.io/nicha-massage/" target="_top">← กลับหน้าหลัก</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">A MOMENT OF PEACE</div>
+      <h1>บรรยากาศร้าน NICHA SPA</h1>
+      <p>พื้นที่แห่งการพักผ่อน ที่ใส่ใจทุกรายละเอียด<br>ให้ทุกช่วงเวลาเป็นช่วงเวลาแห่งความสุขของคุณ</p>
+      <div class="hero-rule"></div>
+    </div>
+  </section>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">WELCOME TO NICHA WELLNESS &amp; SPA</div>
+      <h2>สัมผัสบรรยากาศแห่งการผ่อนคลาย</h2>
+      <p>ชมบรรยากาศและมุมต่าง ๆ ภายในร้านณิชานวดเพื่อสุขภาพ<br>เราพร้อมดูแลคุณด้วยความอบอุ่นและใส่ใจ</p>
+    </section>
+
+    <div id="galleryStatus" class="gallery-status" aria-live="polite">กำลังโหลดรูปภาพ...</div>
+    <section id="galleryGrid" class="gallery-grid" aria-label="ภาพบรรยากาศร้าน"></section>
+    <div id="emptyState" class="empty-state">
+      <div id="emptyMessage">ยังไม่พบรูปภาพในขณะนี้</div>
+      <button class="retry-btn" type="button" onclick="loadGallery()">ลองโหลดอีกครั้ง</button>
+    </div>
+  </main>
+
+  <footer>
+    <strong>NICHA WELLNESS &amp; SPA</strong>
+    ณิชานวดเพื่อสุขภาพ · ดูแลคุณด้วยความใส่ใจ
+  </footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="แสดงภาพขนาดใหญ่" onclick="closeLightbox(event)">
+    <button class="lightbox-close" type="button" aria-label="ปิด" onclick="closeLightbox()">×</button>
+    <div class="lightbox-content">
+      <img id="lightboxImage" alt="">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    // หน้า Gallery อยู่บน GitHub แต่ข้อมูลและรูปยังอ่านจาก Apps Script เดิม
+    const NICHA_GALLERY_API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+    let galleryItems = [];
+    let loadedCount = 0;
+    let failedCount = 0;
+    let jsonpCounter = 0;
+
+    function setStatus(message) {
+      document.getElementById('galleryStatus').textContent = message || '';
+    }
+
+    // JSONP ช่วยให้ GitHub Pages เรียก Apps Script ได้โดยไม่ติดปัญหา CORS
+    function loadJsonp(params, callback, timeoutMs) {
+      const callbackName = 'nichaGalleryJsonp_' + (++jsonpCounter) + '_' + Date.now();
+      const script = document.createElement('script');
+      const query = new URLSearchParams(params);
+      query.set('callback', callbackName);
+      let finished = false;
+
+      function cleanup() {
+        if (script.parentNode) script.parentNode.removeChild(script);
+        try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
+        clearTimeout(timer);
+      }
+
+      function finish(error, data) {
+        if (finished) return;
+        finished = true;
+        cleanup();
+        callback(error, data);
+      }
+
+      window[callbackName] = function(data) { finish(null, data); };
+      script.onerror = function() { finish(new Error('เชื่อมต่อระบบรูปภาพไม่สำเร็จ')); };
+      script.src = NICHA_GALLERY_API + '?' + query.toString();
+      const timer = setTimeout(function() {
+        finish(new Error('ระบบรูปภาพใช้เวลาตอบกลับนานเกินไป'));
+      }, timeoutMs || 30000);
+      document.head.appendChild(script);
+    }
+
+    function normalizeGalleryItems(response) {
+      let rows = response;
+      if (rows && !Array.isArray(rows) && typeof rows === 'object') {
+        if (rows.success === false) throw new Error(rows.error || 'โหลดข้อมูลรูปภาพไม่สำเร็จ');
+        rows = rows.images || rows.items || rows.data || rows.result || [];
+      }
+      if (!Array.isArray(rows)) return [];
+
+      return rows.map(function(raw) {
+        if (!raw || typeof raw !== 'object') return null;
+        const id = String(raw.id || raw.fileId || raw.fileID || raw.file_id || '').trim();
+        const active = raw.active;
+        const activeText = String(active == null ? '' : active).trim().toLowerCase();
+        const isActive = active == null || active === '' || active === true ||
+          activeText === 'true' || activeText === '1' || activeText === 'yes';
+        if (!id || !isActive) return null;
+        return Object.assign({}, raw, {
+          id: id,
+          caption: raw.caption || raw.fileName || raw.filename || '',
+          imageUrl: raw.imageUrl || raw.imageURL || '',
+          fallbackUrl: raw.fallbackUrl || raw.fallbackURL || '',
+          _dataUrl: '', _loaded: false, _failed: false
+        });
+      }).filter(Boolean);
+    }
+
+    function loadGallery() {
+      const grid = document.getElementById('galleryGrid');
+      document.getElementById('emptyState').style.display = 'none';
+      grid.innerHTML = '';
+      loadedCount = 0;
+      failedCount = 0;
+      galleryItems = [];
+      setStatus('กำลังเชื่อมต่อข้อมูลรูปภาพ...');
+
+      loadJsonp({ action: 'getGallery' }, function(error, response) {
+        if (error) {
+          showGalleryError('โหลดรายการรูปภาพไม่สำเร็จ: ' + error.message);
+          return;
+        }
+        try {
+          const activeItems = normalizeGalleryItems(response);
+          galleryItems = activeItems;
+          if (!activeItems.length) {
+            setStatus('');
+            showEmpty('ขณะนี้ยังไม่มีรูปภาพที่เปิดแสดง กรุณาตรวจสอบรายการรูปในระบบจัดการ Gallery');
+            return;
+          }
+          activeItems.forEach(function(item, index) { createGalleryCard(item, index); });
+          setStatus('พบรูปภาพ ' + activeItems.length + ' รูป กำลังโหลด...');
+          loadImagesInBatches(activeItems, 2);
+        } catch (err) {
+          showGalleryError(err.message || 'ข้อมูลรูปภาพไม่ถูกต้อง');
+        }
+      }, 30000);
+    }
+
+    function createGalleryCard(item, index) {
+      const grid = document.getElementById('galleryGrid');
+      const card = document.createElement('article');
+      card.className = 'gallery-card';
+      card.dataset.index = String(index);
+      const photo = document.createElement('div');
+      photo.className = 'photo-wrap';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'photo-placeholder';
+      placeholder.textContent = 'กำลังโหลดรูปภาพ...';
+      const img = document.createElement('img');
+      img.alt = item.caption || item.fileName || 'บรรยากาศร้าน NICHA SPA';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('load', function() {
+        if (!img.naturalWidth) return;
+        img.classList.add('ready');
+        placeholder.style.display = 'none';
+        if (!item._loaded) { item._loaded = true; loadedCount++; }
+        updateGalleryProgress();
+      });
+      img.addEventListener('error', function() {
+        if (img.dataset.directIndex !== 'done') {
+          tryDirectFallback(item, img, placeholder);
+        } else {
+          markImageFailed(item, placeholder);
+        }
+      });
+      photo.appendChild(placeholder);
+      photo.appendChild(img);
+      const caption = document.createElement('div');
+      caption.className = 'card-caption';
+      caption.textContent = item.caption || 'NICHA SPA';
+      card.appendChild(photo);
+      card.appendChild(caption);
+      grid.appendChild(card);
+      img.addEventListener('click', function() {
+        if (item._loaded) openLightbox(item, img.src);
+      });
+      item._imgElement = img;
+      item._placeholder = placeholder;
+    }
+
+    function loadImagesInBatches(items, batchSize) {
+      let cursor = 0;
+      function nextBatch() {
+        const batch = items.slice(cursor, cursor + batchSize);
+        cursor += batch.length;
+        if (!batch.length) { finishGalleryLoading(); return; }
+        let remaining = batch.length;
+        batch.forEach(function(item) {
+          loadImageDataFromServer(item, function() {
+            remaining--;
+            if (remaining === 0) nextBatch();
+          });
+        });
+      }
+      nextBatch();
+    }
+
+    // ดึงรูปผ่าน Apps Script เฉพาะกรณีสำรอง เพื่อรองรับไฟล์ Drive ที่ไม่เปิดลิงก์สาธารณะ
+    function loadImageDataFromServer(item, done) {
+      loadJsonp({ action: 'getGalleryImage', fileId: item.id }, function(error, response) {
+        if (!error && response && response.success &&
+            typeof response.dataUrl === 'string' &&
+            /^data:image\/(jpeg|png|webp|gif);base64,/i.test(response.dataUrl)) {
+          item._dataUrl = response.dataUrl;
+          item._imgElement.src = response.dataUrl;
+          done();
+          return;
+        }
+        tryDirectFallback(item, item._imgElement, item._placeholder, done);
+      }, 45000);
+    }
+
+    function tryDirectFallback(item, img, placeholder, done) {
+      const urls = [item && item.imageUrl, item && item.fallbackUrl].filter(Boolean);
+      const current = Number(img.dataset.directIndex || 0);
+      if (current >= urls.length) {
+        img.dataset.directIndex = 'done';
+        markImageFailed(item, placeholder);
+        if (typeof done === 'function') done();
+        return;
+      }
+      img.dataset.directIndex = String(current + 1);
+      img.onload = function() {
+        if (!img.naturalWidth) { img.onerror(); return; }
+        img.classList.add('ready');
+        placeholder.style.display = 'none';
+        if (!item._loaded) { item._loaded = true; loadedCount++; }
+        updateGalleryProgress();
+        if (typeof done === 'function') done();
+      };
+      img.onerror = function() { tryDirectFallback(item, img, placeholder, done); };
+      img.src = urls[current];
+    }
+
+    function markImageFailed(item, placeholder) {
+      if (item && !item._failed) { item._failed = true; failedCount++; }
+      if (placeholder) {
+        placeholder.textContent = 'ไม่สามารถแสดงรูปนี้ได้';
+        placeholder.classList.add('error');
+      }
+      updateGalleryProgress();
+    }
+
+    function updateGalleryProgress() {
+      const total = galleryItems.length;
+      setStatus('แสดงรูปได้ ' + loadedCount + ' / ' + total + ' รูป' +
+        (failedCount ? ' · โหลดไม่สำเร็จ ' + failedCount + ' รูป' : ''));
+    }
+
+    function finishGalleryLoading() {
+      const total = galleryItems.length;
+      const shown = galleryItems.filter(function(item) { return item._loaded; }).length;
+      if (!shown) showEmpty('พบรายการรูป ' + total + ' รูป แต่โหลดไฟล์ภาพไม่สำเร็จ กรุณาตรวจสอบสิทธิ์ไฟล์ Google Drive');
+      else setStatus('แสดงรูปภาพ ' + shown + ' จากทั้งหมด ' + total + ' รูป');
+    }
+
+    function showEmpty(message) {
+      document.getElementById('emptyMessage').textContent = message;
+      document.getElementById('emptyState').style.display = 'block';
+    }
+    function showGalleryError(message) { setStatus(''); showEmpty(message); }
+
+    function openLightbox(item, src) {
+      const lightbox = document.getElementById('lightbox');
+      const image = document.getElementById('lightboxImage');
+      image.src = item._dataUrl || src;
+      image.alt = item.caption || 'บรรยากาศร้าน NICHA SPA';
+      document.getElementById('lightboxCaption').textContent = item.caption || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(event) {
+      if (event && event.target && event.target.id !== 'lightbox' &&
+          !event.target.classList.contains('lightbox-close')) return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') closeLightbox();
+    });
+    document.addEventListener('DOMContentLoaded', loadGallery);
+  </script>
+</body>
+</html>
