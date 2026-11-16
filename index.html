@@ -428,14 +428,39 @@ button {
 }
 
 .promo-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 14px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) #e4dfd3;
+}
+
+.promo-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.promo-grid::-webkit-scrollbar-track {
+  background: #e4dfd3;
+  border-radius: 20px;
+}
+
+.promo-grid::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 20px;
 }
 
 .promo-card {
   position: relative;
+  flex: 0 0 320px;
+  min-width: 0;
   min-height: 210px;
+  scroll-snap-align: start;
   border-radius: 13px;
   overflow: hidden;
   display: flex;
@@ -526,6 +551,70 @@ button {
 .promo-card.light .promo-link {
   background: var(--green);
   color: white;
+}
+
+
+/* LIVE PROMOTIONS FROM PROMOTION ADMIN */
+.promo-heading {
+  padding: 28px 15px 18px;
+}
+
+.promo-loading,
+.promo-empty {
+  flex: 0 0 100%;
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dynamic-promo {
+  background: linear-gradient(135deg, #414936, #73785c);
+  color: var(--gold-light);
+}
+
+.dynamic-promo::after {
+  background: linear-gradient(90deg, rgba(48,56,41,.18), rgba(48,56,41,.94));
+}
+
+.dynamic-promo .promo-card-content {
+  margin-left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.dynamic-promo h3 {
+  color: #F4E8D0;
+  overflow-wrap: anywhere;
+}
+
+.dynamic-promo p {
+  color: #F0E6D5;
+}
+
+.dynamic-promo .promo-price {
+  display: inline-block;
+  margin-top: 9px;
+  color: #F6D99F;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.dynamic-promo .promo-old-price {
+  margin-left: 7px;
+  color: #E7E0D2;
+  font-size: 11px;
+  text-decoration: line-through;
+}
+
+.dynamic-promo .promo-link {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-dark);
+  border-radius: 30px;
+  padding: 7px 16px;
+  margin-top: 10px;
+  font-size: 11px;
 }
 
 /* SECTION HEADING */
@@ -1066,12 +1155,15 @@ button {
   }
 
   .promo-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 9px;
+    gap: 10px;
+    padding-bottom: 12px;
   }
 
   .promo-card {
-    min-height: 155px;
+    flex: 0 0 78vw;
+    width: 78vw;
+    max-width: 320px;
+    min-height: 165px;
   }
 
   .promo-card-content {
@@ -1193,7 +1285,8 @@ button {
   }
 
   .promo-card {
-    min-height: 140px;
+    flex-basis: 84vw;
+    min-height: 145px;
   }
 
   .promo-card h3 {
@@ -1382,140 +1475,17 @@ button {
 
 </nav>
 
-<!-- FOUR PROMOTION BANNERS -->
-
-<section class="promo-section" id="promotions">
-
-  <div class="promo-grid">
-
-    <!-- MASSAGE -->
-
-    <a class="promo-card left-image"
-       href="#services">
-
-      <img
-        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
-        alt="Massage for health"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          MASSAGE
-          <br>
-          FOR HEALTH
-        </h3>
-
-        <p>
-          นวดเพื่อสุขภาพ
-          <br>
-          ด้วยเทคนิคเฉพาะของณิชา
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- SIGNATURE -->
-
-    <a class="promo-card light"
-       href="#signature">
-
-      <img
-        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-        alt="Signature collection"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          SIGNATURE
-          <br>
-          COLLECTION
-        </h3>
-
-        <p>
-          คัดสรรโปรแกรมยอดนิยม
-          <br>
-          เพื่อการผ่อนคลายที่แท้จริง
-        </p>
-
-        <span class="promo-link">
-          ดูรายละเอียด
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- RELAX -->
-
-    <a class="promo-card left-image"
-       href="#booking">
-
-      <img
-        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
-        alt="Relax refresh rebalance"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          RELAX
-          <br>
-          REFRESH
-          <br>
-          REBALANCE
-        </h3>
-
-        <p>
-          ผ่อนคลาย
-          <br>
-          ฟื้นฟูร่างกายและจิตใจ
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- MEMBERSHIP -->
-
-    <a class="promo-card light"
-       href="#contact">
-
-      <img
-        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
-        alt="NICHA SPA membership"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          NICHA SPA
-          <br>
-          MEMBERSHIP
-        </h3>
-
-        <p>
-          สะสมแต้ม แลกรับสิทธิพิเศษ
-          <br>
-          มากมายเฉพาะสมาชิก
-        </p>
-
-        <span class="promo-link">
-          สมัครสมาชิกเลย
-        </span>
-
-      </div>
-
-    </a>
-
+<!-- LIVE PROMOTIONS ONLY: โหลดจาก PromotionAdmin / Google Sheets -->
+<section class="promo-section" id="promotions" aria-label="โปรโมชั่นพิเศษ NICHA SPA">
+  <div class="section-heading promo-heading">
+    <div class="eyebrow">SPECIAL OFFERS</div>
+    <h2>โปรโมชั่น <span>พิเศษ</span></h2>
+    <div class="heading-decoration">✦</div>
+    <p>สิทธิพิเศษและข้อเสนอจาก NICHA SPA</p>
   </div>
-
+  <div class="promo-grid" id="nichaPromotionGrid" aria-live="polite">
+    <div class="promo-loading">กำลังโหลดโปรโมชั่น...</div>
+  </div>
 </section>
 
 <!-- SERVICES -->
@@ -2064,6 +2034,102 @@ button {
   </a>
 
 </div>
+
+<script>
+/* แสดงเฉพาะโปรโมชั่นที่เปิดใช้งานจาก PromotionAdmin */
+(function () {
+  var PROMOTION_API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+  var grid = document.getElementById('nichaPromotionGrid');
+  if (!grid) return;
+
+  function showMessage(message) {
+    grid.innerHTML = '';
+    var note = document.createElement('div');
+    note.className = 'promo-empty';
+    note.textContent = message;
+    grid.appendChild(note);
+  }
+
+  function formatBaht(value) {
+    if (value === '' || value === null || typeof value === 'undefined') return '';
+    var number = Number(value);
+    if (!isFinite(number)) return '';
+    return number.toLocaleString('th-TH') + ' บาท';
+  }
+
+  function addText(parent, tag, className, value) {
+    var el = document.createElement(tag);
+    if (className) el.className = className;
+    el.textContent = value || '';
+    parent.appendChild(el);
+    return el;
+  }
+
+  function renderPromotions(items) {
+    grid.innerHTML = '';
+    var validItems = Array.isArray(items) ? items.filter(function (p) {
+      return p && String(p.title || '').trim();
+    }) : [];
+
+    if (!validItems.length) {
+      showMessage('ขณะนี้ยังไม่มีโปรโมชั่นที่เปิดใช้งาน');
+      return;
+    }
+
+    validItems.forEach(function (promotion) {
+      var card = document.createElement('a');
+      card.className = 'promo-card dynamic-promo';
+      card.href = 'https://jifenii11-cell.github.io/nicha-massage/Promotions.html';
+      card.setAttribute('aria-label', 'ดูโปรโมชั่น ' + promotion.title);
+      card.setAttribute('title', promotion.title);
+
+      if (promotion.imageUrl) {
+        var img = document.createElement('img');
+        img.src = promotion.imageUrl;
+        img.alt = promotion.title;
+        img.loading = 'lazy';
+        card.appendChild(img);
+      }
+
+      var content = document.createElement('div');
+      content.className = 'promo-card-content';
+      card.appendChild(content);
+      addText(content, 'h3', '', promotion.title);
+
+      if (promotion.description) {
+        addText(content, 'p', '', promotion.description);
+      }
+
+      var priceWrap = document.createElement('div');
+      var special = formatBaht(promotion.promoPrice);
+      var original = formatBaht(promotion.originalPrice);
+      if (special) addText(priceWrap, 'span', 'promo-price', special);
+      if (original && original !== special) {
+        addText(priceWrap, 'span', 'promo-old-price', original);
+      }
+      if (priceWrap.childNodes.length) content.appendChild(priceWrap);
+      addText(content, 'span', 'promo-link', 'ดูโปรโมชั่น');
+      grid.appendChild(card);
+    });
+  }
+
+  window.nichaPromotionsCallback = function (response) {
+    if (!response || response.success !== true) {
+      showMessage('ไม่สามารถโหลดโปรโมชั่นได้ กรุณาลองใหม่อีกครั้ง');
+      return;
+    }
+    renderPromotions(response.promotions || []);
+  };
+
+  var script = document.createElement('script');
+  script.src = PROMOTION_API + '?action=getPromotions&callback=nichaPromotionsCallback&_=' + Date.now();
+  script.async = true;
+  script.onerror = function () {
+    showMessage('ไม่สามารถเชื่อมต่อฐานข้อมูลโปรโมชั่นได้');
+  };
+  document.head.appendChild(script);
+})();
+</script>
 
 </body>
 </html>
