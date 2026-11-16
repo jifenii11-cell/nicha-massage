@@ -2079,8 +2079,8 @@ button {
     validItems.forEach(function (promotion) {
       var card = document.createElement('a');
       card.className = 'promo-card dynamic-promo';
-      card.href = '#booking';
-      card.setAttribute('aria-label', 'จองบริการ ' + promotion.title);
+      card.href = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking';
+      card.setAttribute('aria-label', 'จองคอร์สนี้: ' + promotion.title);
       card.setAttribute('title', promotion.title);
 
       if (promotion.imageUrl) {
@@ -2108,7 +2108,7 @@ button {
         addText(priceWrap, 'span', 'promo-old-price', original);
       }
       if (priceWrap.childNodes.length) content.appendChild(priceWrap);
-      addText(content, 'span', 'promo-link', 'จอง');
+      addText(content, 'span', 'promo-link', 'จองคอร์สนี้');
       grid.appendChild(card);
     });
   }
