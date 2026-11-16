@@ -419,103 +419,114 @@ button {
   background: var(--gold);
 }
 
-/* PROMOTION CARDS — ONE HORIZONTAL ROW */
+/* PROMOTION CARDS */
 
 .promo-section {
   max-width: 1380px;
   margin: auto;
-  padding: 25px 18px 18px;
+  padding: 25px 10px 12px;
 }
-
-.promo-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  margin: 0 2px 13px;
-}
-
-.promo-heading h2 {
-  font-family: Georgia,'Noto Serif Thai',serif;
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--green);
-}
-
-.promo-heading small {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-.promo-controls { display:flex; gap:7px; }
-.promo-arrow {
-  width:34px; height:34px; border-radius:50%;
-  border:1px solid var(--gold); background:var(--paper);
-  color:var(--green); cursor:pointer; font-size:18px;
-}
-.promo-arrow:hover { background:var(--green); color:var(--gold-light); }
 
 .promo-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 14px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold) #e4dfd3;
-  padding: 2px 2px 13px;
-  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
 }
 
 .promo-card {
   position: relative;
-  flex: 0 0 310px;
-  width: 310px;
-  min-width: 0;
-  height: 205px;
+  min-height: 210px;
   border-radius: 13px;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   background: var(--green);
   color: var(--gold-light);
-  transition: .25s;
-  scroll-snap-align: start;
-  box-shadow: 0 4px 14px rgba(48,56,41,.10);
+  transition: .3s;
 }
 
-.promo-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.promo-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.promo-card img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .promo-card::after {
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(0deg,rgba(32,39,28,.96),rgba(32,39,28,.12) 88%);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,rgba(48,56,41,.12),rgba(48,56,41,.96));
 }
+
+.promo-card.light::after {
+  background: linear-gradient(90deg,rgba(248,246,240,.80),rgba(248,246,240,.96));
+}
+
+.promo-card.left-image img {
+  width: 55%;
+  right: auto;
+}
+
+.promo-card.left-image::after {
+  background: linear-gradient(90deg,transparent 30%,var(--green) 56%);
+}
+
 .promo-card-content {
-  position:relative; z-index:2; width:100%; padding:17px 18px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 18px;
+  text-align: center;
 }
+
+.promo-card.left-image .promo-card-content {
+  margin-left: 48%;
+  width: 52%;
+}
+
 .promo-card h3 {
-  font-family:Georgia,'Noto Serif Thai',serif;
-  font-size:19px; font-weight:400; line-height:1.4;
-  color:#F3E7CC; margin-bottom:4px;
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
+
+.promo-card.light h3 {
+  color: var(--green);
+}
+
 .promo-card p {
-  font-size:11px; line-height:1.65; color:#F4F0E7;
-  margin-top:4px; display:-webkit-box; -webkit-line-clamp:2;
-  -webkit-box-orient:vertical; overflow:hidden;
+  font-size: 11px;
+  margin-top: 10px;
+  line-height: 1.9;
+  color: #F0E6D5;
 }
-.promo-price { margin-top:7px; color:#F2D49A; font-size:13px; font-weight:500; }
+
+.promo-card.light p {
+  color: #555548;
+}
+
 .promo-link {
-  display:inline-block; background:var(--gold); color:var(--green-dark);
-  border-radius:30px; padding:6px 15px; margin-top:9px; font-size:10px;
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-dark);
+  border-radius: 30px;
+  padding: 7px 16px;
+  margin-top: 12px;
+  font-size: 11px;
 }
-.promo-empty {
-  width:100%; padding:25px 15px; border:1px dashed var(--gold);
-  border-radius:12px; text-align:center; color:var(--muted); font-size:12px;
+
+.promo-card.light .promo-link {
+  background: var(--green);
+  color: white;
 }
-.promo-error { color:#9a5547; }
 
 /* SECTION HEADING */
 
@@ -899,7 +910,13 @@ button {
     grid-template-columns: repeat(4,minmax(0,1fr));
   }
 
-  .promo-card { flex-basis: 290px; width:290px; height:195px; }
+  .promo-card {
+    min-height: 180px;
+  }
+
+  .promo-card h3 {
+    font-size: 16px;
+  }
 
   .signature,
   .booking {
@@ -1044,15 +1061,37 @@ button {
     padding: 12px 3px;
   }
 
-  .promo-section { padding: 15px 10px; }
-  .promo-heading h2 { font-size:17px; }
-  .promo-heading small { font-size:8px; }
-  .promo-controls { display:none; }
-  .promo-grid { gap:10px; }
-  .promo-card { flex:0 0 260px; width:260px; height:180px; }
-  .promo-card-content { padding:13px; }
-  .promo-card h3 { font-size:16px; }
-  .promo-card p { font-size:10px; }
+  .promo-section {
+    padding: 15px 9px;
+  }
+
+  .promo-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 9px;
+  }
+
+  .promo-card {
+    min-height: 155px;
+  }
+
+  .promo-card-content {
+    padding: 9px;
+  }
+
+  .promo-card h3 {
+    font-size: 14px;
+  }
+
+  .promo-card p {
+    font-size: 9px;
+    margin-top: 5px;
+  }
+
+  .promo-link {
+    font-size: 9px;
+    padding: 5px 12px;
+    margin-top: 7px;
+  }
 
   .section-heading {
     padding: 42px 12px 22px;
@@ -1153,8 +1192,13 @@ button {
     font-size: 7px;
   }
 
-  .promo-card { flex-basis:245px; width:245px; height:170px; }
-  .promo-card h3 { font-size:15px; }
+  .promo-card {
+    min-height: 140px;
+  }
+
+  .promo-card h3 {
+    font-size: 12px;
+  }
 
   .profile-logo {
     width: 105px;
@@ -1165,6 +1209,113 @@ button {
     font-size: 20px;
   }
 }
+
+
+
+/* DYNAMIC PROMOTIONS — one horizontal row, swipe/scroll to the right */
+.promo-grid#nichaPromotionGrid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 2px 14px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.promo-grid#nichaPromotionGrid .promo-card.dynamic-promo {
+  flex: 0 0 310px;
+  width: 310px;
+  min-width: 310px;
+  min-height: 230px;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  background: var(--green-dark);
+  color: #fff;
+}
+.promo-card.dynamic-promo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.promo-card.dynamic-promo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(25,31,22,.96), rgba(25,31,22,.10) 90%);
+}
+.promo-card.dynamic-promo .promo-card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0;
+  padding: 18px;
+  text-align: left;
+}
+.promo-card.dynamic-promo h3 {
+  color: var(--gold-light);
+  font-size: 20px;
+  line-height: 1.4;
+}
+.promo-card.dynamic-promo p {
+  color: #fff;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.promo-card.dynamic-promo .promo-price {
+  color: var(--gold-light);
+  font-size: 19px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.promo-card.dynamic-promo .promo-old-price {
+  color: rgba(255,255,255,.78);
+  font-size: 11px;
+  text-decoration: line-through;
+}
+.promo-card.dynamic-promo .promo-link {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-dark);
+  border-radius: 30px;
+  padding: 7px 17px;
+  margin-top: 10px;
+  font-size: 11px;
+}
+.promo-loading {
+  color: var(--muted);
+  padding: 22px;
+  text-align: center;
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .promo-grid#nichaPromotionGrid .promo-card.dynamic-promo {
+    flex-basis: 78vw;
+    width: 78vw;
+    min-width: 78vw;
+    min-height: 205px;
+  }
+}
+
+
+
+/* DYNAMIC NICHA SIGNATURE — โหลดคอร์สและรูปจากระบบ Signature */
+.signature { min-height: 320px; }
+.signature-image { min-height: 320px; position: relative; overflow: hidden; background: #303829; }
+.signature-image img { display:block; width:100%; height:100%; min-height:320px; object-fit:cover; }
+.signature-content { min-width:0; }
+.signature-content .signature-meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:15px; }
+.signature-content .signature-chip { display:inline-block; border:1px solid #c6a36b88; border-radius:30px; padding:5px 12px; color:#f2dfbd; font-size:12px; }
+.signature-content .signature-price { color:#f3d59f; font-size:22px; font-weight:600; margin-top:13px; }
+.signature-content .signature-empty { color:#e7e3d7; font-size:13px; }
+.signature-content .gold-btn[aria-disabled="true"] { opacity:.55; pointer-events:none; }
+.signature-image .signature-image-status { color:#e8d5b0; text-align:center; padding:25px; font-size:12px; }
+@media(max-width:760px) { .signature-image { min-height:200px; } .signature-image img { min-height:200px; } }
 
 </style>
 </head>
@@ -1338,21 +1489,10 @@ button {
 
 </nav>
 
-<!-- PROMOTIONS FROM PROMOTION ADMIN -->
-
+<!-- DYNAMIC PROMOTIONS FROM PROMOTION ADMIN -->
 <section class="promo-section" id="promotions">
-  <div class="promo-heading">
-    <div>
-      <h2>โปรโมชั่นพิเศษจาก NICHA SPA</h2>
-      <small>NICHA SPA SPECIAL OFFERS</small>
-    </div>
-    <div class="promo-controls" aria-label="เลื่อนโปรโมชั่น">
-      <button class="promo-arrow" type="button" id="promoPrev" aria-label="เลื่อนไปซ้าย">‹</button>
-      <button class="promo-arrow" type="button" id="promoNext" aria-label="เลื่อนไปขวา">›</button>
-    </div>
-  </div>
-  <div class="promo-grid" id="promoTrack" aria-label="รายการโปรโมชั่น" tabindex="0">
-    <div class="promo-empty">กำลังโหลดโปรโมชั่น...</div>
+  <div class="promo-grid" id="nichaPromotionGrid" aria-live="polite">
+    <div class="promo-loading">กำลังโหลดโปรโมชั่น...</div>
   </div>
 </section>
 
@@ -1755,44 +1895,22 @@ button {
 
 </main>
 
-<!-- SIGNATURE -->
-
+<!-- SIGNATURE: โหลดคอร์สที่เลือกจาก PromotionAdmin -->
 <section class="signature" id="signature">
-
   <div class="signature-image">
-
-    <img
-      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900"
-      alt="NICHA Signature Spa"
-      loading="lazy"
-    >
-
+    <img id="nichaSignatureImage" alt="NICHA Signature Spa" loading="lazy" style="display:none">
+    <div id="nichaSignatureImageStatus" class="signature-image-status">กำลังโหลดรูปคอร์ส Signature...</div>
   </div>
-
   <div class="signature-content">
-
-    <div class="eyebrow">
-      EXCLUSIVE EXPERIENCE
-    </div>
-
-    <h2>
-      NICHA SIGNATURE
-    </h2>
-
-    <p>
-      สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
-      คัดสรรโปรแกรมนวดและสปา
-      เพื่อช่วงเวลาแห่งการพักผ่อนอย่างแท้จริง
-    </p>
-
-    <a class="gold-btn"
+    <div class="eyebrow">EXCLUSIVE EXPERIENCE</div>
+    <h2>NICHA SIGNATURE</h2>
+    <div id="nichaSignatureDetails" class="signature-empty" aria-live="polite">กำลังโหลดคอร์ส Signature...</div>
+    <div id="nichaSignaturePrice" class="signature-price"></div>
+    <div id="nichaSignatureMeta" class="signature-meta"></div>
+    <a id="nichaSignatureBook" class="gold-btn"
        href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-      เลือกคอร์สบริการ ✦
-    </a>
-
+       target="_top" aria-disabled="true">จองคอร์สนี้ ✦</a>
   </div>
-
 </section>
 
 <!-- BOOKING -->
@@ -1904,90 +2022,229 @@ button {
 </div>
 
 
+
+<!-- LOAD PROMOTIONS FROM GOOGLE APPS SCRIPT / PROMOTION ADMIN -->
 <script>
 (function () {
   'use strict';
 
-  const PROMOTION_API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
-  const BOOKING_URL = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking';
-  const track = document.getElementById('promoTrack');
+  var API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+  var grid = document.getElementById('nichaPromotionGrid');
+  var section = document.getElementById('promotions');
+  if (!grid || !section) return;
 
-  function makeElement(tag, className, text) {
-    const el = document.createElement(tag);
-    if (className) el.className = className;
-    if (text !== undefined) el.textContent = text;
-    return el;
+  function money(value) {
+    if (value === '' || value === null || value === undefined) return '';
+    var number = Number(String(value).replace(/,/g, ''));
+    return Number.isFinite(number) ? number.toLocaleString('th-TH') + ' บาท' : String(value);
   }
 
-  function renderPromotions(items) {
-    track.replaceChildren();
-    if (!Array.isArray(items) || !items.length) {
-      track.appendChild(makeElement('div', 'promo-empty', 'ขณะนี้ยังไม่มีโปรโมชั่นที่เปิดใช้งาน'));
+  function makeCard(promo) {
+    var title = String(promo.title || promo.serviceName || promo.name || '').trim();
+    if (!title) return null;
+
+    var card = document.createElement('a');
+    card.className = 'promo-card dynamic-promo';
+    card.href = API + '?page=booking&service=' + encodeURIComponent(title);
+    card.target = '_top';
+    card.setAttribute('aria-label', 'จองคอร์ส ' + title);
+
+    var imageUrl = String(promo.imageUrl || '').trim();
+    if (imageUrl) {
+      var img = document.createElement('img');
+      img.src = imageUrl;
+      img.alt = title;
+      img.loading = 'lazy';
+      card.appendChild(img);
+    }
+
+    var content = document.createElement('div');
+    content.className = 'promo-card-content';
+
+    var heading = document.createElement('h3');
+    heading.textContent = title;
+    content.appendChild(heading);
+
+    if (promo.description) {
+      var description = document.createElement('p');
+      description.textContent = promo.description;
+      content.appendChild(description);
+    }
+
+    if (promo.promoPrice !== '' && promo.promoPrice !== null && promo.promoPrice !== undefined) {
+      var price = document.createElement('div');
+      price.className = 'promo-price';
+      price.textContent = money(promo.promoPrice);
+      content.appendChild(price);
+    }
+
+    if (promo.originalPrice !== '' && promo.originalPrice !== null && promo.originalPrice !== undefined) {
+      var oldPrice = document.createElement('div');
+      oldPrice.className = 'promo-old-price';
+      oldPrice.textContent = 'ราคาปกติ ' + money(promo.originalPrice);
+      content.appendChild(oldPrice);
+    }
+
+    var button = document.createElement('span');
+    button.className = 'promo-link';
+    button.textContent = 'จองคอร์สนี้';
+    content.appendChild(button);
+
+    card.appendChild(content);
+    return card;
+  }
+
+  function render(data) {
+    grid.innerHTML = '';
+    var promotions = data && Array.isArray(data.promotions) ? data.promotions : [];
+    var count = 0;
+
+    promotions.forEach(function (promo) {
+      var card = makeCard(promo);
+      if (card) {
+        grid.appendChild(card);
+        count++;
+      }
+    });
+
+    if (!data || data.success !== true || count === 0) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = '';
+  }
+
+  var callback = 'nichaPromoCallback';
+  var oldScript = document.getElementById('nicha-promotion-api');
+  if (oldScript) oldScript.remove();
+
+  var script = document.createElement('script');
+  script.id = 'nicha-promotion-api';
+  var completed = false;
+  var timer = setTimeout(function () {
+    if (completed) return;
+    completed = true;
+    try { delete window[callback]; } catch (e) { window[callback] = undefined; }
+    section.style.display = 'none';
+  }, 15000);
+
+  window[callback] = function (data) {
+    if (completed) return;
+    completed = true;
+    clearTimeout(timer);
+    try { delete window[callback]; } catch (e) { window[callback] = undefined; }
+    render(data);
+  };
+
+  script.onerror = function () {
+    if (completed) return;
+    completed = true;
+    clearTimeout(timer);
+    try { delete window[callback]; } catch (e) { window[callback] = undefined; }
+    section.style.display = 'none';
+  };
+
+  script.src = API + '?action=getPromotions&callback=' + callback + '&_=' + Date.now();
+  document.body.appendChild(script);
+})();
+</script>
+
+
+<script>
+/* NICHA SIGNATURE: ดึงข้อมูลคอร์สและรูปภาพจาก Apps Script */
+(function () {
+  'use strict';
+  var API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+  var BOOKING = API + '?page=booking';
+  var details = document.getElementById('nichaSignatureDetails');
+  var price = document.getElementById('nichaSignaturePrice');
+  var meta = document.getElementById('nichaSignatureMeta');
+  var image = document.getElementById('nichaSignatureImage');
+  var imageStatus = document.getElementById('nichaSignatureImageStatus');
+  var book = document.getElementById('nichaSignatureBook');
+  if (!details || !price || !meta || !image || !imageStatus || !book) return;
+
+  function addChip(value) {
+    if (!value) return;
+    var chip = document.createElement('span');
+    chip.className = 'signature-chip';
+    chip.textContent = value;
+    meta.appendChild(chip);
+  }
+  function money(value) {
+    var number = Number(value);
+    return Number.isFinite(number) && number > 0
+      ? number.toLocaleString('th-TH') + ' บาท' : '';
+  }
+  function fail(message) {
+    details.textContent = message;
+    imageStatus.textContent = 'ยังไม่มีรูปภาพ Signature ที่แสดงได้';
+    book.setAttribute('aria-disabled', 'true');
+  }
+
+  var callbackName = 'nichaSignatureCallback';
+  var script = document.createElement('script');
+  var finished = false;
+  var timer = setTimeout(function () {
+    if (finished) return;
+    finished = true;
+    fail('โหลดข้อมูลคอร์ส Signature ไม่สำเร็จ กรุณาลองใหม่');
+    try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
+    script.remove();
+  }, 15000);
+
+  window[callbackName] = function (response) {
+    if (finished) return;
+    finished = true;
+    clearTimeout(timer);
+    try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
+    script.remove();
+
+    if (!response || response.success !== true || !response.service) {
+      fail('ขณะนี้ยังไม่ได้กำหนดคอร์ส NICHA SIGNATURE ในระบบจัดการ');
       return;
     }
 
-    items.forEach(function (item) {
-      const title = String(item.title || 'โปรโมชั่นพิเศษ');
-      const card = document.createElement('a');
-      card.className = 'promo-card';
-      card.href = BOOKING_URL + '&service=' + encodeURIComponent(title);
-      card.target = '_top';
-      card.setAttribute('aria-label', 'จองโปรโมชั่น ' + title);
-
-      if (item.imageUrl) {
-        const img = document.createElement('img');
-        img.src = String(item.imageUrl);
-        img.alt = title;
-        img.loading = 'lazy';
-        img.onerror = function () { img.style.display = 'none'; };
-        card.appendChild(img);
-      }
-
-      const content = makeElement('div', 'promo-card-content');
-      content.appendChild(makeElement('h3', '', title));
-      if (item.description) content.appendChild(makeElement('p', '', String(item.description)));
-
-      const hasPromoPrice = item.promoPrice !== '' && item.promoPrice !== null && item.promoPrice !== undefined;
-      if (hasPromoPrice) {
-        const price = makeElement('div', 'promo-price', 'ราคาพิเศษ ' + Number(item.promoPrice).toLocaleString('th-TH') + ' บาท');
-        if (item.originalPrice !== '' && item.originalPrice !== null && Number(item.originalPrice) > 0) {
-          price.textContent += '  จาก ' + Number(item.originalPrice).toLocaleString('th-TH') + ' บาท';
-        }
-        content.appendChild(price);
-      }
-      content.appendChild(makeElement('span', 'promo-link', 'จองโปรโมชั่นนี้'));
-      card.appendChild(content);
-      track.appendChild(card);
-    });
-  }
-
-  window.nichaPromotionCallback = function (result) {
-    if (result && result.success) renderPromotions(result.promotions || []);
-    else {
-      track.replaceChildren(makeElement('div', 'promo-empty promo-error',
-        (result && result.message) || 'ไม่สามารถโหลดโปรโมชั่นได้ กรุณาลองใหม่อีกครั้ง'));
+    var service = response.service;
+    var serviceName = String(service.name || 'NICHA SIGNATURE');
+    details.textContent = String(service.description || service.detail || serviceName);
+    price.textContent = money(service.price);
+    meta.innerHTML = '';
+    if (Number(service.duration) > 0) {
+      addChip(Number(service.duration).toLocaleString('th-TH') + ' นาที');
     }
+    if (service.price) addChip('ราคาบริการ ' + money(service.price));
+
+    if (service.imageUrl) {
+      image.onload = function () {
+        image.style.display = 'block';
+        imageStatus.style.display = 'none';
+      };
+      image.onerror = function () {
+        image.style.display = 'none';
+        imageStatus.textContent = 'ไม่สามารถเปิดรูปจาก Google Drive ได้ กรุณาตรวจสอบสิทธิ์การแชร์รูป';
+        imageStatus.style.display = 'block';
+      };
+      image.src = String(service.imageUrl);
+      image.alt = serviceName;
+    } else {
+      imageStatus.textContent = 'ยังไม่ได้อัปโหลดรูปภาพคอร์ส Signature';
+    }
+
+    book.href = BOOKING + '&service=' + encodeURIComponent(serviceName);
+    book.removeAttribute('aria-disabled');
   };
 
-  const script = document.createElement('script');
-  script.src = PROMOTION_API + '?action=getPromotions&callback=nichaPromotionCallback&_=' + Date.now();
+  script.async = true;
   script.onerror = function () {
-    track.replaceChildren(makeElement('div', 'promo-empty promo-error', 'เชื่อมต่อข้อมูลโปรโมชั่นไม่สำเร็จ'));
+    if (finished) return;
+    finished = true;
+    clearTimeout(timer);
+    fail('เชื่อมต่อข้อมูล Signature ไม่สำเร็จ');
+    try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
   };
+  script.src = API + '?api=signatureData&callback=' + callbackName + '&_=' + Date.now();
   document.head.appendChild(script);
-
-  document.getElementById('promoPrev').addEventListener('click', function () {
-    track.scrollBy({ left: -330, behavior: 'smooth' });
-  });
-  document.getElementById('promoNext').addEventListener('click', function () {
-    track.scrollBy({ left: 330, behavior: 'smooth' });
-  });
-  track.addEventListener('wheel', function (event) {
-    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-      track.scrollLeft += event.deltaY;
-      event.preventDefault();
-    }
-  }, { passive: false });
 })();
 </script>
 
