@@ -2079,8 +2079,8 @@ button {
     validItems.forEach(function (promotion) {
       var card = document.createElement('a');
       card.className = 'promo-card dynamic-promo';
-      card.href = 'https://jifenii11-cell.github.io/nicha-massage/Promotions.html';
-      card.setAttribute('aria-label', 'ดูโปรโมชั่น ' + promotion.title);
+      card.href = '#booking';
+      card.setAttribute('aria-label', 'จองบริการ ' + promotion.title);
       card.setAttribute('title', promotion.title);
 
       if (promotion.imageUrl) {
@@ -2108,7 +2108,7 @@ button {
         addText(priceWrap, 'span', 'promo-old-price', original);
       }
       if (priceWrap.childNodes.length) content.appendChild(priceWrap);
-      addText(content, 'span', 'promo-link', 'ดูโปรโมชั่น');
+      addText(content, 'span', 'promo-link', 'จอง');
       grid.appendChild(card);
     });
   }
