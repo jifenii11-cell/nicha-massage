@@ -59,6 +59,19 @@ button.secondary{background:#8d887b}button.danger{background:#a44d43}button.gold
   </form>
   <div id="message" aria-live="polite"></div>
  </section>
+ <section class="panel" id="signaturePanel">
+  <h2>ตั้งค่าคอร์ส Signature</h2>
+  <p class="hint">เลือกบริการเพียง 1 รายการจากฐานข้อมูล “รายการบริการ” เพื่อให้แสดงบนหน้า Signature ของเว็บไซต์ ลูกค้าจะเห็นเฉพาะรายการที่เลือกนี้</p>
+  <label for="signatureService">เลือกคอร์ส Signature</label>
+  <select id="signatureService"><option value="">กำลังโหลดรายการบริการ...</option></select>
+  <div id="signatureCurrent" class="hint" aria-live="polite">กำลังตรวจสอบคอร์สที่เลือก...</div>
+  <div class="actions">
+   <button type="button" class="gold" id="saveSignatureBtn" onclick="saveSignature()">บันทึกคอร์ส Signature</button>
+   <button type="button" class="secondary" onclick="clearSignature()">ยกเลิกการกำหนด</button>
+   <a href="https://jifenii11-cell.github.io/nicha-massage/Signature.html" target="_blank" rel="noopener" style="align-self:center;color:var(--g);font-size:13px">ดูหน้า Signature ↗</a>
+  </div>
+  <div id="signatureMessage" class="hint" aria-live="polite"></div>
+ </section>
  <section class="panel"><h2>รายการโปรโมชั่นทั้งหมด</h2><div id="list">กำลังโหลด...</div></section>
 </div>
 <script>
@@ -81,10 +94,13 @@ function readToken(){const hash=String(window.location.hash||'').replace(/^#/,''
 async function startWithToken(token){
  if(!token){msg('ไม่พบ Session กรุณาเปิดหน้านี้จากปุ่ม PromotionAdmin ใน Staff Center','loginMsg');return;}
  adminPin=token;msg('กำลังตรวจสอบสิทธิ์...','loginMsg');
- try{const result=await api('getPromotionsAdmin');promotions=result.promotions||result.data||[];await loadServices();$('login').classList.add('hidden');$('app').classList.remove('hidden');render(promotions);}
+ try{const result=await api('getPromotionsAdmin');promotions=result.promotions||result.data||[];await loadServices();await loadSignature();$('login').classList.add('hidden');$('app').classList.remove('hidden');render(promotions);}
  catch(err){adminPin='';msg((err.message||'Session ไม่ถูกต้อง')+' กรุณากลับไปเข้าสู่ระบบที่ Staff Center','loginMsg');showError(err.message||'เชื่อมต่อไม่สำเร็จ');}
 }
-async function loadServices(){const select=$('title');select.innerHTML='<option value="">กำลังโหลดรายการบริการ...</option>';try{const result=await api('getServicesForPromotion');serviceRows=Array.isArray(result.services)?result.services:[];select.innerHTML='<option value="">-- เลือกบริการ --</option>'+serviceRows.map(service=>`<option value="${esc(service.name)}" data-price="${Number(service.price)||0}">${esc(service.name)} · ${money(service.price)} บาท</option>`).join('');if(!serviceRows.length){select.innerHTML='<option value="">ไม่พบบริการที่เปิดใช้งาน</option>';msg('ไม่พบรายการบริการที่เปิดใช้งาน กรุณาตรวจสอบชีต “รายการบริการ”');}}catch(err){select.innerHTML='<option value="">โหลดรายการบริการไม่สำเร็จ</option>';throw new Error('โหลดฐานข้อมูลรายการบริการไม่สำเร็จ: '+(err.message||err));}}
+async function loadServices(){const select=$('title');select.innerHTML='<option value="">กำลังโหลดรายการบริการ...</option>';try{const result=await api('getServicesForPromotion');serviceRows=Array.isArray(result.services)?result.services:[];select.innerHTML='<option value="">-- เลือกบริการ --</option>'+serviceRows.map(service=>`<option value="${esc(service.name)}" data-price="${Number(service.price)||0}">${esc(service.name)} · ${money(service.price)} บาท</option>`).join('');const sig=$('signatureService');if(sig)sig.innerHTML='<option value="">-- ยังไม่เลือกคอร์ส Signature --</option>'+serviceRows.map(service=>`<option value="${esc(service.id)}">${esc(service.name)} · ${money(service.price)} บาท · ${Number(service.duration)||0} นาที</option>`).join('');if(!serviceRows.length){select.innerHTML='<option value="">ไม่พบบริการที่เปิดใช้งาน</option>';if(sig)sig.innerHTML='<option value="">ไม่พบบริการที่เปิดใช้งาน</option>';msg('ไม่พบรายการบริการที่เปิดใช้งาน กรุณาตรวจสอบชีต “รายการบริการ”');}}catch(err){select.innerHTML='<option value="">โหลดรายการบริการไม่สำเร็จ</option>';throw new Error('โหลดฐานข้อมูลรายการบริการไม่สำเร็จ: '+(err.message||err));}}
+async function loadSignature(){try{const result=await api('getSignatureServiceAdmin');const service=result.service||null;$('signatureService').value=service?String(service.id):'';$('signatureCurrent').textContent=service?'คอร์สที่แสดงบนหน้า Signature: '+service.name+' · '+money(service.price)+' บาท · '+(Number(service.duration)||0)+' นาที':'ยังไม่ได้กำหนดคอร์ส Signature';}catch(err){$('signatureCurrent').textContent='โหลดข้อมูล Signature ไม่สำเร็จ: '+(err.message||err);}}
+async function saveSignature(){const id=$('signatureService').value;const btn=$('saveSignatureBtn');btn.disabled=true;$('signatureMessage').textContent='กำลังบันทึก...';try{const result=await api('saveSignatureService',{serviceId:id});$('signatureMessage').textContent=(result.result&&result.result.message)||'บันทึกคอร์ส Signature เรียบร้อยแล้ว';await loadSignature();}catch(err){$('signatureMessage').textContent=err.message||'บันทึกไม่สำเร็จ';}finally{btn.disabled=false;}}
+async function clearSignature(){if(!confirm('ต้องการยกเลิกการกำหนดคอร์ส Signature หรือไม่?'))return;$('signatureService').value='';await saveSignature();}
 async function load(){msg('กำลังโหลดรายการโปรโมชั่น...');try{const result=await api('getPromotionsAdmin');render(result.promotions||result.data||[]);msg('');}catch(err){msg(err.message||'โหลดรายการไม่สำเร็จ');}}
 function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function money(value){if(value===''||value===null||value===undefined)return '-';const n=Number(value);return Number.isFinite(n)?n.toLocaleString('th-TH'):'-';}
