@@ -2079,7 +2079,7 @@ button {
     validItems.forEach(function (promotion) {
       var card = document.createElement('a');
       card.className = 'promo-card dynamic-promo';
-      card.href = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking';
+      card.href = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking&service=' + encodeURIComponent(promotion.title || '');
       card.setAttribute('aria-label', 'จองคอร์สนี้: ' + promotion.title);
       card.setAttribute('title', promotion.title);
 
