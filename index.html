@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -705,6 +706,38 @@ button {
   align-self: flex-start;
 }
 
+/* SIGNATURE BUTTONS */
+
+.signature-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.signature-buttons .gold-btn {
+  margin-top: 10px;
+}
+
+.signature-detail-btn {
+  display: inline-block;
+  padding: 11px 24px;
+  margin-top: 10px;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  color: var(--gold-light);
+  background: transparent;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.signature-detail-btn:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+  transform: translateY(-3px);
+}
+
 /* BOOKING */
 
 .booking {
@@ -1145,6 +1178,17 @@ button {
     font-size: 26px;
   }
 
+  .signature-buttons {
+    gap: 8px;
+  }
+
+  .signature-detail-btn,
+  .signature-buttons .gold-btn {
+    text-align: center;
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
   .booking {
     margin: 35px 13px;
     padding: 38px 15px;
@@ -1210,19 +1254,121 @@ button {
   }
 }
 
-
 /* DYNAMIC NICHA SIGNATURE CARD */
-.signature { min-height: 320px; }
-.signature-image { min-height: 320px; position: relative; overflow: hidden; background: var(--green-dark); }
-.signature-image img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
-.signature-content { min-width: 0; }
-.signature-content .signature-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
-.signature-content .signature-chip { display: inline-block; border: 1px solid #c6a36b88; border-radius: 30px; padding: 5px 12px; color: var(--gold-light); font-size: 12px; }
-.signature-content .signature-price { color: #f3d59f; font-size: 22px; font-weight: 600; margin-top: 13px; }
-.signature-content .signature-empty { color: #e7e3d7; font-size: 13px; }
-.signature-content .gold-btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
-@media(max-width:760px) { .signature { grid-template-columns: 1fr; } .signature-image, .signature-image img { min-height: 230px; max-height: 280px; } .signature-content { padding: 28px 22px; } }
 
+.signature {
+  min-height: 320px;
+}
+
+.signature-image {
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  background: var(--green-dark);
+}
+
+.signature-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+
+.signature-content {
+  min-width: 0;
+}
+
+.signature-content .signature-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.signature-content .signature-chip {
+  display: inline-block;
+  border: 1px solid #c6a36b88;
+  border-radius: 30px;
+  padding: 5px 12px;
+  color: var(--gold-light);
+  font-size: 12px;
+}
+
+.signature-content .signature-price {
+  color: #f3d59f;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 13px;
+}
+
+.signature-content .signature-empty {
+  color: #e7e3d7;
+  font-size: 13px;
+}
+
+.signature-content .gold-btn[aria-disabled="true"] {
+  opacity: .55;
+  pointer-events: none;
+}
+
+/* SIGNATURE DETAIL BUTTON */
+
+.signature-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.signature-buttons .gold-btn {
+  margin-top: 10px;
+}
+
+.signature-detail-btn {
+  display: inline-block;
+  padding: 11px 24px;
+  margin-top: 10px;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  color: var(--gold-light);
+  background: transparent;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.signature-detail-btn:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+  transform: translateY(-3px);
+}
+
+@media(max-width:760px) {
+  .signature {
+    grid-template-columns: 1fr;
+  }
+
+  .signature-image,
+  .signature-image img {
+    min-height: 230px;
+    max-height: 280px;
+  }
+
+  .signature-content {
+    padding: 28px 22px;
+  }
+
+  .signature-buttons {
+    gap: 8px;
+  }
+
+  .signature-detail-btn,
+  .signature-buttons .gold-btn {
+    text-align: center;
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+}
 </style>
 </head>
 
@@ -1370,22 +1516,22 @@ button {
 
     <a class="active" href="#home">หน้าแรก</a>
 
-    <!-- เปลี่ยนจาก #about เป็นหน้า Gallery -->
-
-<!-- เมนูเกี่ยวกับเรา -->
-<a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
-   target="_top">
-  เกี่ยวกับเรา
-</a>
+    <!-- เมนูเกี่ยวกับเรา -->
+    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
+       target="_top">
+      เกี่ยวกับเรา
+    </a>
 
     <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=services"
-   target="_top">
-  บริการของเรา
-</a>
+       target="_top">
+      บริการของเรา
+    </a>
 
     <a href="#signature">Signature</a>
 
-    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">โปรโมชั่น</a>
+    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">
+      โปรโมชั่น
+    </a>
 
     <a href="#contact">ติดต่อเรา</a>
 
@@ -1931,24 +2077,56 @@ button {
 </main>
 
 <!-- SIGNATURE: แสดงคอร์สที่เลือกจาก PromotionAdmin บนหน้า Index -->
+
 <section class="signature" id="signature">
+
   <div class="signature-image">
+
     <img id="nichaSignatureImage"
       src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900"
-      alt="NICHA Signature Spa" loading="lazy">
+      alt="NICHA Signature Spa"
+      loading="lazy">
+
   </div>
+
   <div class="signature-content">
+
     <div class="eyebrow">EXCLUSIVE EXPERIENCE</div>
+
     <h2>NICHA SIGNATURE</h2>
-    <div id="nichaSignatureDetails" class="signature-empty" aria-live="polite">
+
+    <div id="nichaSignatureDetails"
+         class="signature-empty"
+         aria-live="polite">
       สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
     </div>
+
     <div id="nichaSignaturePrice" class="signature-price"></div>
+
     <div id="nichaSignatureMeta" class="signature-meta"></div>
-    <a id="nichaSignatureBook" class="gold-btn"
-      href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-      target="_top" aria-disabled="true">จองคอร์สนี้ ✦</a>
+
+    <!-- ปุ่มดูรายละเอียดและปุ่มจองคอร์ส -->
+
+    <div class="signature-buttons">
+
+      <a href="https://jifenii11-cell.github.io/nicha-massage/Signature.html"
+         class="signature-detail-btn"
+         target="_top">
+        ดูรายละเอียดคอร์ส
+      </a>
+
+      <a id="nichaSignatureBook"
+         class="gold-btn"
+         href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+         target="_top"
+         aria-disabled="true">
+        จองคอร์สนี้ ✦
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
 <!-- BOOKING -->
@@ -2059,53 +2237,136 @@ button {
 
 </div>
 
+<!-- LOAD SIGNATURE DATA -->
 
 <script>
 (function(){
   'use strict';
-  const API='https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
-  const BOOKING=API+'?page=booking';
+
+  const API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+
+  const BOOKING = API + '?page=booking';
+
   function jsonp(url, callbackName){
-    return new Promise(function(resolve,reject){
-      const name=callbackName+'_'+Date.now()+'_'+Math.floor(Math.random()*100000);
-      const script=document.createElement('script');
-      let finished=false;
-      const timer=setTimeout(function(){finish(new Error('หมดเวลาการโหลดข้อมูล Signature'));},12000);
-      function finish(error,data){
-        if(finished)return;finished=true;clearTimeout(timer);
-        try{delete window[name];}catch(e){window[name]=undefined;}
-        if(script.parentNode)script.parentNode.removeChild(script);
-        if(error)reject(error);else resolve(data);
+
+    return new Promise(function(resolve, reject){
+
+      const name = callbackName + '_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+
+      const script = document.createElement('script');
+
+      let finished = false;
+
+      const timer = setTimeout(function(){
+        finish(new Error('หมดเวลาการโหลดข้อมูล Signature'));
+      }, 12000);
+
+      function finish(error, data){
+
+        if(finished) return;
+
+        finished = true;
+
+        clearTimeout(timer);
+
+        try {
+          delete window[name];
+        } catch(e) {
+          window[name] = undefined;
+        }
+
+        if(script.parentNode){
+          script.parentNode.removeChild(script);
+        }
+
+        if(error){
+          reject(error);
+        } else {
+          resolve(data);
+        }
       }
-      window[name]=function(data){finish(null,data);};
-      script.onerror=function(){finish(new Error('ไม่สามารถเชื่อมต่อข้อมูล Signature ได้'));};
-      script.src=url+(url.indexOf('?')>=0?'&':'?')+'callback='+encodeURIComponent(name)+'&_='+Date.now();
+
+      window[name] = function(data){
+        finish(null, data);
+      };
+
+      script.onerror = function(){
+        finish(new Error('ไม่สามารถเชื่อมต่อข้อมูล Signature ได้'));
+      };
+
+      script.src = url
+        + (url.indexOf('?') >= 0 ? '&' : '?')
+        + 'callback=' + encodeURIComponent(name)
+        + '&_=' + Date.now();
+
       document.head.appendChild(script);
+
     });
+
   }
-  function money(value){const n=Number(value||0);return n.toLocaleString('th-TH');}
+
+  function money(value){
+
+    const n = Number(value || 0);
+
+    return n.toLocaleString('th-TH');
+
+  }
+
   function showSignature(data){
-    if(!data||!data.success||!data.service)return;
-    const service=data.service;
-    const image=document.getElementById('nichaSignatureImage');
-    const details=document.getElementById('nichaSignatureDetails');
-    const price=document.getElementById('nichaSignaturePrice');
-    const meta=document.getElementById('nichaSignatureMeta');
-    const book=document.getElementById('nichaSignatureBook');
-    if(!image||!details||!price||!meta||!book)return;
-    if(service.imageUrl){image.src=service.imageUrl;}
-    image.alt=service.name+' | NICHA SIGNATURE';
-    details.textContent=service.name;
-    price.textContent=money(service.price)+' บาท';
-    meta.innerHTML='';
-    const chip=document.createElement('span');chip.className='signature-chip';
-    chip.textContent=(Number(service.duration)||0)+' นาที';meta.appendChild(chip);
-    book.href=BOOKING+'&service='+encodeURIComponent(service.name);
-    book.setAttribute('aria-disabled','false');
+
+    if(!data || !data.success || !data.service){
+      return;
+    }
+
+    const service = data.service;
+
+    const image = document.getElementById('nichaSignatureImage');
+
+    const details = document.getElementById('nichaSignatureDetails');
+
+    const price = document.getElementById('nichaSignaturePrice');
+
+    const meta = document.getElementById('nichaSignatureMeta');
+
+    const book = document.getElementById('nichaSignatureBook');
+
+    if(!image || !details || !price || !meta || !book){
+      return;
+    }
+
+    if(service.imageUrl){
+      image.src = service.imageUrl;
+    }
+
+    image.alt = service.name + ' | NICHA SIGNATURE';
+
+    details.textContent = service.name;
+
+    price.textContent = money(service.price) + ' บาท';
+
+    meta.innerHTML = '';
+
+    const chip = document.createElement('span');
+
+    chip.className = 'signature-chip';
+
+    chip.textContent = (Number(service.duration) || 0) + ' นาที';
+
+    meta.appendChild(chip);
+
+    book.href = BOOKING + '&service=' + encodeURIComponent(service.name);
+
+    book.setAttribute('aria-disabled', 'false');
+
   }
-  jsonp(API+'?api=signatureData','nichaSignatureCallback')
+
+  jsonp(API + '?api=signatureData', 'nichaSignatureCallback')
     .then(showSignature)
-    .catch(function(error){console.warn('NICHA Signature:',error.message);});
+    .catch(function(error){
+      console.warn('NICHA Signature:', error.message);
+    });
+
 })();
 </script>
 
