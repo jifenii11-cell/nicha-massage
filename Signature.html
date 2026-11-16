@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -24,9 +23,7 @@
       --muted: #77776d;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -35,10 +32,7 @@
       font-family: 'Kanit', sans-serif;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     .topbar {
       background: var(--green-dark);
@@ -50,11 +44,7 @@
       gap: 15px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; }
 
     .brand-mark {
       width: 43px;
@@ -68,16 +58,8 @@
       border-radius: 50%;
     }
 
-    .brand-name {
-      font-size: 17px;
-      letter-spacing: 1px;
-    }
-
-    .brand-sub {
-      font-size: 10px;
-      color: var(--gold-light);
-      letter-spacing: 2px;
-    }
+    .brand-name { font-size: 17px; letter-spacing: 1px; }
+    .brand-sub { font-size: 10px; color: var(--gold-light); letter-spacing: 2px; }
 
     .back-link {
       border: 1px solid rgba(232,213,176,.6);
@@ -129,10 +111,7 @@
       margin: 25px auto 0;
     }
 
-    .intro {
-      text-align: center;
-      padding: 48px 20px 20px;
-    }
+    .intro { text-align: center; padding: 48px 20px 20px; }
 
     .intro h2 {
       font-family: 'Noto Serif Thai', serif;
@@ -142,11 +121,7 @@
       margin: 0 0 8px;
     }
 
-    .intro p {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 0;
-    }
+    .intro p { color: var(--muted); font-size: 13px; margin: 0; }
 
     .container {
       max-width: 1180px;
@@ -188,6 +163,16 @@
       display: block;
     }
 
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: #77776d;
+      font-size: 13px;
+      background: linear-gradient(135deg, #eae3d5, #f8f6f0);
+    }
+
     .course-label {
       position: absolute;
       top: 17px;
@@ -199,9 +184,7 @@
       letter-spacing: 1.5px;
     }
 
-    .course-content {
-      padding: 25px 27px 28px;
-    }
+    .course-content { padding: 25px 27px 28px; }
 
     .course-content h3 {
       font-family: 'Noto Serif Thai', serif;
@@ -231,10 +214,7 @@
       margin-bottom: 20px;
     }
 
-    .duration {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .duration { font-size: 13px; color: var(--muted); }
 
     .price {
       font-family: 'Noto Serif Thai', serif;
@@ -287,11 +267,7 @@
       margin-bottom: 8px;
     }
 
-    .loading {
-      text-align: center;
-      padding: 60px 15px;
-      color: var(--green);
-    }
+    .loading { text-align: center; padding: 60px 15px; color: var(--green); }
 
     .spinner {
       width: 34px;
@@ -303,9 +279,7 @@
       animation: spin 1s linear infinite;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .footer {
       background: var(--green-dark);
@@ -325,46 +299,19 @@
     }
 
     @media (max-width: 700px) {
-      .topbar {
-        padding: 12px 16px;
-      }
-
-      .brand-name {
-        font-size: 14px;
-      }
-
-      .back-link {
-        font-size: 11px;
-        padding: 7px 12px;
-      }
-
-      .hero {
-        min-height: 280px;
-        padding: 65px 18px 50px;
-      }
-
-      .course-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .course-image-wrap {
-        height: 245px;
-      }
-
-      .course-content {
-        padding: 22px;
-      }
-
-      .container {
-        padding: 20px 15px 55px;
-      }
+      .topbar { padding: 12px 16px; }
+      .brand-name { font-size: 14px; }
+      .back-link { font-size: 11px; padding: 7px 12px; }
+      .hero { min-height: 280px; padding: 65px 18px 50px; }
+      .course-grid { grid-template-columns: 1fr; gap: 22px; }
+      .course-image-wrap { height: 245px; }
+      .course-content { padding: 22px; }
+      .container { padding: 20px 15px 55px; }
     }
   </style>
 </head>
 
 <body>
-
   <header class="topbar">
     <a class="brand" href="index.html">
       <div class="brand-mark">N</div>
@@ -373,7 +320,6 @@
         <div class="brand-sub">WELLNESS & SPA</div>
       </div>
     </a>
-
     <a class="back-link" href="index.html">← กลับหน้าหลัก</a>
   </header>
 
@@ -409,13 +355,11 @@
   </footer>
 
   <script>
-    // ที่อยู่ระบบ Apps Script เดิม
+    // Apps Script Web App เดิม
     const API =
       'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
 
-    // หน้า Booking ของระบบเดิม
     const BOOKING_URL = API + '?page=booking';
-
     const area = document.getElementById('courseArea');
 
     function escapeHTML(value) {
@@ -430,125 +374,91 @@
       });
     }
 
-    function isSignatureCourse(item) {
-      const category =
-        item.category ??
-        item.group ??
-        item.type ??
-        item.categoryName ??
-        item['หมวดหมู่'] ??
-        item['ประเภท'] ??
-        '';
-
-      return String(category)
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, '')
-        .includes('signature');
-    }
-
-    function getCourseList(data) {
-      if (Array.isArray(data)) return data;
-
-      if (data && Array.isArray(data.services)) return data.services;
-      if (data && Array.isArray(data.signatureCollection)) return data.signatureCollection;
-      if (data && Array.isArray(data.courses)) return data.courses;
-      if (data && Array.isArray(data.items)) return data.items;
-      if (data && Array.isArray(data.promotions)) return data.promotions;
-
-      if (data && data.service && typeof data.service === 'object') {
-        return [data.service];
-      }
-
-      return [];
-    }
-
     function formatPrice(value) {
       if (value === undefined || value === null || value === '') {
         return 'สอบถามราคา';
       }
 
       const number = Number(String(value).replace(/,/g, ''));
-
-      if (Number.isNaN(number)) {
-        return escapeHTML(value) + ' บาท';
-      }
+      if (Number.isNaN(number)) return escapeHTML(value) + ' บาท';
 
       return number.toLocaleString('th-TH') + ' <small>บาท</small>';
     }
 
-    function renderCourses(data) {
+    // API signatureData ส่งกลับมาเป็น { success:true, service:{...} }
+    // จึงต้องอ่าน data.service โดยตรง ไม่กรอง category เพราะ object นี้ไม่มี category
+    function getSignatureService(data) {
+      if (!data) return null;
+      if (data.service && typeof data.service === 'object') return data.service;
+
+      // รองรับรูปแบบ array เผื่อ API มีการปรับในอนาคต
+      if (Array.isArray(data.services) && data.services.length) return data.services[0];
+      if (Array.isArray(data) && data.length) return data[0];
+
+      return null;
+    }
+
+    function renderCourse(data) {
       if (data && data.success === false) {
         showError(data.message || 'ไม่สามารถโหลดข้อมูลคอร์สได้');
         return;
       }
 
-      const allCourses = getCourseList(data);
+      const item = getSignatureService(data);
 
-      // แสดงเฉพาะรายการที่ระบุหมวด Signature Collection
-      const courses = allCourses.filter(isSignatureCourse);
-
-      if (!courses.length) {
+      if (!item) {
         area.innerHTML = `
           <div class="state-message">
-            <strong>ยังไม่มีคอร์ส Signature Collection</strong>
-            กรุณาตรวจสอบหมวดหมู่ของรายการบริการในฐานข้อมูล
+            <strong>ยังไม่ได้กำหนดคอร์ส Signature Collection</strong>
+            กรุณาเข้า PromotionAdmin แล้วเลือกบริการและบันทึกรูปในหัวข้อ “ตั้งค่าคอร์ส Signature”
           </div>
         `;
         return;
       }
 
+      const name = item.name || item.serviceName || item.title || 'Signature Collection';
+      const description = item.description || item.detail || item.details ||
+        'สัมผัสประสบการณ์การผ่อนคลายที่คัดสรรโดย NICHA SPA';
+      const duration = item.duration || item.minutes || '';
+      const price = item.price ?? '';
+      const image = item.imageUrl || item.image || item.photoUrl || '';
+
+      const bookingLink =
+        BOOKING_URL + '&service=' + encodeURIComponent(name);
+
+      const imageMarkup = image
+        ? `<img class="course-image"
+                src="${escapeHTML(image)}"
+                alt="${escapeHTML(name)}"
+                loading="eager"
+                onerror="this.outerHTML='<div class=&quot;image-placeholder&quot;>ไม่สามารถโหลดรูปภาพได้</div>'">`
+        : `<div class="image-placeholder">ยังไม่มีรูปภาพคอร์ส Signature</div>`;
+
       area.innerHTML = `
         <div class="course-grid">
-          ${courses.map(function(item) {
-            const name = item.name || item.serviceName || item.title || '';
-            const description =
-              item.description || item.detail || item.details || '';
-            const duration = item.duration || item.minutes || '';
-            const price = item.price ?? '';
-            const image = item.imageUrl || item.image || item.photoUrl || '';
+          <article class="course-card">
+            <div class="course-image-wrap">
+              ${imageMarkup}
+              <div class="course-label">SIGNATURE COLLECTION</div>
+            </div>
 
-            const bookingLink =
-              BOOKING_URL + '&service=' + encodeURIComponent(name);
+            <div class="course-content">
+              <h3>${escapeHTML(name)}</h3>
 
-            return `
-              <article class="course-card">
-                <div class="course-image-wrap">
-                  ${
-                    image
-                      ? `<img class="course-image"
-                              src="${escapeHTML(image)}"
-                              alt="${escapeHTML(name)}"
-                              loading="lazy"
-                              onerror="this.style.display='none'">`
-                      : ''
-                  }
-                  <div class="course-label">SIGNATURE COLLECTION</div>
+              <p class="course-description">${escapeHTML(description)}</p>
+
+              <div class="course-info">
+                <div class="duration">
+                  ${duration ? '◷ ' + escapeHTML(duration) + ' นาที' : 'Signature Experience'}
                 </div>
+                <div class="price">${formatPrice(price)}</div>
+              </div>
 
-                <div class="course-content">
-                  <h3>${escapeHTML(name)}</h3>
-
-                  <p class="course-description">
-                    ${escapeHTML(description || 'สัมผัสประสบการณ์การผ่อนคลายที่คัดสรรโดย NICHA SPA')}
-                  </p>
-
-                  <div class="course-info">
-                    <div class="duration">
-                      ${duration ? '◷ ' + escapeHTML(duration) + ' นาที' : 'Signature Experience'}
-                    </div>
-                    <div class="price">
-                      ${formatPrice(price)}
-                    </div>
-                  </div>
-
-                  <a class="book-btn" href="${bookingLink}">
-                    จองคอร์สนี้ ✦
-                  </a>
-                </div>
-              </article>
-            `;
-          }).join('')}
+              <a class="book-btn" href="${bookingLink}">
+                จองคอร์สนี้ ✦
+              </a>
+            </div>
+          </article>
         </div>
       `;
     }
@@ -562,15 +472,12 @@
       `;
     }
 
-    function loadSignatureCourses() {
-      const callbackName =
-        'nichaSignaturePage_' + Date.now();
-
+    function loadSignatureCourse() {
+      const callbackName = 'nichaSignaturePage_' + Date.now();
       const script = document.createElement('script');
 
       window[callbackName] = function(data) {
-        renderCourses(data);
-
+        renderCourse(data);
         delete window[callbackName];
         script.remove();
       };
@@ -590,8 +497,7 @@
       document.body.appendChild(script);
     }
 
-    loadSignatureCourses();
+    loadSignatureCourse();
   </script>
-
 </body>
 </html>
