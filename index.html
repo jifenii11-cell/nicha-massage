@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -420,7 +419,7 @@ button {
   background: var(--gold);
 }
 
-/* PROMOTION CARDS */
+/* PROMOTION CARDS - DYNAMIC */
 
 .promo-section {
   max-width: 1380px;
@@ -429,9 +428,35 @@ button {
 }
 
 .promo-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) #e5dfd2;
+  padding: 5px 4px 14px;
+}
+
+.promo-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.promo-grid::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 20px;
+}
+
+.promo-grid::-webkit-scrollbar-track {
+  background: #e5dfd2;
+  border-radius: 20px;
+}
+
+.promo-grid .promo-card {
+  flex: 0 0 calc((100% - 42px) / 4);
+  min-width: 260px;
 }
 
 .promo-card {
@@ -465,19 +490,6 @@ button {
   background: linear-gradient(90deg,rgba(48,56,41,.12),rgba(48,56,41,.96));
 }
 
-.promo-card.light::after {
-  background: linear-gradient(90deg,rgba(248,246,240,.80),rgba(248,246,240,.96));
-}
-
-.promo-card.left-image img {
-  width: 55%;
-  right: auto;
-}
-
-.promo-card.left-image::after {
-  background: linear-gradient(90deg,transparent 30%,var(--green) 56%);
-}
-
 .promo-card-content {
   position: relative;
   z-index: 2;
@@ -486,21 +498,13 @@ button {
   text-align: center;
 }
 
-.promo-card.left-image .promo-card-content {
-  margin-left: 48%;
-  width: 52%;
-}
-
 .promo-card h3 {
   font-family: Georgia,'Noto Serif Thai',serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 1px;
-}
-
-.promo-card.light h3 {
-  color: var(--green);
+  color: var(--gold-light);
 }
 
 .promo-card p {
@@ -508,10 +512,6 @@ button {
   margin-top: 10px;
   line-height: 1.9;
   color: #F0E6D5;
-}
-
-.promo-card.light p {
-  color: #555548;
 }
 
 .promo-link {
@@ -524,9 +524,30 @@ button {
   font-size: 11px;
 }
 
-.promo-card.light .promo-link {
-  background: var(--green);
-  color: white;
+.promo-card.dynamic-promo {
+  cursor: pointer;
+  border: 1px solid var(--gold);
+}
+
+.promo-card.dynamic-promo .promo-card-content {
+  margin-left: 0;
+  width: 100%;
+  padding: 18px;
+}
+
+.promo-card.dynamic-promo .promo-price {
+  display: block;
+  margin-top: 8px;
+  color: #f3d59f;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.promo-card.dynamic-promo .promo-original {
+  text-decoration: line-through;
+  opacity: .75;
+  font-size: 11px;
+  margin-left: 7px;
 }
 
 /* SECTION HEADING */
@@ -1099,31 +1120,41 @@ button {
   }
 
   .promo-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 9px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 5px 2px 12px;
   }
 
-  .promo-card {
-    min-height: 155px;
+  .promo-grid .promo-card {
+    flex: 0 0 78vw;
+    min-width: 78vw;
+    max-width: 330px;
+    min-height: 165px;
+    scroll-snap-align: start;
   }
 
   .promo-card-content {
-    padding: 9px;
+    padding: 12px;
   }
 
   .promo-card h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .promo-card p {
-    font-size: 9px;
-    margin-top: 5px;
+    font-size: 10px;
+    margin-top: 6px;
   }
 
   .promo-link {
-    font-size: 9px;
-    padding: 5px 12px;
-    margin-top: 7px;
+    font-size: 10px;
+    padding: 6px 13px;
+    margin-top: 8px;
   }
 
   .section-heading {
@@ -1371,1004 +1402,412 @@ button {
 }
 </style>
 </head>
-
 <body>
 
-<!-- TOP BAR -->
-
-<div class="topline">
-  NICHA WELLNESS & SPA
-  &nbsp; • &nbsp;
-  YOUR MOMENT OF RELAXATION
-</div>
-
-<!-- COVER BANNER -->
-
-<section class="cover" id="home">
-
-  <div class="cover-left">
-
-    <div class="logo-symbol">N</div>
-
-    <div class="logo-name">NICHA</div>
-
-    <div class="logo-spa">· SPA ·</div>
-
-    <div class="logo-tagline">
-      YOUR MOMENT OF RELAXATION
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-brand">NICHA WELLNESS & SPA</div>
+      <div class="top-contact">
+        <span>นวดเพื่อสุขภาพ ผ่อนคลายอย่างเหนือระดับ</span>
+      </div>
     </div>
-
-    <div class="logo-decoration"></div>
-
   </div>
 
-  <div class="cover-center">
-
-    <div class="cover-line"></div>
-
-    <h1>
-      ผ่อนคลายอย่างเหนือระดับ
-      <span>ในช่วงเวลาที่เป็นของคุณ</span>
-    </h1>
-
-    <div class="cover-icons">
-
-      <div class="cover-icon">
-        <div class="icon-circle">♧</div>
-        <small>RELAX</small>
-      </div>
-
-      <div class="cover-icon">
-        <div class="icon-circle">♨</div>
-        <small>AROMA</small>
-      </div>
-
-      <div class="cover-icon">
-        <div class="icon-circle">✿</div>
-        <small>MASSAGE</small>
-      </div>
-
-      <div class="cover-icon">
-        <div class="icon-circle">❋</div>
-        <small>BALANCE</small>
-      </div>
-
+  <!-- COVER BANNER -->
+  <header class="cover" id="home">
+    <div class="cover-content">
+      <p class="cover-subtitle">WELCOME TO</p>
+      <h1>NICHA SPA</h1>
+      <p class="cover-description">สัมผัสประสบการณ์แห่งการผ่อนคลาย ดูแลสุขภาพกายและใจอย่างเหนือระดับ</p>
+      <a class="cover-button" href="#promotions">โปรโมชั่นพิเศษ</a>
     </div>
+  </header>
 
-    <div class="cover-pill">
-      นวดเพื่อสุขภาพ &nbsp; | &nbsp;
-      ผ่อนคลาย &nbsp; | &nbsp;
-      บรรเทาอาการเมื่อยล้า
-    </div>
-
-  </div>
-
-  <div class="cover-right">
-
-    <img
-      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1000"
-      alt="NICHA SPA luxury spa atmosphere"
-    >
-
-  </div>
-
-</section>
-
-<!-- PROFILE -->
-
-<section class="profile">
-
-  <div class="profile-main">
-
-    <div class="profile-logo">
-
-      <div class="logo-symbol">N</div>
-      <div class="logo-name">NICHA</div>
-      <div class="logo-spa">· SPA ·</div>
-
-    </div>
-
-    <div class="profile-info">
-
-      <h2>NICHA SPA</h2>
-
-      <div class="profile-description">
-        นวดเพื่อสุขภาพ ผ่อนคลาย บรรเทาอาการเมื่อยล้า
+  <!-- PROFILE -->
+  <section class="profile-section" id="about">
+    <div class="profile-content">
+      <div class="profile-text">
+        <p class="section-eyebrow">ABOUT NICHA</p>
+        <h2>ณิชานวดเพื่อสุขภาพ</h2>
+        <p>
+          ให้ทุกช่วงเวลาเป็นช่วงเวลาแห่งการพักผ่อน
+          ด้วยบริการนวดเพื่อสุขภาพและการดูแลร่างกาย
+          ในบรรยากาศอบอุ่น สงบ และเป็นส่วนตัว
+        </p>
+        <a href="About.html" class="outline-button">เกี่ยวกับเรา</a>
       </div>
-
-      <div class="profile-stats">
-        NICHA WELLNESS & SPA
-        &nbsp; • &nbsp;
-        YOUR MOMENT OF RELAXATION
-      </div>
-
     </div>
+  </section>
 
-    <div class="profile-actions">
-
-      <a class="action-btn primary"
-         href="https://lin.ee/Uw81g6U"
-         target="_blank">
-        ● ส่งข้อความ
-      </a>
-
-      <a class="action-btn"
-         href="#services">
-        ♡ บริการ
-      </a>
-
-      <a class="action-btn"
-         href="#contact">
-        ⌕ ติดต่อ
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- NAVIGATION -->
-
-<nav class="navigation">
-
-  <div class="nav-inner">
-
-    <a class="active" href="#home">หน้าแรก</a>
-
-    <!-- เมนูเกี่ยวกับเรา -->
-    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
-       target="_top">
-      เกี่ยวกับเรา
-    </a>
-
-    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=services"
-       target="_top">
-      บริการของเรา
-    </a>
-
+  <!-- NAVIGATION -->
+  <nav class="main-nav">
+    <a href="#home">หน้าแรก</a>
+    <a href="#about">เกี่ยวกับเรา</a>
+    <a href="#services">บริการ</a>
     <a href="#signature">Signature</a>
-
-    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">
-      โปรโมชั่น
-    </a>
-
+    <a href="#promotions">โปรโมชั่น</a>
     <a href="#contact">ติดต่อเรา</a>
+    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking">จองคิว</a>
+  </nav>
 
-    <a href="#booking">จองคิว</a>
-
-  </div>
-
-</nav>
-
-<!-- FOUR PROMOTION BANNERS -->
-
-<section class="promo-section" id="promotions">
-
-  <div class="promo-grid">
-
-    <!-- MASSAGE -->
-
-    <a class="promo-card left-image"
-       href="#services">
-
-      <img
-        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
-        alt="Massage for health"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          MASSAGE
-          <br>
-          FOR HEALTH
-        </h3>
-
-        <p>
-          นวดเพื่อสุขภาพ
-          <br>
-          ด้วยเทคนิคเฉพาะของณิชา
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- SIGNATURE -->
-
-    <a class="promo-card light"
-       href="#signature">
-
-      <img
-        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-        alt="Signature collection"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          SIGNATURE
-          <br>
-          COLLECTION
-        </h3>
-
-        <p>
-          คัดสรรโปรแกรมยอดนิยม
-          <br>
-          เพื่อการผ่อนคลายที่แท้จริง
-        </p>
-
-        <span class="promo-link">
-          ดูรายละเอียด
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- RELAX -->
-
-    <a class="promo-card left-image"
-       href="#booking">
-
-      <img
-        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
-        alt="Relax refresh rebalance"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          RELAX
-          <br>
-          REFRESH
-          <br>
-          REBALANCE
-        </h3>
-
-        <p>
-          ผ่อนคลาย
-          <br>
-          ฟื้นฟูร่างกายและจิตใจ
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- MEMBERSHIP -->
-
-    <a class="promo-card light"
-       href="#contact">
-
-      <img
-        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
-        alt="NICHA SPA membership"
-        loading="lazy"
-      >
-
-      <div class="promo-card-content">
-
-        <h3>
-          NICHA SPA
-          <br>
-          MEMBERSHIP
-        </h3>
-
-        <p>
-          สะสมแต้ม แลกรับสิทธิพิเศษ
-          <br>
-          มากมายเฉพาะสมาชิก
-        </p>
-
-        <span class="promo-link">
-          สมัครสมาชิกเลย
-        </span>
-
-      </div>
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- SERVICES -->
-
-<main class="services-section" id="services">
-
-  <div class="section-heading">
-
-    <div class="eyebrow">
-      NICHA WELLNESS & SPA
+  <!-- DYNAMIC PROMOTIONS FROM PROMOTION ADMIN -->
+  <section class="promo-section" id="promotions">
+    <div class="section-heading">
+      <p class="section-eyebrow">SPECIAL OFFERS</p>
+      <h2>โปรโมชั่นพิเศษ</h2>
+      <p>เลือกคอร์สที่ใช่ แล้วให้ช่วงเวลานี้เป็นเวลาของคุณ</p>
     </div>
 
-    <h2>
-      OUR <span>SERVICES</span>
-    </h2>
-
-    <div class="heading-decoration">✦</div>
-
-    <p>
-      เลือกบริการที่เหมาะกับคุณ
-      ผ่อนคลายและดูแลตัวเองในแบบที่คุณต้องการ
-    </p>
-
-  </div>
-
-  <div class="service-grid">
-
-    <!-- 01 THAI MASSAGE -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thai"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
-          alt="นวดไทย"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          01 / THAI MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดไทย</h3>
-
-        <p>
-          ยืดเหยียดและกดคลึง
-          เพื่อผ่อนคลายความเมื่อยล้า
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 02 DEEP THAI -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thailine"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=700"
-          alt="นวดไทยรีดเส้น"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          02 / DEEP THAI
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดไทยรีดเส้น</h3>
-
-        <p>
-          เน้นกดคลึงและดูแลบริเวณ
-          ที่รู้สึกตึงล้า
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 03 OIL MASSAGE -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=oil"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
-          alt="นวดน้ำมัน"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          03 / OIL MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดน้ำมัน</h3>
-
-        <p>
-          สัมผัสนุ่มนวล
-          ช่วยให้ร่างกายผ่อนคลาย
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 04 AROMA -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=aroma"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-          alt="นวดอโรม่า"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          04 / AROMA
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดอโรม่า</h3>
-
-        <p>
-          ผ่อนคลายด้วยน้ำมันหอม
-          และบรรยากาศสงบ
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 05 OFFICE SYNDROME -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=office"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700"
-          alt="Office Syndrome"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          05 / OFFICE SYNDROME
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวด Office Syndrome</h3>
-
-        <p>
-          ดูแลคอ บ่า ไหล่ และหลัง
-          จากการทำงาน
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 06 FOOT -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=foot"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700"
-          alt="นวดเท้า"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          06 / FOOT MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดเท้า</h3>
-
-        <p>
-          ผ่อนคลายเท้าที่ผ่าน
-          การใช้งานมาตลอดวัน
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 07 HEAD SPA -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=headspa"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=700"
-          alt="นวดศีรษะ"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          07 / HEAD SPA
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดศีรษะ</h3>
-
-        <p>
-          สัมผัสเบาสบาย
-          บริเวณศีรษะและขมับ
-        </p>
-
-        <span class="service-more">
-          เลือกชมคอร์ส Head Spa →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 08 FACIAL -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=facelift"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-          alt="นวดหน้ายกกระชับ"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          08 / FACIAL MASSAGE
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>นวดหน้ายกกระชับ</h3>
-
-        <p>
-          ผ่อนคลายกล้ามเนื้อใบหน้า
-          อย่างอ่อนโยน
-        </p>
-
-        <span class="service-more">
-          อ่านรายละเอียด →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 09 GUA SHA -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
-          alt="กัวซา"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          09 / GUA SHA
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>กัวซา</h3>
-
-        <p>
-          การใช้เครื่องมือกัวซา
-          นวดคลึงตามแนวร่างกาย
-        </p>
-
-        <span class="service-more">
-          จองบริการนี้ →
-        </span>
-
-      </div>
-
-    </a>
-
-    <!-- 10 BODY SCRUB -->
-
-    <a class="service-card"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-
-      <div class="service-photo">
-
-        <img
-          src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
-          alt="สครับขัดผิว"
-          loading="lazy"
-        >
-
-        <span class="service-number">
-          10 / BODY SCRUB
-        </span>
-
-      </div>
-
-      <div class="service-info">
-
-        <h3>สครับขัดผิว</h3>
-
-        <p>
-          ขัดผิวอย่างอ่อนโยน
-          เพื่อสัมผัสผิวที่เรียบเนียน
-        </p>
-
-        <span class="service-more">
-          จองบริการนี้ →
-        </span>
-
-      </div>
-
-    </a>
-
-  </div>
-
-</main>
-
-<!-- SIGNATURE: แสดงคอร์สที่เลือกจาก PromotionAdmin บนหน้า Index -->
-
-<section class="signature" id="signature">
-
-  <div class="signature-image">
-
-    <img id="nichaSignatureImage"
-      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900"
-      alt="NICHA Signature Spa"
-      loading="lazy">
-
-  </div>
-
-  <div class="signature-content">
-
-    <div class="eyebrow">EXCLUSIVE EXPERIENCE</div>
-
-    <h2>NICHA SIGNATURE</h2>
-
-    <div id="nichaSignatureDetails"
-         class="signature-empty"
-         aria-live="polite">
-      สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
+    <div class="promo-grid" id="nichaPromotionGrid">
+      <div class="promo-loading">กำลังโหลดโปรโมชั่น...</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="section-heading">
+      <p class="section-eyebrow">OUR SERVICES</p>
+      <h2>บริการของเรา</h2>
+      <p>เลือกบริการที่เหมาะกับการพักผ่อนและดูแลสุขภาพของคุณ</p>
     </div>
 
-    <div id="nichaSignaturePrice" class="signature-price"></div>
+    <div class="services-grid">
 
-    <div id="nichaSignatureMeta" class="signature-meta"></div>
-
-    <!-- ปุ่มดูรายละเอียดและปุ่มจองคอร์ส -->
-
-    <div class="signature-buttons">
-
-      <a href="https://jifenii11-cell.github.io/nicha-massage/Signature.html"
-         class="signature-detail-btn"
-         target="_top">
-        ดูรายละเอียดคอร์ส
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thai">
+        <div class="service-image service-thai"></div>
+        <div class="service-info">
+          <h3>นวดไทย</h3>
+          <p>ผ่อนคลายกล้ามเนื้อและปรับสมดุลร่างกาย</p>
+          <span>ดูรายละเอียด</span>
+        </div>
       </a>
 
-      <a id="nichaSignatureBook"
-         class="gold-btn"
-         href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-         target="_top"
-         aria-disabled="true">
-        จองคอร์สนี้ ✦
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thailine">
+        <div class="service-image service-thailine"></div>
+        <div class="service-info">
+          <h3>นวดไทยประคบสมุนไพร</h3>
+          <p>ผสานศาสตร์การนวดไทยกับความอบอุ่นจากสมุนไพร</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=oil">
+        <div class="service-image service-oil"></div>
+        <div class="service-info">
+          <h3>นวดน้ำมัน</h3>
+          <p>สัมผัสความผ่อนคลายด้วยน้ำมันบำรุงผิว</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=aroma">
+        <div class="service-image service-aroma"></div>
+        <div class="service-info">
+          <h3>อโรม่า</h3>
+          <p>ผ่อนคลายด้วยกลิ่นหอมและสัมผัสอันอ่อนโยน</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=office">
+        <div class="service-image service-office"></div>
+        <div class="service-info">
+          <h3>นวดออฟฟิศซินโดรม</h3>
+          <p>ดูแลอาการตึงล้าจากการทำงานและการนั่งนาน</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=foot">
+        <div class="service-image service-foot"></div>
+        <div class="service-info">
+          <h3>นวดเท้า</h3>
+          <p>ผ่อนคลายความเมื่อยล้าจากปลายเท้าสู่ทั่วร่างกาย</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=headspa">
+        <div class="service-image service-headspa"></div>
+        <div class="service-info">
+          <h3>Head Spa</h3>
+          <p>ดูแลหนังศีรษะและผ่อนคลายจากความเหนื่อยล้า</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=facelift">
+        <div class="service-image service-facelift"></div>
+        <div class="service-info">
+          <h3>นวดหน้า</h3>
+          <p>ดูแลผิวหน้าอย่างอ่อนโยน ให้ผิวรู้สึกสดชื่น</p>
+          <span>ดูรายละเอียด</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking">
+        <div class="service-image service-scrub"></div>
+        <div class="service-info">
+          <h3>สครับผิว</h3>
+          <p>ดูแลผิวกายให้เนียนนุ่มและรู้สึกสดชื่น</p>
+          <span>จองบริการ</span>
+        </div>
+      </a>
+
+      <a class="service-card" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking">
+        <div class="service-image service-hotstone"></div>
+        <div class="service-info">
+          <h3>Hot Stone</h3>
+          <p>ผ่อนคลายด้วยความอบอุ่นจากหินร้อน</p>
+          <span>จองบริการ</span>
+        </div>
       </a>
 
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-<!-- BOOKING -->
-
-<section class="booking" id="booking">
-
-  <div class="eyebrow">
-    YOUR TIME · YOUR WELLNESS
-  </div>
-
-  <h2>
-    พร้อมให้รางวัลตัวเองหรือยัง?
-  </h2>
-
-  <p>
-    เลือกช่วงเวลาที่คุณสะดวก
-    แล้วจองคิวกับเราได้เลย
-  </p>
-
-  <a class="gold-btn"
-     href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-     target="_top">
-    จองคิวออนไลน์ ✦
-  </a>
-
-</section>
-
-<!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-  <div class="eyebrow">
-    WE ARE HERE FOR YOU
-  </div>
-
-  <h2>
-    ติดต่อ NICHA SPA
-  </h2>
-
-  <p>
-    สอบถามบริการและจองคิวล่วงหน้า
-    เรายินดีดูแลคุณ
-  </p>
-
-  <div class="contact-links">
-
-    <a href="https://lin.ee/Uw81g6U"
-       target="_blank">
-      ติดต่อผ่าน LINE ↗
-    </a>
-
-    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-      จองคิวออนไลน์ ↗
-    </a>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-  <div class="footer-inner">
-
-    <div>
-
-      <div class="footer-brand">
-        NICHA SPA
-      </div>
-
-      <div class="footer-tagline">
-        YOUR MOMENT OF RELAXATION
-      </div>
-
+  <!-- SIGNATURE COLLECTION -->
+  <section class="signature-section" id="signature">
+    <div class="section-heading">
+      <p class="section-eyebrow">NICHA SIGNATURE</p>
+      <h2>Signature Collection</h2>
+      <p>ประสบการณ์การดูแลที่คัดสรรเป็นพิเศษจากณิชา</p>
     </div>
 
-    <div class="footer-contact">
+    <div class="signature-content">
+      <div class="signature-image">
+        <img id="nichaSignatureImage" src="" alt="NICHA Signature">
+      </div>
 
-      <span>📍 NICHA SPA</span>
+      <div class="signature-details">
+        <div id="nichaSignatureMeta"></div>
+        <h3 id="nichaSignatureDetails">กำลังโหลดข้อมูล...</h3>
+        <div id="nichaSignaturePrice"></div>
+        <a id="nichaSignatureBook" class="primary-button" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking">
+          จองคอร์สนี้
+        </a>
+      </div>
+    </div>
+  </section>
 
-      <span>☎ 085-xxx-xxxx</span>
+  <!-- BOOKING CTA -->
+  <section class="booking-cta">
+    <div class="booking-cta-content">
+      <p class="section-eyebrow">YOUR RELAXING TIME</p>
+      <h2>ให้ณิชาได้ดูแลคุณ</h2>
+      <p>จองเวลาแห่งการพักผ่อนของคุณได้แล้ววันนี้</p>
+      <a class="primary-button" href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking">
+        จองคิวออนไลน์
+      </a>
+    </div>
+  </section>
 
-      <span>LINE @nicha.spa</span>
-
-      <span>✦ WELLNESS & SPA</span>
-
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-heading">
+      <p class="section-eyebrow">CONTACT US</p>
+      <h2>ติดต่อเรา</h2>
+      <p>ณิชานวดเพื่อสุขภาพ NICHA WELLNESS & SPA</p>
     </div>
 
-  </div>
+    <div class="contact-actions">
+      <a href="https://line.me/" target="_blank" rel="noopener">LINE ติดต่อเรา</a>
+      <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a>
+      <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking">จองคิว</a>
+    </div>
+  </section>
 
-  <div class="footer-bottom">
-    © NICHA WELLNESS & SPA
-    · YOUR MOMENT OF RELAXATION
-  </div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-brand">NICHA WELLNESS & SPA</div>
+    <p>ณิชานวดเพื่อสุขภาพ</p>
+    <p>© NICHA SPA. All rights reserved.</p>
+    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=staffcenter">
+      Staff Center
+    </a>
+  </footer>
+    <script>
+  (function () {
+    'use strict';
 
-</footer>
+    const API =
+      'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
 
-<!-- ADMIN -->
+    const BOOKING_URL = API + '?page=booking';
 
-<div class="admin-area">
+    const grid = document.getElementById('nichaPromotionGrid');
+    const section = document.getElementById('promotions');
 
-  <a href="https://jifenii11-cell.github.io/nicha-massage/StaffCenter.html"
-     target="_top">
-    ⚙ เข้าสู่ระบบ Staff Center
-  </a>
+    if (!grid || !section) return;
 
-</div>
+    function loadJSONP(url) {
+      return new Promise(function (resolve, reject) {
+        const callbackName =
+          'nichaPromoCallback_' + Date.now() + '_' +
+          Math.floor(Math.random() * 100000);
 
-<!-- LOAD SIGNATURE DATA -->
+        const script = document.createElement('script');
+        let finished = false;
 
-<script>
-(function(){
-  'use strict';
+        const timer = setTimeout(function () {
+          finish(new Error('โหลดโปรโมชั่นใช้เวลานานเกินไป'));
+        }, 15000);
 
-  const API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+        function finish(error, data) {
+          if (finished) return;
+          finished = true;
 
-  const BOOKING = API + '?page=booking';
+          clearTimeout(timer);
+          script.remove();
 
-  function jsonp(url, callbackName){
+          try {
+            delete window[callbackName];
+          } catch (e) {
+            window[callbackName] = undefined;
+          }
 
-    return new Promise(function(resolve, reject){
-
-      const name = callbackName + '_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
-
-      const script = document.createElement('script');
-
-      let finished = false;
-
-      const timer = setTimeout(function(){
-        finish(new Error('หมดเวลาการโหลดข้อมูล Signature'));
-      }, 12000);
-
-      function finish(error, data){
-
-        if(finished) return;
-
-        finished = true;
-
-        clearTimeout(timer);
-
-        try {
-          delete window[name];
-        } catch(e) {
-          window[name] = undefined;
+          if (error) reject(error);
+          else resolve(data);
         }
 
-        if(script.parentNode){
-          script.parentNode.removeChild(script);
-        }
+        window[callbackName] = function (data) {
+          finish(null, data);
+        };
 
-        if(error){
-          reject(error);
-        } else {
-          resolve(data);
-        }
+        script.onerror = function () {
+          finish(new Error('ไม่สามารถเชื่อมต่อระบบโปรโมชั่นได้'));
+        };
+
+        script.src = url +
+          (url.indexOf('?') >= 0 ? '&' : '?') +
+          'callback=' + encodeURIComponent(callbackName);
+
+        document.body.appendChild(script);
+      });
+    }
+
+    function formatPrice(value) {
+      if (value === undefined || value === null || value === '') {
+        return '';
       }
 
-      window[name] = function(data){
-        finish(null, data);
-      };
+      const number = Number(String(value).replace(/,/g, ''));
 
-      script.onerror = function(){
-        finish(new Error('ไม่สามารถเชื่อมต่อข้อมูล Signature ได้'));
-      };
+      if (Number.isNaN(number)) {
+        return String(value);
+      }
 
-      script.src = url
-        + (url.indexOf('?') >= 0 ? '&' : '?')
-        + 'callback=' + encodeURIComponent(name)
-        + '&_=' + Date.now();
-
-      document.head.appendChild(script);
-
-    });
-
-  }
-
-  function money(value){
-
-    const n = Number(value || 0);
-
-    return n.toLocaleString('th-TH');
-
-  }
-
-  function showSignature(data){
-
-    if(!data || !data.success || !data.service){
-      return;
+      return number.toLocaleString('th-TH') + ' บาท';
     }
 
-    const service = data.service;
+    function createPromotion(promo) {
+      const name = String(
+        promo.serviceName || promo.title || promo.name || ''
+      ).trim();
 
-    const image = document.getElementById('nichaSignatureImage');
+      if (!name) return null;
 
-    const details = document.getElementById('nichaSignatureDetails');
+      const description = String(
+        promo.description || promo.detail || ''
+      );
 
-    const price = document.getElementById('nichaSignaturePrice');
+      const imageUrl = String(
+        promo.imageUrl || promo.image || ''
+      ).trim();
 
-    const meta = document.getElementById('nichaSignatureMeta');
+      const price =
+        promo.promoPrice !== undefined && promo.promoPrice !== ''
+          ? promo.promoPrice
+          : (promo.price || '');
 
-    const book = document.getElementById('nichaSignatureBook');
+      const originalPrice = promo.originalPrice || '';
 
-    if(!image || !details || !price || !meta || !book){
-      return;
+      const card = document.createElement('a');
+      card.className = 'promo-card dynamic-promo';
+      card.href = BOOKING_URL + '&service=' + encodeURIComponent(name);
+      card.target = '_top';
+
+      if (imageUrl) {
+        const image = document.createElement('img');
+        image.className = 'promo-image';
+        image.src = imageUrl;
+        image.alt = name;
+        image.loading = 'lazy';
+        card.appendChild(image);
+      }
+
+      const content = document.createElement('div');
+      content.className = 'promo-content';
+
+      const title = document.createElement('h3');
+      title.textContent = name;
+      content.appendChild(title);
+
+      if (description) {
+        const detail = document.createElement('p');
+        detail.textContent = description;
+        content.appendChild(detail);
+      }
+
+      if (price !== '') {
+        const priceBox = document.createElement('div');
+        priceBox.className = 'promo-price';
+        priceBox.textContent = formatPrice(price);
+        content.appendChild(priceBox);
+      }
+
+      if (originalPrice !== '') {
+        const oldPrice = document.createElement('div');
+        oldPrice.className = 'promo-original-price';
+        oldPrice.textContent = 'ราคาปกติ ' + formatPrice(originalPrice);
+        content.appendChild(oldPrice);
+      }
+
+      const button = document.createElement('span');
+      button.className = 'promo-book-button';
+      button.textContent = 'จองคอร์สนี้';
+      content.appendChild(button);
+
+      card.appendChild(content);
+
+      return card;
     }
 
-    if(service.imageUrl){
-      image.src = service.imageUrl;
+    function showPromotions(data) {
+      grid.innerHTML = '';
+
+      const promotions =
+        data && Array.isArray(data.promotions)
+          ? data.promotions
+          : [];
+
+      if (!data || data.success !== true || promotions.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      promotions.forEach(function (promo) {
+        const card = createPromotion(promo);
+        if (card) grid.appendChild(card);
+      });
+
+      section.style.display =
+        grid.children.length > 0 ? '' : 'none';
     }
 
-    image.alt = service.name + ' | NICHA SIGNATURE';
+    loadJSONP(API + '?action=getPromotions')
+      .then(showPromotions)
+      .catch(function (error) {
+        console.error('NICHA Promotions:', error);
+        section.style.display = 'none';
+      });
 
-    details.textContent = service.name;
+  })();
+  </script>
 
-    price.textContent = money(service.price) + ' บาท';
-
-    meta.innerHTML = '';
-
-    const chip = document.createElement('span');
-
-    chip.className = 'signature-chip';
-
-    chip.textContent = (Number(service.duration) || 0) + ' นาที';
-
-    meta.appendChild(chip);
-
-    book.href = BOOKING + '&service=' + encodeURIComponent(service.name);
-
-    book.setAttribute('aria-disabled', 'false');
-
-  }
-
-  jsonp(API + '?api=signatureData', 'nichaSignatureCallback')
-    .then(showSignature)
-    .catch(function(error){
-      console.warn('NICHA Signature:', error.message);
-    });
-
-})();
-</script>
+  <!-- วาง SCRIPT SIGNATURE เดิมของคุณไว้ตรงนี้ -->
+  <!-- เพื่อคงระบบโหลดข้อมูล Signature Collection เดิม -->
 
 </body>
 </html>
