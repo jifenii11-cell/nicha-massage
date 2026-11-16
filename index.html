@@ -2151,9 +2151,10 @@ button {
 
 
 <script>
-/* NICHA SIGNATURE: ดึงข้อมูลคอร์สและรูปภาพจาก Apps Script */
+/* NICHA SIGNATURE — โหลดข้อมูลและรูปจาก Staff Center พร้อม URL สำรอง */
 (function () {
   'use strict';
+
   var API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
   var BOOKING = API + '?page=booking';
   var details = document.getElementById('nichaSignatureDetails');
@@ -2164,6 +2165,11 @@ button {
   var book = document.getElementById('nichaSignatureBook');
   if (!details || !price || !meta || !image || !imageStatus || !book) return;
 
+  function money(value) {
+    var number = Number(value);
+    return Number.isFinite(number) && number > 0 ? number.toLocaleString('th-TH') + ' บาท' : '';
+  }
+
   function addChip(value) {
     if (!value) return;
     var chip = document.createElement('span');
@@ -2171,15 +2177,55 @@ button {
     chip.textContent = value;
     meta.appendChild(chip);
   }
-  function money(value) {
-    var number = Number(value);
-    return Number.isFinite(number) && number > 0
-      ? number.toLocaleString('th-TH') + ' บาท' : '';
-  }
+
   function fail(message) {
     details.textContent = message;
-    imageStatus.textContent = 'ยังไม่มีรูปภาพ Signature ที่แสดงได้';
+    image.style.display = 'none';
+    imageStatus.textContent = 'ไม่สามารถโหลดรูป Signature ได้ กรุณาตรวจสอบรูปใน Staff Center';
+    imageStatus.style.display = 'block';
     book.setAttribute('aria-disabled', 'true');
+  }
+
+  function loadSignatureImage(service, serviceName) {
+    var imageId = String(service.imageId || '').trim();
+    var originalUrl = String(service.imageUrl || '').trim();
+    var urls = [];
+
+    if (imageId) {
+      urls.push('https://drive.google.com/thumbnail?id=' + encodeURIComponent(imageId) + '&sz=w1200');
+      urls.push('https://drive.google.com/uc?export=view&id=' + encodeURIComponent(imageId));
+    }
+    if (originalUrl && urls.indexOf(originalUrl) === -1) urls.unshift(originalUrl);
+
+    if (!urls.length) {
+      imageStatus.textContent = 'ยังไม่ได้อัปโหลดรูปภาพคอร์ส Signature';
+      imageStatus.style.display = 'block';
+      return;
+    }
+
+    var index = 0;
+    image.style.display = 'none';
+    imageStatus.textContent = 'กำลังโหลดรูปคอร์ส Signature...';
+    imageStatus.style.display = 'block';
+    image.alt = serviceName;
+    image.loading = 'eager';
+    image.referrerPolicy = 'no-referrer';
+
+    function tryNext() {
+      if (index >= urls.length) {
+        image.style.display = 'none';
+        imageStatus.textContent = 'โหลดรูปไม่สำเร็จ กรุณาตรวจสอบรูปภาพใน Staff Center';
+        imageStatus.style.display = 'block';
+        return;
+      }
+      image.onload = function () {
+        image.style.display = 'block';
+        imageStatus.style.display = 'none';
+      };
+      image.onerror = tryNext;
+      image.src = urls[index++];
+    }
+    tryNext();
   }
 
   var callbackName = 'nichaSignatureCallback';
@@ -2188,10 +2234,10 @@ button {
   var timer = setTimeout(function () {
     if (finished) return;
     finished = true;
-    fail('โหลดข้อมูลคอร์ส Signature ไม่สำเร็จ กรุณาลองใหม่');
+    fail('โหลดข้อมูล Signature ไม่สำเร็จ กรุณาลองใหม่');
     try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
     script.remove();
-  }, 15000);
+  }, 20000);
 
   window[callbackName] = function (response) {
     if (finished) return;
@@ -2201,7 +2247,7 @@ button {
     script.remove();
 
     if (!response || response.success !== true || !response.service) {
-      fail('ขณะนี้ยังไม่ได้กำหนดคอร์ส NICHA SIGNATURE ในระบบจัดการ');
+      fail('ยังไม่ได้กำหนดคอร์ส NICHA SIGNATURE ในระบบจัดการ');
       return;
     }
 
@@ -2210,27 +2256,10 @@ button {
     details.textContent = String(service.description || service.detail || serviceName);
     price.textContent = money(service.price);
     meta.innerHTML = '';
-    if (Number(service.duration) > 0) {
-      addChip(Number(service.duration).toLocaleString('th-TH') + ' นาที');
-    }
+    if (Number(service.duration) > 0) addChip(Number(service.duration).toLocaleString('th-TH') + ' นาที');
     if (service.price) addChip('ราคาบริการ ' + money(service.price));
 
-    if (service.imageUrl) {
-      image.onload = function () {
-        image.style.display = 'block';
-        imageStatus.style.display = 'none';
-      };
-      image.onerror = function () {
-        image.style.display = 'none';
-        imageStatus.textContent = 'ไม่สามารถเปิดรูปจาก Google Drive ได้ กรุณาตรวจสอบสิทธิ์การแชร์รูป';
-        imageStatus.style.display = 'block';
-      };
-      image.src = String(service.imageUrl);
-      image.alt = serviceName;
-    } else {
-      imageStatus.textContent = 'ยังไม่ได้อัปโหลดรูปภาพคอร์ส Signature';
-    }
-
+    loadSignatureImage(service, serviceName);
     book.href = BOOKING + '&service=' + encodeURIComponent(serviceName);
     book.removeAttribute('aria-disabled');
   };
