@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#687054">
+
+  <title>บริการของเรา | NICHA SPA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green:#687054;
+      --green-light:#7b8062;
+      --green-dark:#505a43;
+      --cream:#F5EBDD;
+      --cream-light:#FBF8F2;
+      --gold:#C6AD7A;
+      --gold-light:#D8C6A0;
+      --text:#46483C;
+      --muted:#858475;
+      --shadow:0 12px 35px rgba(65,70,49,.10);
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      font-family:'Kanit',sans-serif;
+      color:var(--text);
+      background:var(--cream-light);
+    }
+
+    .topline {
+      padding:9px 15px;
+      text-align:center;
+      color:var(--cream);
+      background:var(--green-dark);
+      font-family:'Playfair Display',serif;
+      font-size:10px;
+      letter-spacing:2px;
+    }
+
+    header {
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(251,248,242,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(198,173,122,.25);
+    }
+
+    .header-inner {
+      max-width:1200px;
+      margin:auto;
+      padding:15px 25px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--green-dark);
+    }
+
+    .brand-mark {
+      width:44px;
+      height:44px;
+      border:1px solid var(--gold);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:var(--gold);
+      font-family:'Playfair Display',serif;
+      font-size:25px;
+    }
+
+    .brand-name {
+      font-size:17px;
+      font-weight:500;
+    }
+
+    .brand-name small {
+      display:block;
+      font-family:'Playfair Display',serif;
+      font-size:10px;
+      letter-spacing:2px;
+      color:var(--green-light);
+    }
+
+    .back-btn {
+      display:inline-block;
+      padding:9px 18px;
+      color:var(--green-dark);
+      border:1px solid var(--gold);
+      border-radius:30px;
+      text-decoration:none;
+      font-size:13px;
+    }
+
+    .back-btn:hover {
+      background:var(--green);
+      color:white;
+    }
+
+    .hero {
+      position:relative;
+      overflow:hidden;
+      padding:95px 20px 100px;
+      text-align:center;
+      color:var(--cream-light);
+      background:linear-gradient(rgba(56,65,44,.84),rgba(56,65,44,.86)),
+        linear-gradient(135deg,#7b8062,#505a43);
+    }
+
+    .hero-inner {
+      position:relative;
+      z-index:1;
+      max-width:750px;
+      margin:auto;
+    }
+
+    .eyebrow {
+      font-family:'Playfair Display',serif;
+      font-size:11px;
+      letter-spacing:3px;
+      color:var(--gold-light);
+    }
+
+    .hero h1 {
+      margin:18px 0;
+      font-size:clamp(28px,5vw,45px);
+      font-weight:400;
+    }
+
+    .hero p {
+      margin:0;
+      color:rgba(255,255,255,.82);
+      font-size:15px;
+      line-height:2;
+      font-weight:300;
+    }
+
+    .hero-rule {
+      width:65px;
+      height:1px;
+      margin:28px auto 0;
+      background:var(--gold);
+    }
+
+    main {
+      max-width:1200px;
+      margin:auto;
+      padding:0 25px 85px;
+    }
+
+    .intro {
+      padding:65px 15px 35px;
+      text-align:center;
+    }
+
+    .intro h2 {
+      margin:13px 0;
+      color:var(--green-dark);
+      font-size:clamp(21px,4vw,29px);
+      font-weight:400;
+    }
+
+    .intro p {
+      color:var(--muted);
+      font-size:14px;
+      line-height:2;
+      font-weight:300;
+    }
+
+    .status {
+      text-align:center;
+      padding:12px;
+      margin:0 auto 25px;
+      color:var(--green);
+      font-size:13px;
+      min-height:42px;
+    }
+
+    .service-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:25px;
+    }
+
+    .service-card {
+      overflow:hidden;
+      border-radius:5px;
+      background:white;
+      box-shadow:var(--shadow);
+      transition:transform .3s,box-shadow .3s;
+    }
+
+    .service-card:hover {
+      transform:translateY(-5px);
+      box-shadow:0 18px 40px rgba(65,70,49,.16);
+    }
+
+    .photo-wrap {
+      position:relative;
+      width:100%;
+      aspect-ratio:4/3;
+      overflow:hidden;
+      background:#EAE6DA;
+    }
+
+    .photo-wrap img {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity .4s,transform .5s;
+      cursor:zoom-in;
+    }
+
+    .photo-wrap img.ready { opacity:1; }
+
+    .service-card:hover img.ready {
+      transform:scale(1.04);
+    }
+
+    .placeholder {
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      color:var(--muted);
+      text-align:center;
+      font-size:13px;
+      background:#EAE6DA;
+    }
+
+    .placeholder.error {
+      color:#9A594F;
+    }
+
+    .card-caption {
+      padding:16px 12px;
+      text-align:center;
+      color:var(--green-dark);
+      font-size:15px;
+      background:white;
+    }
+
+    .empty-state {
+      display:none;
+      margin:25px auto;
+      padding:35px 20px;
+      text-align:center;
+      color:var(--muted);
+      background:white;
+      border:1px solid #E9E2D4;
+      border-radius:8px;
+      line-height:1.9;
+    }
+
+    .retry-btn {
+      display:inline-block;
+      margin-top:18px;
+      padding:10px 25px;
+      border:none;
+      border-radius:30px;
+      background:var(--green);
+      color:white;
+      cursor:pointer;
+      font-size:13px;
+    }
+
+    footer {
+      padding:35px 20px;
+      text-align:center;
+      color:var(--cream);
+      background:var(--green-dark);
+      font-size:12px;
+      line-height:2;
+    }
+
+    footer strong {
+      display:block;
+      color:var(--gold-light);
+      font-family:'Playfair Display',serif;
+      font-size:17px;
+      letter-spacing:2px;
+    }
+
+    .lightbox {
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:55px 20px;
+      background:rgba(20,24,17,.94);
+    }
+
+    .lightbox.open { display:flex; }
+
+    .lightbox-content {
+      max-width:1000px;
+      max-height:100%;
+      text-align:center;
+    }
+
+    .lightbox-content img {
+      display:block;
+      max-width:100%;
+      max-height:78vh;
+      margin:auto;
+      object-fit:contain;
+      border-radius:4px;
+    }
+
+    .lightbox-caption {
+      padding:15px;
+      color:var(--cream);
+      font-size:14px;
+    }
+
+    .lightbox-close {
+      position:absolute;
+      top:15px;
+      right:25px;
+      width:42px;
+      height:42px;
+      border:1px solid rgba(255,255,255,.4);
+      border-radius:50%;
+      color:white;
+      background:transparent;
+      font-size:30px;
+      cursor:pointer;
+    }
+
+    @media(max-width:800px) {
+      .service-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:15px;
+      }
+
+      .header-inner { padding:12px 15px; }
+      .brand-name { font-size:14px; }
+
+      .back-btn {
+        padding:8px 12px;
+        font-size:11px;
+      }
+
+      .hero { padding:75px 15px; }
+    }
+
+    @media(max-width:480px) {
+      main {
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .service-grid { gap:12px; }
+
+      .card-caption {
+        padding:11px 7px;
+        font-size:12px;
+      }
+
+      .brand-mark {
+        width:38px;
+        height:38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topline">
+    NICHA WELLNESS &amp; SPA &nbsp; • &nbsp; RELAX · RESTORE · RECHARGE
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="https://jifenii11-cell.github.io/nicha-massage/" target="_top">
+        <span class="brand-mark">N</span>
+        <span class="brand-name">
+          ณิชานวดเพื่อสุขภาพ
+          <small>NICHA WELLNESS &amp; SPA</small>
+        </span>
+      </a>
+
+      <a class="back-btn" href="https://jifenii11-cell.github.io/nicha-massage/">← กลับหน้าหลัก</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">OUR SERVICES</div>
+      <h1>บริการของ NICHA SPA</h1>
+      <p>
+        เลือกช่วงเวลาแห่งการดูแลตัวเอง<br>
+        ผ่อนคลายร่างกายและเติมเต็มความสุขในทุกวัน
+      </p>
+      <div class="hero-rule"></div>
+    </div>
+  </section>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">A MOMENT OF WELLNESS</div>
+      <h2>สัมผัสศาสตร์แห่งการผ่อนคลาย</h2>
+      <p>
+        เลือกชมบริการและคอร์สนวดของเรา<br>
+        ทุกบริการใส่ใจในรายละเอียด เพื่อช่วงเวลาพักผ่อนของคุณ
+      </p>
+    </section>
+
+    <div id="serviceStatus" class="status" aria-live="polite">
+      กำลังโหลดรูปภาพบริการ...
+    </div>
+
+    <section id="serviceGrid" class="service-grid"
+      aria-label="ภาพเมนูบริการ"></section>
+
+    <div id="emptyState" class="empty-state">
+      <div id="emptyMessage">ยังไม่พบรูปภาพบริการ</div>
+      <button class="retry-btn" onclick="loadServices()">
+        ลองโหลดอีกครั้ง
+      </button>
+    </div>
+  </main>
+
+  <footer>
+    <strong>NICHA WELLNESS &amp; SPA</strong>
+    ณิชานวดเพื่อสุขภาพ · ดูแลคุณด้วยความใส่ใจ
+  </footer>
+
+  <div id="lightbox" class="lightbox"
+    role="dialog" aria-modal="true"
+    onclick="closeLightbox(event)">
+
+    <button class="lightbox-close"
+      onclick="closeLightbox()">×</button>
+
+    <div class="lightbox-content">
+      <img id="lightboxImage" alt="">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    // หน้า Services อยู่บน GitHub Pages; ข้อมูลและรูปยังมาจาก Apps Script/Google Drive เดิม
+    const NICHA_SERVICES_API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
+    let serviceItems = [];
+    let loadedCount = 0;
+    let failedCount = 0;
+    let requestId = 0;
+    let jsonpCounter = 0;
+
+    function setStatus(message) {
+      document.getElementById('serviceStatus').textContent = message || '';
+    }
+
+    function getErrorMessage(error) {
+      return error && error.message ? error.message : String(error || 'เกิดข้อผิดพลาด');
+    }
+
+    function loadJsonp(params, callback, timeoutMs) {
+      const callbackName = 'nichaServicesJsonp_' + (++jsonpCounter) + '_' + Date.now();
+      const script = document.createElement('script');
+      const query = new URLSearchParams(params);
+      query.set('callback', callbackName);
+      let finished = false;
+      const timer = setTimeout(function() {
+        finish();
+        callback({success:false, message:'หมดเวลารอข้อมูลจากระบบ'});
+      }, timeoutMs || 30000);
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        script.remove();
+        try { delete window[callbackName]; } catch (_) { window[callbackName] = undefined; }
+      }
+
+      window[callbackName] = function(data) {
+        if (finished) return;
+        finish();
+        callback(data);
+      };
+      script.onerror = function() {
+        if (finished) return;
+        finish();
+        callback({success:false, message:'เชื่อมต่อ Apps Script ไม่สำเร็จ'});
+      };
+      script.src = NICHA_SERVICES_API + '?' + query.toString();
+      document.head.appendChild(script);
+    }
+
+    function goNichaHome() {
+      window.location.href = 'https://jifenii11-cell.github.io/nicha-massage/';
+    }
+
+    function loadServices() {
+      const currentRequest = ++requestId;
+      document.getElementById('serviceGrid').innerHTML = '';
+      document.getElementById('emptyState').style.display = 'none';
+      loadedCount = 0;
+      failedCount = 0;
+      serviceItems = [];
+      setStatus('กำลังดึงรูปบริการจาก Google Drive...');
+
+      loadJsonp({api:'serviceData'}, function(response) {
+        if (currentRequest !== requestId) return;
+        if (!response || response.success !== true || !Array.isArray(response.images)) {
+          showError(response && response.message ? response.message : 'ไม่สามารถอ่านข้อมูลรูปภาพบริการได้');
+          return;
+        }
+        serviceItems = response.images;
+        if (!serviceItems.length) {
+          setStatus('');
+          showEmpty('ยังไม่มีรูปภาพในโฟลเดอร์ NICHA_WELLNESS_SERVICES');
+          return;
+        }
+        serviceItems.forEach(createCard);
+        setStatus('พบรูปบริการ ' + serviceItems.length + ' รูป');
+        loadImageBatches(serviceItems, 2, currentRequest);
+      });
+    }
+
+    function createCard(item) {
+      const card = document.createElement('article');
+      card.className = 'service-card';
+      const photo = document.createElement('div');
+      photo.className = 'photo-wrap';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'placeholder';
+      placeholder.textContent = 'กำลังโหลดรูปภาพ...';
+      const img = document.createElement('img');
+      img.alt = item.caption || item.fileName || 'บริการ NICHA SPA';
+      img.loading = 'eager';
+      img.decoding = 'async';
+      photo.appendChild(placeholder);
+      photo.appendChild(img);
+      const caption = document.createElement('div');
+      caption.className = 'card-caption';
+      caption.textContent = item.caption || item.fileName || 'NICHA SPA';
+      card.appendChild(photo);
+      card.appendChild(caption);
+      document.getElementById('serviceGrid').appendChild(card);
+      img.addEventListener('click', function() { if (item._loaded) openLightbox(item, img.src); });
+      item._img = img;
+      item._placeholder = placeholder;
+      item._loaded = false;
+      item._failed = false;
+    }
+
+    function loadImageBatches(items, batchSize, currentRequest) {
+      let cursor = 0;
+      function nextBatch() {
+        if (currentRequest !== requestId) return;
+        const batch = items.slice(cursor, cursor + batchSize);
+        cursor += batch.length;
+        if (!batch.length) { finishLoading(); return; }
+        let remaining = batch.length;
+        batch.forEach(function(item) {
+          loadImage(item, function() {
+            if (currentRequest !== requestId) return;
+            remaining--;
+            if (remaining === 0) nextBatch();
+          });
+        });
+      }
+      nextBatch();
+    }
+
+    function loadImage(item, done) {
+      let completed = false;
+      const img = item._img;
+      const placeholder = item._placeholder;
+      let index = 0;
+      let urls = [item.imageUrl, item.fallbackUrl].filter(Boolean);
+
+      function finish() {
+        if (completed) return;
+        completed = true;
+        done();
+      }
+      function success() {
+        if (completed || !img.naturalWidth) return;
+        item._loaded = true;
+        img.classList.add('ready');
+        placeholder.style.display = 'none';
+        loadedCount++;
+        updateProgress();
+        finish();
+      }
+      function tryNext() {
+        if (completed) return;
+        if (index >= urls.length) {
+          // หากลิงก์ Drive ไม่แสดง ให้ขอ Data URI ผ่าน Apps Script เป็นทางสำรอง
+          loadJsonp({api:'serviceImageData', id:item.id}, function(response) {
+            if (completed) return;
+            if (response && response.success && response.dataUrl) {
+              img.onload = success;
+              img.onerror = failImage;
+              img.src = response.dataUrl;
+              if (img.complete && img.naturalWidth) success();
+            } else failImage();
+          }, 35000);
+          return;
+        }
+        img.onload = success;
+        img.onerror = function() { index++; tryNext(); };
+        img.src = urls[index++];
+      }
+      function failImage() {
+        if (completed) return;
+        item._failed = true;
+        failedCount++;
+        placeholder.textContent = 'ไม่สามารถโหลดรูปภาพได้';
+        placeholder.classList.add('error');
+        updateProgress();
+        finish();
+      }
+      tryNext();
+    }
+
+    function updateProgress() {
+      setStatus('แสดงรูปได้ ' + loadedCount + ' / ' + serviceItems.length + ' รูป' +
+        (failedCount ? ' · โหลดไม่สำเร็จ ' + failedCount + ' รูป' : ''));
+    }
+
+    function finishLoading() {
+      if (loadedCount === 0) showEmpty('พบรูปบริการ แต่ไม่สามารถโหลดภาพได้');
+      else setStatus('แสดงรูปบริการ ' + loadedCount + ' จากทั้งหมด ' + serviceItems.length + ' รูป');
+    }
+
+    function showEmpty(message) {
+      document.getElementById('emptyMessage').textContent = message;
+      document.getElementById('emptyState').style.display = 'block';
+    }
+    function showError(message) { setStatus(''); showEmpty(message); }
+
+    function openLightbox(item, src) {
+      const image = document.getElementById('lightboxImage');
+      image.src = src;
+      image.alt = item.caption || 'บริการ NICHA SPA';
+      document.getElementById('lightboxCaption').textContent = item.caption || '';
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(event) {
+      if (event && event.target && event.target.id !== 'lightbox' &&
+          !event.target.classList.contains('lightbox-close')) return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(event) { if (event.key === 'Escape') closeLightbox(); });
+    document.addEventListener('DOMContentLoaded', loadServices);
+  </script>
+
+</body>
+</html>
