@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#414936">
+
+<title>NICHA SPA | นวดเพื่อสุขภาพ ผ่อนคลายอย่างเหนือระดับ</title>
+
+<meta name="description" content="NICHA SPA นวดเพื่อสุขภาพ ผ่อนคลาย บรรเทาอาการเมื่อยล้า พร้อมบริการนวดและสปาหลากหลายรูปแบบ">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green: #414936;
+  --green-dark: #303829;
+  --green-mid: #62664C;
+  --green-soft: #777B62;
+  --gold: #C6A36B;
+  --gold-light: #E8D5B0;
+  --cream: #EAE3D5;
+  --paper: #F8F6F0;
+  --ink: #393D30;
+  --muted: #85816F;
+  --line: #DDD5C5;
+  --shadow: 0 10px 30px rgba(48,56,41,.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background: #F3F0E9;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* TOP BAR */
+
+.topline {
+  background: var(--green-dark);
+  color: var(--gold-light);
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+/* COVER BANNER */
+
+.cover {
+  position: relative;
+  width: 100%;
+  min-height: 490px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 36% 37% 27%;
+  background: var(--green);
+  color: var(--gold-light);
+}
+
+.cover-left {
+  position: relative;
+  z-index: 2;
+  padding: 55px 15px 40px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo-symbol {
+  position: relative;
+  font-family: Georgia,serif;
+  font-size: 145px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--gold-light);
+  text-shadow: 2px 4px 5px #0006;
+}
+
+.logo-symbol::after {
+  content: "✿";
+  position: absolute;
+  top: 10px;
+  right: -24px;
+  font-size: 37px;
+  color: var(--gold);
+  transform: rotate(-25deg);
+}
+
+.logo-name {
+  font-family: Georgia,serif;
+  font-size: clamp(34px,4vw,58px);
+  letter-spacing: 8px;
+  line-height: 1.2;
+  color: var(--gold-light);
+}
+
+.logo-spa {
+  font-family: Georgia,serif;
+  font-size: 25px;
+  letter-spacing: 9px;
+  margin-top: 4px;
+}
+
+.logo-tagline {
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 14px;
+  color: #DCC79D;
+}
+
+.logo-decoration {
+  width: 130px;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 18px;
+  position: relative;
+}
+
+.logo-decoration::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: -12px;
+  transform: translateX(-50%);
+  background: var(--green);
+  padding: 0 10px;
+  color: var(--gold);
+}
+
+.cover-center {
+  position: relative;
+  z-index: 2;
+  padding: 65px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cover-line {
+  width: 210px;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.cover-line::after {
+  content: "✿";
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  transform: translateX(-50%);
+  background: var(--green);
+  padding: 0 10px;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.cover-center h1 {
+  font-family: 'Noto Serif Thai',serif;
+  font-size: clamp(20px,2.2vw,29px);
+  font-weight: 400;
+  line-height: 1.8;
+  color: #F1E8D5;
+}
+
+.cover-center h1 span {
+  display: block;
+}
+
+.cover-icons {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+  margin-top: 25px;
+  width: 100%;
+  max-width: 390px;
+}
+
+.cover-icon {
+  text-align: center;
+}
+
+.icon-circle {
+  width: 65px;
+  height: 65px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  font-size: 29px;
+  color: var(--gold-light);
+}
+
+.cover-icon small {
+  display: block;
+  font-family: Georgia,serif;
+  font-size: 11px;
+  color: var(--gold-light);
+  margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+.cover-pill {
+  margin-top: 28px;
+  background: #ffffff19;
+  border: 1px solid #d8c79b35;
+  border-radius: 40px;
+  padding: 9px 17px;
+  font-size: 12px;
+  color: #F0E6D2;
+  white-space: nowrap;
+}
+
+.cover-right {
+  position: relative;
+  min-height: 490px;
+  overflow: hidden;
+  border-left: 3px solid var(--gold);
+  border-radius: 48% 0 0 0 / 50% 0 0 0;
+}
+
+.cover-right img {
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+.cover-right::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,#41493630,transparent 60%);
+}
+
+/* PROFILE */
+
+.profile {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 35px;
+  background: var(--paper);
+}
+
+.profile-main {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 205px;
+  position: relative;
+}
+
+.profile-logo {
+  width: 235px;
+  height: 235px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 5px solid var(--paper);
+  outline: 2px solid var(--gold);
+  background: var(--green);
+  margin-top: -55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--gold-light);
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 5px 18px #0002;
+}
+
+.profile-logo .logo-symbol {
+  font-size: 93px;
+}
+
+.profile-logo .logo-name {
+  font-size: 28px;
+  letter-spacing: 4px;
+}
+
+.profile-logo .logo-spa {
+  font-size: 14px;
+  letter-spacing: 5px;
+}
+
+.profile-info {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.profile-info h2 {
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--green);
+  line-height: 1.3;
+}
+
+.profile-description {
+  font-size: 14px;
+  color: #555648;
+}
+
+.profile-stats {
+  font-size: 13px;
+  color: #56564B;
+  margin-top: 8px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  background: #F0EEE9;
+  color: #444;
+  border: 1px solid #E4DFD4;
+  transition: .2s;
+}
+
+.action-btn:hover {
+  background: var(--cream);
+}
+
+.action-btn.primary {
+  background: #3C72C5;
+  color: white;
+  border-color: #3C72C5;
+}
+
+/* NAVIGATION */
+
+.navigation {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 35px;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-inner a {
+  padding: 15px 5px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #646457;
+  position: relative;
+}
+
+.nav-inner a:hover,
+.nav-inner a.active {
+  color: var(--green);
+}
+
+.nav-inner a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gold);
+}
+
+/* PROMOTION CARDS */
+
+.promo-section {
+  max-width: 1380px;
+  margin: auto;
+  padding: 25px 10px 12px;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+.promo-card {
+  position: relative;
+  min-height: 210px;
+  border-radius: 13px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--green);
+  color: var(--gold-light);
+  transition: .3s;
+}
+
+.promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.promo-card img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.promo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,rgba(48,56,41,.12),rgba(48,56,41,.96));
+}
+
+.promo-card.light::after {
+  background: linear-gradient(90deg,rgba(248,246,240,.80),rgba(248,246,240,.96));
+}
+
+.promo-card.left-image img {
+  width: 55%;
+  right: auto;
+}
+
+.promo-card.left-image::after {
+  background: linear-gradient(90deg,transparent 30%,var(--green) 56%);
+}
+
+.promo-card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 18px;
+  text-align: center;
+}
+
+.promo-card.left-image .promo-card-content {
+  margin-left: 48%;
+  width: 52%;
+}
+
+.promo-card h3 {
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.promo-card.light h3 {
+  color: var(--green);
+}
+
+.promo-card p {
+  font-size: 11px;
+  margin-top: 10px;
+  line-height: 1.9;
+  color: #F0E6D5;
+}
+
+.promo-card.light p {
+  color: #555548;
+}
+
+.promo-link {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-dark);
+  border-radius: 30px;
+  padding: 7px 16px;
+  margin-top: 12px;
+  font-size: 11px;
+}
+
+.promo-card.light .promo-link {
+  background: var(--green);
+  color: white;
+}
+
+/* SECTION HEADING */
+
+.section-heading {
+  text-align: center;
+  padding: 60px 15px 30px;
+}
+
+.section-heading .eyebrow {
+  font-family: Georgia,serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+.section-heading h2 {
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-size: clamp(30px,4vw,43px);
+  font-weight: 400;
+  color: var(--green);
+  margin-top: 5px;
+}
+
+.section-heading h2 span {
+  color: var(--gold);
+}
+
+.heading-decoration {
+  color: var(--gold);
+  margin: 9px auto;
+  font-size: 19px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* SERVICES */
+
+.services-section {
+  background: #E9E6DC;
+  padding: 15px 0 70px;
+}
+
+.service-grid {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 22px;
+  display: grid;
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 17px;
+}
+
+.service-card {
+  background: var(--paper);
+  border: 1px solid #E1D9C9;
+  border-radius: 13px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: .3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.service-photo {
+  height: 155px;
+  overflow: hidden;
+  position: relative;
+  background: #D6D2C3;
+}
+
+.service-photo img {
+  height: 100%;
+  transition: transform .5s;
+}
+
+.service-card:hover img {
+  transform: scale(1.06);
+}
+
+.service-number {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 5px #000;
+}
+
+.service-info {
+  padding: 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-info h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--green);
+  margin-bottom: 5px;
+}
+
+.service-info p {
+  color: #828174;
+  font-size: 10px;
+  line-height: 1.8;
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.service-more {
+  color: #A88955;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* SIGNATURE SECTION */
+
+.signature {
+  max-width: 1200px;
+  margin: 60px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--green);
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.signature-image {
+  min-height: 320px;
+}
+
+.signature-image img {
+  height: 100%;
+}
+
+.signature-content {
+  padding: 45px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signature-content .eyebrow {
+  color: var(--gold-light);
+  letter-spacing: 3px;
+  font-size: 11px;
+}
+
+.signature-content h2 {
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--gold-light);
+  margin: 12px 0;
+}
+
+.signature-content p {
+  color: #E7E3D7;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.signature-content .gold-btn {
+  align-self: flex-start;
+}
+
+/* BOOKING */
+
+.booking {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 55px 20px;
+  border-radius: 18px;
+  background:
+    linear-gradient(110deg,rgba(48,56,41,.95),rgba(65,73,54,.90)),
+    url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1400')
+    center/cover;
+  text-align: center;
+  color: white;
+}
+
+.booking .eyebrow {
+  color: var(--gold-light);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.booking h2 {
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-size: clamp(26px,4vw,38px);
+  font-weight: 400;
+  color: #F8F4E9;
+  margin: 12px 0;
+}
+
+.booking p {
+  color: #E5E2D8;
+  font-size: 13px;
+}
+
+.gold-btn {
+  display: inline-block;
+  background: linear-gradient(135deg,#E8D5B0,#C6A36B);
+  color: #303829;
+  border-radius: 40px;
+  padding: 12px 28px;
+  margin-top: 22px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: .2s;
+}
+
+.gold-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+}
+
+/* CONTACT */
+
+.contact {
+  text-align: center;
+  padding: 10px 20px 55px;
+}
+
+.contact .eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.contact h2 {
+  font-family: Georgia,'Noto Serif Thai',serif;
+  font-size: 29px;
+  font-weight: 400;
+  color: var(--green);
+  margin: 8px 0;
+}
+
+.contact p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.contact-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  border: 1px solid var(--gold);
+  background: var(--paper);
+  color: var(--green);
+  padding: 10px 23px;
+  border-radius: 30px;
+  font-size: 12px;
+  transition: .2s;
+}
+
+.contact-links a:hover {
+  background: var(--green);
+  color: var(--gold-light);
+}
+
+/* FOOTER */
+
+.footer {
+  background: var(--green-dark);
+  color: #E9E5D9;
+  padding: 30px 30px;
+}
+
+.footer-inner {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer-brand {
+  font-family: Georgia,serif;
+  font-size: 25px;
+  letter-spacing: 3px;
+  color: var(--gold-light);
+}
+
+.footer-tagline {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.footer-contact {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.footer-contact span {
+  color: #E6DDC9;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ffffff20;
+  text-align: center;
+  margin-top: 22px;
+  padding-top: 16px;
+  color: #C7C4B7;
+  font-size: 10px;
+}
+
+/* ADMIN */
+
+.admin-area {
+  text-align: center;
+  padding: 12px;
+  background: #252D21;
+}
+
+.admin-area a {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  border-radius: 30px;
+  padding: 7px 18px;
+  font-size: 10px;
+}
+
+.admin-area a:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+}
+
+/* RESPONSIVE TABLET */
+
+@media(max-width:1050px) {
+  .cover {
+    grid-template-columns: 34% 39% 27%;
+    min-height: 400px;
+  }
+
+  .cover-right {
+    min-height: 400px;
+  }
+
+  .logo-symbol {
+    font-size: 110px;
+  }
+
+  .logo-name {
+    font-size: 38px;
+  }
+
+  .profile-logo {
+    width: 190px;
+    height: 190px;
+  }
+
+  .profile-logo .logo-symbol {
+    font-size: 75px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+  }
+
+  .promo-card {
+    min-height: 180px;
+  }
+
+  .promo-card h3 {
+    font-size: 16px;
+  }
+
+  .signature,
+  .booking {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+/* RESPONSIVE MOBILE */
+
+@media(max-width:760px) {
+
+  .topline {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .cover {
+    grid-template-columns: 1fr 1fr;
+    min-height: 350px;
+  }
+
+  .cover-left {
+    padding: 35px 5px 30px 15px;
+  }
+
+  .cover-center {
+    padding: 35px 5px;
+  }
+
+  .cover-right {
+    display: none;
+  }
+
+  .logo-symbol {
+    font-size: 95px;
+  }
+
+  .logo-name {
+    font-size: 31px;
+    letter-spacing: 4px;
+  }
+
+  .logo-spa {
+    font-size: 18px;
+    letter-spacing: 6px;
+  }
+
+  .logo-tagline {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .cover-center h1 {
+    font-size: 19px;
+  }
+
+  .cover-icons {
+    gap: 5px;
+  }
+
+  .icon-circle {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .cover-icon small {
+    font-size: 8px;
+  }
+
+  .cover-pill {
+    font-size: 9px;
+    padding: 7px 9px;
+    white-space: normal;
+  }
+
+  .profile {
+    padding: 0 15px;
+  }
+
+  .profile-main {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 15px;
+  }
+
+  .profile-logo {
+    width: 120px;
+    height: 120px;
+    margin-top: -35px;
+  }
+
+  .profile-logo .logo-symbol {
+    font-size: 51px;
+  }
+
+  .profile-logo .logo-name {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .profile-logo .logo-spa {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  .profile-info {
+    min-width: 0;
+    padding: 12px 0 5px;
+  }
+
+  .profile-info h2 {
+    font-size: 24px;
+  }
+
+  .profile-description {
+    font-size: 10px;
+  }
+
+  .profile-stats {
+    font-size: 10px;
+  }
+
+  .profile-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .action-btn {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+
+  .nav-inner {
+    padding: 0 15px;
+    gap: 22px;
+  }
+
+  .nav-inner a {
+    font-size: 11px;
+    padding: 12px 3px;
+  }
+
+  .promo-section {
+    padding: 15px 9px;
+  }
+
+  .promo-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 9px;
+  }
+
+  .promo-card {
+    min-height: 155px;
+  }
+
+  .promo-card-content {
+    padding: 9px;
+  }
+
+  .promo-card h3 {
+    font-size: 14px;
+  }
+
+  .promo-card p {
+    font-size: 9px;
+    margin-top: 5px;
+  }
+
+  .promo-link {
+    font-size: 9px;
+    padding: 5px 12px;
+    margin-top: 7px;
+  }
+
+  .section-heading {
+    padding: 42px 12px 22px;
+  }
+
+  .section-heading h2 {
+    font-size: 31px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+    padding: 0 12px;
+  }
+
+  .service-photo {
+    height: 125px;
+  }
+
+  .service-info {
+    padding: 10px;
+  }
+
+  .service-info h3 {
+    font-size: 12px;
+  }
+
+  .service-info p {
+    font-size: 9px;
+  }
+
+  .service-more {
+    font-size: 10px;
+  }
+
+  .signature {
+    grid-template-columns: 1fr;
+    margin: 35px 13px;
+  }
+
+  .signature-image {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .signature-content {
+    padding: 28px 23px;
+  }
+
+  .signature-content h2 {
+    font-size: 26px;
+  }
+
+  .booking {
+    margin: 35px 13px;
+    padding: 38px 15px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-contact {
+    justify-content: center;
+    gap: 12px 20px;
+  }
+
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:380px) {
+
+  .cover {
+    min-height: 300px;
+  }
+
+  .logo-symbol {
+    font-size: 75px;
+  }
+
+  .logo-name {
+    font-size: 25px;
+  }
+
+  .cover-center h1 {
+    font-size: 16px;
+  }
+
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .cover-icon small {
+    font-size: 7px;
+  }
+
+  .promo-card {
+    min-height: 140px;
+  }
+
+  .promo-card h3 {
+    font-size: 12px;
+  }
+
+  .profile-logo {
+    width: 105px;
+    height: 105px;
+  }
+
+  .profile-info h2 {
+    font-size: 20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topline">
+  NICHA WELLNESS & SPA
+  &nbsp; • &nbsp;
+  YOUR MOMENT OF RELAXATION
+</div>
+
+<!-- COVER BANNER -->
+
+<section class="cover" id="home">
+
+  <div class="cover-left">
+
+    <div class="logo-symbol">N</div>
+
+    <div class="logo-name">NICHA</div>
+
+    <div class="logo-spa">· SPA ·</div>
+
+    <div class="logo-tagline">
+      YOUR MOMENT OF RELAXATION
+    </div>
+
+    <div class="logo-decoration"></div>
+
+  </div>
+
+  <div class="cover-center">
+
+    <div class="cover-line"></div>
+
+    <h1>
+      ผ่อนคลายอย่างเหนือระดับ
+      <span>ในช่วงเวลาที่เป็นของคุณ</span>
+    </h1>
+
+    <div class="cover-icons">
+
+      <div class="cover-icon">
+        <div class="icon-circle">♧</div>
+        <small>RELAX</small>
+      </div>
+
+      <div class="cover-icon">
+        <div class="icon-circle">♨</div>
+        <small>AROMA</small>
+      </div>
+
+      <div class="cover-icon">
+        <div class="icon-circle">✿</div>
+        <small>MASSAGE</small>
+      </div>
+
+      <div class="cover-icon">
+        <div class="icon-circle">❋</div>
+        <small>BALANCE</small>
+      </div>
+
+    </div>
+
+    <div class="cover-pill">
+      นวดเพื่อสุขภาพ &nbsp; | &nbsp;
+      ผ่อนคลาย &nbsp; | &nbsp;
+      บรรเทาอาการเมื่อยล้า
+    </div>
+
+  </div>
+
+  <div class="cover-right">
+
+    <img
+      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1000"
+      alt="NICHA SPA luxury spa atmosphere"
+    >
+
+  </div>
+
+</section>
+
+<!-- PROFILE -->
+
+<section class="profile">
+
+  <div class="profile-main">
+
+    <div class="profile-logo">
+
+      <div class="logo-symbol">N</div>
+      <div class="logo-name">NICHA</div>
+      <div class="logo-spa">· SPA ·</div>
+
+    </div>
+
+    <div class="profile-info">
+
+      <h2>NICHA SPA</h2>
+
+      <div class="profile-description">
+        นวดเพื่อสุขภาพ ผ่อนคลาย บรรเทาอาการเมื่อยล้า
+      </div>
+
+      <div class="profile-stats">
+        NICHA WELLNESS & SPA
+        &nbsp; • &nbsp;
+        YOUR MOMENT OF RELAXATION
+      </div>
+
+    </div>
+
+    <div class="profile-actions">
+
+      <a class="action-btn primary"
+         href="https://lin.ee/Uw81g6U"
+         target="_blank">
+        ● ส่งข้อความ
+      </a>
+
+      <a class="action-btn"
+         href="#services">
+        ♡ บริการ
+      </a>
+
+      <a class="action-btn"
+         href="#contact">
+        ⌕ ติดต่อ
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- NAVIGATION -->
+
+<nav class="navigation">
+
+  <div class="nav-inner">
+
+    <a class="active" href="#home">หน้าแรก</a>
+
+    <!-- เปลี่ยนจาก #about เป็นหน้า Gallery -->
+
+<!-- เมนูเกี่ยวกับเรา -->
+<a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
+   target="_top">
+  เกี่ยวกับเรา
+</a>
+
+    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=services"
+   target="_top">
+  บริการของเรา
+</a>
+
+    <a href="#signature">Signature</a>
+
+    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">โปรโมชั่น</a>
+
+    <a href="#contact">ติดต่อเรา</a>
+
+    <a href="#booking">จองคิว</a>
+
+  </div>
+
+</nav>
+
+<!-- FOUR PROMOTION BANNERS -->
+
+<section class="promo-section" id="promotions">
+
+  <div class="promo-grid">
+
+    <!-- MASSAGE -->
+
+    <a class="promo-card left-image"
+       href="#services">
+
+      <img
+        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
+        alt="Massage for health"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          MASSAGE
+          <br>
+          FOR HEALTH
+        </h3>
+
+        <p>
+          นวดเพื่อสุขภาพ
+          <br>
+          ด้วยเทคนิคเฉพาะของณิชา
+        </p>
+
+      </div>
+
+    </a>
+
+    <!-- SIGNATURE -->
+
+    <a class="promo-card light"
+       href="#signature">
+
+      <img
+        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
+        alt="Signature collection"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          SIGNATURE
+          <br>
+          COLLECTION
+        </h3>
+
+        <p>
+          คัดสรรโปรแกรมยอดนิยม
+          <br>
+          เพื่อการผ่อนคลายที่แท้จริง
+        </p>
+
+        <span class="promo-link">
+          ดูรายละเอียด
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- RELAX -->
+
+    <a class="promo-card left-image"
+       href="#booking">
+
+      <img
+        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
+        alt="Relax refresh rebalance"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          RELAX
+          <br>
+          REFRESH
+          <br>
+          REBALANCE
+        </h3>
+
+        <p>
+          ผ่อนคลาย
+          <br>
+          ฟื้นฟูร่างกายและจิตใจ
+        </p>
+
+      </div>
+
+    </a>
+
+    <!-- MEMBERSHIP -->
+
+    <a class="promo-card light"
+       href="#contact">
+
+      <img
+        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
+        alt="NICHA SPA membership"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          NICHA SPA
+          <br>
+          MEMBERSHIP
+        </h3>
+
+        <p>
+          สะสมแต้ม แลกรับสิทธิพิเศษ
+          <br>
+          มากมายเฉพาะสมาชิก
+        </p>
+
+        <span class="promo-link">
+          สมัครสมาชิกเลย
+        </span>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<main class="services-section" id="services">
+
+  <div class="section-heading">
+
+    <div class="eyebrow">
+      NICHA WELLNESS & SPA
+    </div>
+
+    <h2>
+      OUR <span>SERVICES</span>
+    </h2>
+
+    <div class="heading-decoration">✦</div>
+
+    <p>
+      เลือกบริการที่เหมาะกับคุณ
+      ผ่อนคลายและดูแลตัวเองในแบบที่คุณต้องการ
+    </p>
+
+  </div>
+
+  <div class="service-grid">
+
+    <!-- 01 THAI MASSAGE -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thai"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
+          alt="นวดไทย"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          01 / THAI MASSAGE
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดไทย</h3>
+
+        <p>
+          ยืดเหยียดและกดคลึง
+          เพื่อผ่อนคลายความเมื่อยล้า
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 02 DEEP THAI -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=thailine"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=700"
+          alt="นวดไทยรีดเส้น"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          02 / DEEP THAI
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดไทยรีดเส้น</h3>
+
+        <p>
+          เน้นกดคลึงและดูแลบริเวณ
+          ที่รู้สึกตึงล้า
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 03 OIL MASSAGE -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=oil"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
+          alt="นวดน้ำมัน"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          03 / OIL MASSAGE
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดน้ำมัน</h3>
+
+        <p>
+          สัมผัสนุ่มนวล
+          ช่วยให้ร่างกายผ่อนคลาย
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 04 AROMA -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=aroma"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
+          alt="นวดอโรม่า"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          04 / AROMA
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดอโรม่า</h3>
+
+        <p>
+          ผ่อนคลายด้วยน้ำมันหอม
+          และบรรยากาศสงบ
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 05 OFFICE SYNDROME -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=office"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700"
+          alt="Office Syndrome"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          05 / OFFICE SYNDROME
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวด Office Syndrome</h3>
+
+        <p>
+          ดูแลคอ บ่า ไหล่ และหลัง
+          จากการทำงาน
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 06 FOOT -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=foot"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700"
+          alt="นวดเท้า"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          06 / FOOT MASSAGE
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดเท้า</h3>
+
+        <p>
+          ผ่อนคลายเท้าที่ผ่าน
+          การใช้งานมาตลอดวัน
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 07 HEAD SPA -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=headspa"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=700"
+          alt="นวดศีรษะ"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          07 / HEAD SPA
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดศีรษะ</h3>
+
+        <p>
+          สัมผัสเบาสบาย
+          บริเวณศีรษะและขมับ
+        </p>
+
+        <span class="service-more">
+          เลือกชมคอร์ส Head Spa →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 08 FACIAL -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=facelift"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
+          alt="นวดหน้ายกกระชับ"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          08 / FACIAL MASSAGE
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>นวดหน้ายกกระชับ</h3>
+
+        <p>
+          ผ่อนคลายกล้ามเนื้อใบหน้า
+          อย่างอ่อนโยน
+        </p>
+
+        <span class="service-more">
+          อ่านรายละเอียด →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 09 GUA SHA -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
+          alt="กัวซา"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          09 / GUA SHA
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>กัวซา</h3>
+
+        <p>
+          การใช้เครื่องมือกัวซา
+          นวดคลึงตามแนวร่างกาย
+        </p>
+
+        <span class="service-more">
+          จองบริการนี้ →
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- 10 BODY SCRUB -->
+
+    <a class="service-card"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+       target="_top">
+
+      <div class="service-photo">
+
+        <img
+          src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
+          alt="สครับขัดผิว"
+          loading="lazy"
+        >
+
+        <span class="service-number">
+          10 / BODY SCRUB
+        </span>
+
+      </div>
+
+      <div class="service-info">
+
+        <h3>สครับขัดผิว</h3>
+
+        <p>
+          ขัดผิวอย่างอ่อนโยน
+          เพื่อสัมผัสผิวที่เรียบเนียน
+        </p>
+
+        <span class="service-more">
+          จองบริการนี้ →
+        </span>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</main>
+
+<!-- SIGNATURE -->
+
+<section class="signature" id="signature">
+
+  <div class="signature-image">
+
+    <img
+      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900"
+      alt="NICHA Signature Spa"
+      loading="lazy"
+    >
+
+  </div>
+
+  <div class="signature-content">
+
+    <div class="eyebrow">
+      EXCLUSIVE EXPERIENCE
+    </div>
+
+    <h2>
+      NICHA SIGNATURE
+    </h2>
+
+    <p>
+      สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
+      คัดสรรโปรแกรมนวดและสปา
+      เพื่อช่วงเวลาแห่งการพักผ่อนอย่างแท้จริง
+    </p>
+
+    <a class="gold-btn"
+       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+       target="_top">
+      เลือกคอร์สบริการ ✦
+    </a>
+
+  </div>
+
+</section>
+
+<!-- BOOKING -->
+
+<section class="booking" id="booking">
+
+  <div class="eyebrow">
+    YOUR TIME · YOUR WELLNESS
+  </div>
+
+  <h2>
+    พร้อมให้รางวัลตัวเองหรือยัง?
+  </h2>
+
+  <p>
+    เลือกช่วงเวลาที่คุณสะดวก
+    แล้วจองคิวกับเราได้เลย
+  </p>
+
+  <a class="gold-btn"
+     href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+     target="_top">
+    จองคิวออนไลน์ ✦
+  </a>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <div class="eyebrow">
+    WE ARE HERE FOR YOU
+  </div>
+
+  <h2>
+    ติดต่อ NICHA SPA
+  </h2>
+
+  <p>
+    สอบถามบริการและจองคิวล่วงหน้า
+    เรายินดีดูแลคุณ
+  </p>
+
+  <div class="contact-links">
+
+    <a href="https://lin.ee/Uw81g6U"
+       target="_blank">
+      ติดต่อผ่าน LINE ↗
+    </a>
+
+    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+       target="_top">
+      จองคิวออนไลน์ ↗
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <div>
+
+      <div class="footer-brand">
+        NICHA SPA
+      </div>
+
+      <div class="footer-tagline">
+        YOUR MOMENT OF RELAXATION
+      </div>
+
+    </div>
+
+    <div class="footer-contact">
+
+      <span>📍 NICHA SPA</span>
+
+      <span>☎ 085-xxx-xxxx</span>
+
+      <span>LINE @nicha.spa</span>
+
+      <span>✦ WELLNESS & SPA</span>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © NICHA WELLNESS & SPA
+    · YOUR MOMENT OF RELAXATION
+  </div>
+
+</footer>
+
+<!-- ADMIN -->
+
+<div class="admin-area">
+
+  <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=admin"
+     target="_top">
+    ⚙ เข้าสู่ระบบ Admin
+  </a>
+
+</div>
+
+</body>
+</html>
