@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -428,39 +429,14 @@ button {
 }
 
 .promo-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 14px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 2px 2px 14px;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold) #e4dfd3;
-}
-
-.promo-grid::-webkit-scrollbar {
-  height: 6px;
-}
-
-.promo-grid::-webkit-scrollbar-track {
-  background: #e4dfd3;
-  border-radius: 20px;
-}
-
-.promo-grid::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
 }
 
 .promo-card {
   position: relative;
-  flex: 0 0 320px;
-  min-width: 0;
   min-height: 210px;
-  scroll-snap-align: start;
   border-radius: 13px;
   overflow: hidden;
   display: flex;
@@ -551,70 +527,6 @@ button {
 .promo-card.light .promo-link {
   background: var(--green);
   color: white;
-}
-
-
-/* LIVE PROMOTIONS FROM PROMOTION ADMIN */
-.promo-heading {
-  padding: 28px 15px 18px;
-}
-
-.promo-loading,
-.promo-empty {
-  flex: 0 0 100%;
-  padding: 24px 16px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.dynamic-promo {
-  background: linear-gradient(135deg, #414936, #73785c);
-  color: var(--gold-light);
-}
-
-.dynamic-promo::after {
-  background: linear-gradient(90deg, rgba(48,56,41,.18), rgba(48,56,41,.94));
-}
-
-.dynamic-promo .promo-card-content {
-  margin-left: 0;
-  width: 100%;
-  text-align: center;
-}
-
-.dynamic-promo h3 {
-  color: #F4E8D0;
-  overflow-wrap: anywhere;
-}
-
-.dynamic-promo p {
-  color: #F0E6D5;
-}
-
-.dynamic-promo .promo-price {
-  display: inline-block;
-  margin-top: 9px;
-  color: #F6D99F;
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.dynamic-promo .promo-old-price {
-  margin-left: 7px;
-  color: #E7E0D2;
-  font-size: 11px;
-  text-decoration: line-through;
-}
-
-.dynamic-promo .promo-link {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--green-dark);
-  border-radius: 30px;
-  padding: 7px 16px;
-  margin-top: 10px;
-  font-size: 11px;
 }
 
 /* SECTION HEADING */
@@ -792,6 +704,38 @@ button {
 
 .signature-content .gold-btn {
   align-self: flex-start;
+}
+
+/* SIGNATURE BUTTONS */
+
+.signature-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.signature-buttons .gold-btn {
+  margin-top: 10px;
+}
+
+.signature-detail-btn {
+  display: inline-block;
+  padding: 11px 24px;
+  margin-top: 10px;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  color: var(--gold-light);
+  background: transparent;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.signature-detail-btn:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+  transform: translateY(-3px);
 }
 
 /* BOOKING */
@@ -1155,15 +1099,12 @@ button {
   }
 
   .promo-grid {
-    gap: 10px;
-    padding-bottom: 12px;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 9px;
   }
 
   .promo-card {
-    flex: 0 0 78vw;
-    width: 78vw;
-    max-width: 320px;
-    min-height: 165px;
+    min-height: 155px;
   }
 
   .promo-card-content {
@@ -1237,6 +1178,17 @@ button {
     font-size: 26px;
   }
 
+  .signature-buttons {
+    gap: 8px;
+  }
+
+  .signature-detail-btn,
+  .signature-buttons .gold-btn {
+    text-align: center;
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
   .booking {
     margin: 35px 13px;
     padding: 38px 15px;
@@ -1285,8 +1237,7 @@ button {
   }
 
   .promo-card {
-    flex-basis: 84vw;
-    min-height: 145px;
+    min-height: 140px;
   }
 
   .promo-card h3 {
@@ -1303,6 +1254,121 @@ button {
   }
 }
 
+/* DYNAMIC NICHA SIGNATURE CARD */
+
+.signature {
+  min-height: 320px;
+}
+
+.signature-image {
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  background: var(--green-dark);
+}
+
+.signature-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+
+.signature-content {
+  min-width: 0;
+}
+
+.signature-content .signature-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.signature-content .signature-chip {
+  display: inline-block;
+  border: 1px solid #c6a36b88;
+  border-radius: 30px;
+  padding: 5px 12px;
+  color: var(--gold-light);
+  font-size: 12px;
+}
+
+.signature-content .signature-price {
+  color: #f3d59f;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 13px;
+}
+
+.signature-content .signature-empty {
+  color: #e7e3d7;
+  font-size: 13px;
+}
+
+.signature-content .gold-btn[aria-disabled="true"] {
+  opacity: .55;
+  pointer-events: none;
+}
+
+/* SIGNATURE DETAIL BUTTON */
+
+.signature-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.signature-buttons .gold-btn {
+  margin-top: 10px;
+}
+
+.signature-detail-btn {
+  display: inline-block;
+  padding: 11px 24px;
+  margin-top: 10px;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  color: var(--gold-light);
+  background: transparent;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.signature-detail-btn:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+  transform: translateY(-3px);
+}
+
+@media(max-width:760px) {
+  .signature {
+    grid-template-columns: 1fr;
+  }
+
+  .signature-image,
+  .signature-image img {
+    min-height: 230px;
+    max-height: 280px;
+  }
+
+  .signature-content {
+    padding: 28px 22px;
+  }
+
+  .signature-buttons {
+    gap: 8px;
+  }
+
+  .signature-detail-btn,
+  .signature-buttons .gold-btn {
+    text-align: center;
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+}
 </style>
 </head>
 
@@ -1450,22 +1516,22 @@ button {
 
     <a class="active" href="#home">หน้าแรก</a>
 
-    <!-- เปลี่ยนจาก #about เป็นหน้า Gallery -->
-
-<!-- เมนูเกี่ยวกับเรา -->
-<a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
-   target="_top">
-  เกี่ยวกับเรา
-</a>
+    <!-- เมนูเกี่ยวกับเรา -->
+    <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=gallery"
+       target="_top">
+      เกี่ยวกับเรา
+    </a>
 
     <a href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=services"
-   target="_top">
-  บริการของเรา
-</a>
+       target="_top">
+      บริการของเรา
+    </a>
 
     <a href="#signature">Signature</a>
 
-    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">โปรโมชั่น</a>
+    <a href="https://jifenii11-cell.github.io/nicha-massage/Promotions.html">
+      โปรโมชั่น
+    </a>
 
     <a href="#contact">ติดต่อเรา</a>
 
@@ -1475,17 +1541,140 @@ button {
 
 </nav>
 
-<!-- LIVE PROMOTIONS ONLY: โหลดจาก PromotionAdmin / Google Sheets -->
-<section class="promo-section" id="promotions" aria-label="โปรโมชั่นพิเศษ NICHA SPA">
-  <div class="section-heading promo-heading">
-    <div class="eyebrow">SPECIAL OFFERS</div>
-    <h2>โปรโมชั่น <span>พิเศษ</span></h2>
-    <div class="heading-decoration">✦</div>
-    <p>สิทธิพิเศษและข้อเสนอจาก NICHA SPA</p>
+<!-- FOUR PROMOTION BANNERS -->
+
+<section class="promo-section" id="promotions">
+
+  <div class="promo-grid">
+
+    <!-- MASSAGE -->
+
+    <a class="promo-card left-image"
+       href="#services">
+
+      <img
+        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700"
+        alt="Massage for health"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          MASSAGE
+          <br>
+          FOR HEALTH
+        </h3>
+
+        <p>
+          นวดเพื่อสุขภาพ
+          <br>
+          ด้วยเทคนิคเฉพาะของณิชา
+        </p>
+
+      </div>
+
+    </a>
+
+    <!-- SIGNATURE -->
+
+    <a class="promo-card light"
+       href="#signature">
+
+      <img
+        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700"
+        alt="Signature collection"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          SIGNATURE
+          <br>
+          COLLECTION
+        </h3>
+
+        <p>
+          คัดสรรโปรแกรมยอดนิยม
+          <br>
+          เพื่อการผ่อนคลายที่แท้จริง
+        </p>
+
+        <span class="promo-link">
+          ดูรายละเอียด
+        </span>
+
+      </div>
+
+    </a>
+
+    <!-- RELAX -->
+
+    <a class="promo-card left-image"
+       href="#booking">
+
+      <img
+        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700"
+        alt="Relax refresh rebalance"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          RELAX
+          <br>
+          REFRESH
+          <br>
+          REBALANCE
+        </h3>
+
+        <p>
+          ผ่อนคลาย
+          <br>
+          ฟื้นฟูร่างกายและจิตใจ
+        </p>
+
+      </div>
+
+    </a>
+
+    <!-- MEMBERSHIP -->
+
+    <a class="promo-card light"
+       href="#contact">
+
+      <img
+        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700"
+        alt="NICHA SPA membership"
+        loading="lazy"
+      >
+
+      <div class="promo-card-content">
+
+        <h3>
+          NICHA SPA
+          <br>
+          MEMBERSHIP
+        </h3>
+
+        <p>
+          สะสมแต้ม แลกรับสิทธิพิเศษ
+          <br>
+          มากมายเฉพาะสมาชิก
+        </p>
+
+        <span class="promo-link">
+          สมัครสมาชิกเลย
+        </span>
+
+      </div>
+
+    </a>
+
   </div>
-  <div class="promo-grid" id="nichaPromotionGrid" aria-live="polite">
-    <div class="promo-loading">กำลังโหลดโปรโมชั่น...</div>
-  </div>
+
 </section>
 
 <!-- SERVICES -->
@@ -1887,41 +2076,54 @@ button {
 
 </main>
 
-<!-- SIGNATURE -->
+<!-- SIGNATURE: แสดงคอร์สที่เลือกจาก PromotionAdmin บนหน้า Index -->
 
 <section class="signature" id="signature">
 
   <div class="signature-image">
 
-    <img
+    <img id="nichaSignatureImage"
       src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900"
       alt="NICHA Signature Spa"
-      loading="lazy"
-    >
+      loading="lazy">
 
   </div>
 
   <div class="signature-content">
 
-    <div class="eyebrow">
-      EXCLUSIVE EXPERIENCE
+    <div class="eyebrow">EXCLUSIVE EXPERIENCE</div>
+
+    <h2>NICHA SIGNATURE</h2>
+
+    <div id="nichaSignatureDetails"
+         class="signature-empty"
+         aria-live="polite">
+      สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
     </div>
 
-    <h2>
-      NICHA SIGNATURE
-    </h2>
+    <div id="nichaSignaturePrice" class="signature-price"></div>
 
-    <p>
-      สัมผัสประสบการณ์การดูแลเฉพาะของ NICHA SPA
-      คัดสรรโปรแกรมนวดและสปา
-      เพื่อช่วงเวลาแห่งการพักผ่อนอย่างแท้จริง
-    </p>
+    <div id="nichaSignatureMeta" class="signature-meta"></div>
 
-    <a class="gold-btn"
-       href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
-       target="_top">
-      เลือกคอร์สบริการ ✦
-    </a>
+    <!-- ปุ่มดูรายละเอียดและปุ่มจองคอร์ส -->
+
+    <div class="signature-buttons">
+
+      <a href="https://jifenii11-cell.github.io/nicha-massage/Signature.html"
+         class="signature-detail-btn"
+         target="_top">
+        ดูรายละเอียดคอร์ส
+      </a>
+
+      <a id="nichaSignatureBook"
+         class="gold-btn"
+         href="https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking"
+         target="_top"
+         aria-disabled="true">
+        จองคอร์สนี้ ✦
+      </a>
+
+    </div>
 
   </div>
 
@@ -2035,99 +2237,136 @@ button {
 
 </div>
 
+<!-- LOAD SIGNATURE DATA -->
+
 <script>
-/* แสดงเฉพาะโปรโมชั่นที่เปิดใช้งานจาก PromotionAdmin */
-(function () {
-  var PROMOTION_API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
-  var grid = document.getElementById('nichaPromotionGrid');
-  if (!grid) return;
+(function(){
+  'use strict';
 
-  function showMessage(message) {
-    grid.innerHTML = '';
-    var note = document.createElement('div');
-    note.className = 'promo-empty';
-    note.textContent = message;
-    grid.appendChild(note);
-  }
+  const API = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec';
 
-  function formatBaht(value) {
-    if (value === '' || value === null || typeof value === 'undefined') return '';
-    var number = Number(value);
-    if (!isFinite(number)) return '';
-    return number.toLocaleString('th-TH') + ' บาท';
-  }
+  const BOOKING = API + '?page=booking';
 
-  function addText(parent, tag, className, value) {
-    var el = document.createElement(tag);
-    if (className) el.className = className;
-    el.textContent = value || '';
-    parent.appendChild(el);
-    return el;
-  }
+  function jsonp(url, callbackName){
 
-  function renderPromotions(items) {
-    grid.innerHTML = '';
-    var validItems = Array.isArray(items) ? items.filter(function (p) {
-      return p && String(p.title || '').trim();
-    }) : [];
+    return new Promise(function(resolve, reject){
 
-    if (!validItems.length) {
-      showMessage('ขณะนี้ยังไม่มีโปรโมชั่นที่เปิดใช้งาน');
-      return;
-    }
+      const name = callbackName + '_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
 
-    validItems.forEach(function (promotion) {
-      var card = document.createElement('a');
-      card.className = 'promo-card dynamic-promo';
-      card.href = 'https://script.google.com/macros/s/AKfycbyIh2N7BoxWlug6E7-h2METVTZbTN2B7PMmTcj70SuV1Mxoq_AHZK5QKl0rR49FJS3NGg/exec?page=booking&service=' + encodeURIComponent(promotion.title || '');
-      card.setAttribute('aria-label', 'จองคอร์สนี้: ' + promotion.title);
-      card.setAttribute('title', promotion.title);
+      const script = document.createElement('script');
 
-      if (promotion.imageUrl) {
-        var img = document.createElement('img');
-        img.src = promotion.imageUrl;
-        img.alt = promotion.title;
-        img.loading = 'lazy';
-        card.appendChild(img);
+      let finished = false;
+
+      const timer = setTimeout(function(){
+        finish(new Error('หมดเวลาการโหลดข้อมูล Signature'));
+      }, 12000);
+
+      function finish(error, data){
+
+        if(finished) return;
+
+        finished = true;
+
+        clearTimeout(timer);
+
+        try {
+          delete window[name];
+        } catch(e) {
+          window[name] = undefined;
+        }
+
+        if(script.parentNode){
+          script.parentNode.removeChild(script);
+        }
+
+        if(error){
+          reject(error);
+        } else {
+          resolve(data);
+        }
       }
 
-      var content = document.createElement('div');
-      content.className = 'promo-card-content';
-      card.appendChild(content);
-      addText(content, 'h3', '', promotion.title);
+      window[name] = function(data){
+        finish(null, data);
+      };
 
-      if (promotion.description) {
-        addText(content, 'p', '', promotion.description);
-      }
+      script.onerror = function(){
+        finish(new Error('ไม่สามารถเชื่อมต่อข้อมูล Signature ได้'));
+      };
 
-      var priceWrap = document.createElement('div');
-      var special = formatBaht(promotion.promoPrice);
-      var original = formatBaht(promotion.originalPrice);
-      if (special) addText(priceWrap, 'span', 'promo-price', special);
-      if (original && original !== special) {
-        addText(priceWrap, 'span', 'promo-old-price', original);
-      }
-      if (priceWrap.childNodes.length) content.appendChild(priceWrap);
-      addText(content, 'span', 'promo-link', 'จองคอร์สนี้');
-      grid.appendChild(card);
+      script.src = url
+        + (url.indexOf('?') >= 0 ? '&' : '?')
+        + 'callback=' + encodeURIComponent(name)
+        + '&_=' + Date.now();
+
+      document.head.appendChild(script);
+
     });
+
   }
 
-  window.nichaPromotionsCallback = function (response) {
-    if (!response || response.success !== true) {
-      showMessage('ไม่สามารถโหลดโปรโมชั่นได้ กรุณาลองใหม่อีกครั้ง');
+  function money(value){
+
+    const n = Number(value || 0);
+
+    return n.toLocaleString('th-TH');
+
+  }
+
+  function showSignature(data){
+
+    if(!data || !data.success || !data.service){
       return;
     }
-    renderPromotions(response.promotions || []);
-  };
 
-  var script = document.createElement('script');
-  script.src = PROMOTION_API + '?action=getPromotions&callback=nichaPromotionsCallback&_=' + Date.now();
-  script.async = true;
-  script.onerror = function () {
-    showMessage('ไม่สามารถเชื่อมต่อฐานข้อมูลโปรโมชั่นได้');
-  };
-  document.head.appendChild(script);
+    const service = data.service;
+
+    const image = document.getElementById('nichaSignatureImage');
+
+    const details = document.getElementById('nichaSignatureDetails');
+
+    const price = document.getElementById('nichaSignaturePrice');
+
+    const meta = document.getElementById('nichaSignatureMeta');
+
+    const book = document.getElementById('nichaSignatureBook');
+
+    if(!image || !details || !price || !meta || !book){
+      return;
+    }
+
+    if(service.imageUrl){
+      image.src = service.imageUrl;
+    }
+
+    image.alt = service.name + ' | NICHA SIGNATURE';
+
+    details.textContent = service.name;
+
+    price.textContent = money(service.price) + ' บาท';
+
+    meta.innerHTML = '';
+
+    const chip = document.createElement('span');
+
+    chip.className = 'signature-chip';
+
+    chip.textContent = (Number(service.duration) || 0) + ' นาที';
+
+    meta.appendChild(chip);
+
+    book.href = BOOKING + '&service=' + encodeURIComponent(service.name);
+
+    book.setAttribute('aria-disabled', 'false');
+
+  }
+
+  jsonp(API + '?api=signatureData', 'nichaSignatureCallback')
+    .then(showSignature)
+    .catch(function(error){
+      console.warn('NICHA Signature:', error.message);
+    });
+
 })();
 </script>
 
